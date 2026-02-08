@@ -1,0 +1,248 @@
+{
+  "date": "2026-02-07T13:29:35.380Z",
+  "argv": ["/usr/local/bin/node", "/Users/bitter/Documents/lytos/apps/rest/tests/tenancy.test.ts"],
+  "execArgv": [
+    "--import=file:///Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+typescript@3.5.1_@swc+core@1.13.5_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node_2b6ea63d6d5f1092d541059e3b9693e5/node_modules/@tapjs/typescript/dist/esm/import.mjs",
+    "--import=file:///Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/import.mjs",
+    "--enable-source-maps",
+    "--import=file:///Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+processinfo@3.1.9/node_modules/@tapjs/processinfo/dist/esm/import.mjs",
+    "--loader=ts-node/esm"
+  ],
+  "NODE_OPTIONS": "\"--import=file:///Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+processinfo@3.1.9/node_modules/@tapjs/processinfo/dist/esm/import.mjs\"",
+  "cwd": "/Users/bitter/Documents/lytos/apps/rest",
+  "pid": 63267,
+  "ppid": 63259,
+  "parent": null,
+  "uuid": "56efdec0-2c37-4cf8-9711-a6ffe196f4d2",
+  "files": [
+    "/Users/bitter/Documents/lytos/apps/rest/tests/tenancy.test.ts",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+typescript@3.5.1_@swc+core@1.13.5_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node_2b6ea63d6d5f1092d541059e3b9693e5/node_modules/@tapjs/typescript/dist/esm/import.mjs",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@isaacs+ts-node-temp-fork-for-pr-2009@10.9.7_@swc+core@1.13.5_@types+node@22.15.3_typescript@5.9.2/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import.mjs",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@isaacs+ts-node-temp-fork-for-pr-2009@10.9.7_@swc+core@1.13.5_@types+node@22.15.3_typescript@5.9.2/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import-loader.mjs",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/import.mjs",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/mock-service.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/is-relative-require.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/export-line.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/munge-mocks.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/resolve-mock-entry-point.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/service-key.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-all-conditional-values.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-all-conditions.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-unique-condition-sets.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-all-exports.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-all-local-imports.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-conditional-value.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-import.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/dist/esm/call-site-like.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/dist/esm/require-resolve.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/is-windows.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-conditional-values-list.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/errors.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/file-exists.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-dependency-export.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-package-import.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/to-file-url.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/to-path.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-named-exports-list.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/read-pkg.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-export.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/star-glob.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/find-dep-package.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/dist/esm/parse.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/walk-up-path@4.0.0/node_modules/walk-up-path/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/find-star-match.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/read-json.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/glob.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/has-magic.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/ignore.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/pattern.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/path-scurry@2.0.0/node_modules/path-scurry/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/walker.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@isaacs+brace-expansion@5.0.1/node_modules/@isaacs/brace-expansion/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/assert-valid-pattern.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/ast.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/escape.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/unescape.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/lru-cache@11.1.0/node_modules/lru-cache/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minipass@7.1.2/node_modules/minipass/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/brace-expressions.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/processor.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@isaacs+balanced-match@4.0.1/node_modules/@isaacs/balanced-match/dist/esm/index.js",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/loader.mjs",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/hooks.mjs",
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/mock-service-client.js"
+  ],
+  "sources": {
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+typescript@3.5.1_@swc+core@1.13.5_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node_2b6ea63d6d5f1092d541059e3b9693e5/node_modules/@tapjs/typescript/dist/esm/import.mjs": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+typescript@3.5.1_@swc+core@1.13.5_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node_2b6ea63d6d5f1092d541059e3b9693e5/node_modules/@tapjs/typescript/src/import.mts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/import.mjs": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/src/import.mts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/mock-service.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/src/mock-service.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/src/index.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/index.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/is-relative-require.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/is-relative-require.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/export-line.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/src/export-line.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/munge-mocks.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/src/munge-mocks.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/resolve-mock-entry-point.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/src/resolve-mock-entry-point.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/dist/esm/service-key.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+mock@4.3.1_@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1_/node_modules/@tapjs/mock/src/service-key.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-all-conditional-values.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/get-all-conditional-values.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-all-conditions.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/get-all-conditions.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-unique-condition-sets.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/get-unique-condition-sets.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-all-exports.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/resolve-all-exports.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-all-local-imports.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/resolve-all-local-imports.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-conditional-value.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/resolve-conditional-value.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-import.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/resolve-import.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/dist/esm/call-site-like.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/src/call-site-like.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/dist/esm/require-resolve.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/src/require-resolve.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/is-windows.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/is-windows.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-conditional-values-list.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/get-conditional-values-list.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/errors.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/errors.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/file-exists.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/file-exists.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-dependency-export.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/resolve-dependency-export.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-package-import.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/resolve-package-import.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/to-file-url.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/to-file-url.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/to-path.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/to-path.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/get-named-exports-list.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/get-named-exports-list.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/read-pkg.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/read-pkg.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/resolve-export.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/resolve-export.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/star-glob.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/star-glob.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/find-dep-package.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/find-dep-package.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/dist/esm/parse.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+stack@4.3.0/node_modules/@tapjs/stack/src/parse.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/walk-up-path@4.0.0/node_modules/walk-up-path/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/walk-up-path@4.0.0/node_modules/walk-up-path/src/index.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/find-star-match.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/find-star-match.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/dist/esm/read-json.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/resolve-import@2.1.1/node_modules/resolve-import/src/read-json.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/src/index.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/src/index.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/glob.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/src/glob.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/has-magic.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/src/has-magic.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/ignore.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/src/ignore.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/pattern.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/src/pattern.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/path-scurry@2.0.0/node_modules/path-scurry/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/path-scurry@2.0.0/node_modules/path-scurry/src/index.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/walker.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/src/walker.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@isaacs+brace-expansion@5.0.1/node_modules/@isaacs/brace-expansion/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@isaacs+brace-expansion@5.0.1/node_modules/@isaacs/brace-expansion/src/index.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/assert-valid-pattern.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/src/assert-valid-pattern.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/ast.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/src/ast.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/escape.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/src/escape.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/unescape.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/src/unescape.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/lru-cache@11.1.0/node_modules/lru-cache/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/lru-cache@11.1.0/node_modules/lru-cache/src/index.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minipass@7.1.2/node_modules/minipass/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/minipass@7.1.2/node_modules/minipass/src/index.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/dist/esm/brace-expressions.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/minimatch@10.1.2/node_modules/minimatch/src/brace-expressions.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/dist/esm/processor.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/glob@13.0.1/node_modules/glob/src/processor.ts"
+    ],
+    "/Users/bitter/Documents/lytos/node_modules/.pnpm/@isaacs+balanced-match@4.0.1/node_modules/@isaacs/balanced-match/dist/esm/index.js": [
+      "/Users/bitter/Documents/lytos/node_modules/.pnpm/@isaacs+balanced-match@4.0.1/node_modules/@isaacs/balanced-match/src/index.ts"
+    ]
+  },
+  "root": "56efdec0-2c37-4cf8-9711-a6ffe196f4d2",
+  "externalID": "tests/tenancy.test.ts",
+  "code": 1,
+  "signal": null,
+  "runtime": 290.097083
+}

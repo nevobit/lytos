@@ -1,0 +1,10 @@
+import { Collection, getModel } from "@lytos/constant-definitions";
+import { Role, RoleSchemaMongo } from "@lytos/contracts";
+
+export const findRoleById = async (id: string): Promise<Role> => {
+    const model = getModel<Role>(Collection.ROLES, RoleSchemaMongo);
+
+    const role = await model.find({ id, status: 'active' });
+
+    return role;
+}

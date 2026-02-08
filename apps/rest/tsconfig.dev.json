@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@lytos/business-logic": ["../../packages/business-logic/src/index.ts"],
+      "@lytos/contracts": ["../../packages/contracts/src/index.ts"],
+      "@lytos/security": ["../../packages/security/src/index.ts"],
+      "@lytos/core-modules": ["../../packages/core-modules/src/index.ts"],
+      "@lytos/constant-definitions": ["../../packages/constant-definitions/src/index.ts"],
+      "@lytos/data-sources": ["../../packages/data-sources/src/index.ts"],
+      "@lytos/tools": ["../../packages/tools/src/index.ts"]
+    }
+  }
+}

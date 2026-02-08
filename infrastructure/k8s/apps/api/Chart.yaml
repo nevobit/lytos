@@ -1,0 +1,28 @@
+apiVersion: v2
+name: ecommerce-web
+description: Helm chart for the lytos ecommerce-web application (Next.js SSR)
+
+type: application
+
+version: 0.1.0
+
+appVersion: '1.0.0'
+
+keywords:
+  - nextjs
+  - ecommerce
+  - web
+  - ssr
+
+home: https://lytos.com
+sources:
+  - https://github.com/lytos/lytos
+
+maintainers:
+  - name: DevOps Team
+    email: devops@lytos.com
+
+dependencies:
+  - name: common
+    version: 2.x.x
+    repository: https://charts.bitnami.com/bitnami

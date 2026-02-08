@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@tapjs/core": "file:///Users/bitter/Documents/lytos/node_modules/.pnpm/@tapjs+core@4.4.1_@swc+core@1.13.5_@types+node@22.15.3_react-dom@19.1.1_react@18.3.1__react@18.3.1/node_modules/@tapjs/core"
+  }
+}
