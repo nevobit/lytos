@@ -29,6 +29,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src", "../security/src/authz/scopes.ts"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

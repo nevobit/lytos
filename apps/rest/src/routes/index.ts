@@ -3,11 +3,14 @@ import { healthCheckRoute } from './health-check';
 import { workspaceRoutes } from './workspaces';
 import { meRoute } from './users/me';
 import { withPrefix } from '@lytos/constant-definitions';
+import { authRoutes } from './auth';
 
 const routes: RouteOptions[] = [
     healthCheckRoute,
     meRoute,
-    ...withPrefix('/workspaces', workspaceRoutes)
+    ...withPrefix('/workspaces', workspaceRoutes),
+    ...withPrefix('/auth', authRoutes),
+
 ];
 
 export const registerRoutes = (fastify: FastifyInstance) => {

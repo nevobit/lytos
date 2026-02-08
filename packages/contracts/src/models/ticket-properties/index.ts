@@ -1,2 +1,2 @@
 export * from "./schemas";
-export * from "./ticket-propertie.dtos";
+export * from "./ticket-property.dtos";
