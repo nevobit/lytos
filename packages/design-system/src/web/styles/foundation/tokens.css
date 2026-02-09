@@ -13,32 +13,38 @@
     --ds-color-neutral-900: #1f2430;
     --ds-color-neutral-1000: #0e1116;
 
-    --ds-color-primary-50: #eef6ff;
-    --ds-color-primary-100: #d6e9ff;
-    --ds-color-primary-200: #b8d8ff;
-    --ds-color-primary-300: #8fc1ff;
-    --ds-color-primary-400: #61a5ff;
-    --ds-color-primary-500: #2f83ff;
-    --ds-color-primary-600: #1868e8;
-    --ds-color-primary-700: #0e54c1;
-    --ds-color-primary-800: #0a4093;
-    --ds-color-primary-900: #062a5c;
+    --ds-brand-green: #2d8976;
+    --ds-brand-black: #212528;
+    --ds-brand-gray: #5d6165;
+    --ds-brand-blue: #0d88e4;
+    --ds-brand-purple: #6963b5;
 
-    --ds-color-success-500: #16a34a;
+    --ds-color-primary-50: #eef7ff;
+    --ds-color-primary-100: #d7ecff;
+    --ds-color-primary-200: #b4dcff;
+    --ds-color-primary-300: #86c7ff;
+    --ds-color-primary-400: #4eacf4;
+    --ds-color-primary-500: #1e95ec;
+    --ds-color-primary-600: #0d88e4;
+    --ds-color-primary-700: #0b6fc0;
+    --ds-color-primary-800: #095590;
+    --ds-color-primary-900: #063b63;
+
+    --ds-color-success-500: var(--ds-brand-green);
     --ds-color-warning-500: #d97706;
     --ds-color-danger-500: #dc2626;
 
     --ds-brand-primary: var(--ds-color-primary-600);
     --ds-brand-primary-contrast: #ffffff;
 
-    --ds-fg-default: var(--ds-color-neutral-900);
-    --ds-fg-muted: var(--ds-color-neutral-700);
+    --ds-fg-default: var(--ds-brand-black);
+    --ds-fg-muted: var(--ds-brand-gray);
     --ds-fg-inverse: var(--ds-color-neutral-0);
 
     --ds-bg-canvas: var(--ds-color-neutral-0);
     --ds-bg-subtle: var(--ds-color-neutral-50);
     --ds-bg-elevated: var(--ds-color-neutral-0);
-    --ds-bg-inverse: var(--ds-color-neutral-900);
+    --ds-bg-inverse: var(--ds-brand-black);
 
     --ds-border-default: var(--ds-color-neutral-200);
     --ds-border-strong: var(--ds-color-neutral-300);
@@ -51,9 +57,12 @@
     --ds-warning: var(--ds-color-warning-500);
     --ds-danger: var(--ds-color-danger-500);
 
+    --ds-accent-secondary: var(--ds-brand-purple);
+
     --ds-font-sans:
-      ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, 'Noto Sans',
-      sans-serif;
+      'Manrope', ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial,
+      'Noto Sans', sans-serif;
+
     --ds-font-mono:
       ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
 
