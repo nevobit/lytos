@@ -7,5 +7,7 @@ export const PublicRoutes = {
 
 export const PrivateRoutes = {
     ROOT: "/",
+    ACCOUNTS: "/accounts",
+    NEW_ACCOUNT: "/new",
     DAHSBOARD: "/dahsboard",
 } as const;

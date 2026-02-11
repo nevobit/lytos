@@ -1,0 +1,62 @@
+.container {
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.08), transparent 50%), #f8fafc;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 4rem;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.userInfo h4 {
+  font-size: 1.4rem;
+}
+
+.userInfo p {
+  font-size: 1.2rem;
+}
+
+.content {
+  width: min(120rem, 100%);
+  margin-inline: auto;
+  margin-top: 4rem;
+}
+
+.copy {
+  font-size: 1.4rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.invitations {
+  margin-top: 2rem;
+}
+
+.invitationList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.accounts {
+  margin-top: 3rem;
+}
+
+.accountList {
+  display: flex;
+  gap: 2rem;
+}

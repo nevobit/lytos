@@ -7,7 +7,7 @@ interface Branding {
     backgroundColor?: string;
 }
 
-export interface Plan {
+interface Plan {
     name: "free" | "pro" | "enterprise";
     seatsLimit: number;
     channelsEnabled: ("email" | "widget" | "whatsapp" | "webchat" | "calls")[]

@@ -9,8 +9,8 @@
   background: var(--_bg);
   border: 1px solid var(--_bd);
   border-radius: var(--ds-radius-6);
-  padding-block: 8px; /* logical props for RTL */
-  padding-inline: 14px;
+  padding-block: 1rem; /* logical props for RTL */
+  padding-inline: 1.5rem;
   font-weight: var(--ds-font-weight-medium);
   line-height: 1;
   cursor: pointer;
@@ -55,22 +55,22 @@
 .micro {
   padding-block: 4px;
   padding-inline: 8px;
-  font-size: var(--ds-font-size-12);
+  font-size: var(--ds-font-size-10);
 }
 .slim {
   padding-block: 6px;
   padding-inline: 10px;
-  font-size: var(--ds-font-size-14);
+  font-size: var(--ds-font-size-12);
 }
 .medium {
-  padding-block: 8px;
-  padding-inline: 14px;
-  font-size: var(--ds-font-size-16);
+  padding-block: 0.8rem;
+  padding-inline: 1.5rem;
+  font-size: var(--ds-font-size-14);
 }
 .large {
   padding-block: 12px;
   padding-inline: 18px;
-  font-size: var(--ds-font-size-18);
+  font-size: var(--ds-font-size-16);
 }
 
 /* Text align (RTL-ready via logical props) */
@@ -129,11 +129,10 @@
 .monochromePlain {
   --_fg: var(--ds-color-fg-default);
   --_bg: transparent;
-  --_bd: var(--ds-color-fg-default);
+  --_bd: color-mix(in srgb, var(--ds-color-fg-default) 20%, transparent);
   --_bg-hover: color-mix(in srgb, var(--ds-color-fg-default) 10%, transparent);
 }
 
-/* Tones (override quickly with semantic tokens) */
 .critical {
   --_fg: #fff;
   --_bg: var(--ds-danger);

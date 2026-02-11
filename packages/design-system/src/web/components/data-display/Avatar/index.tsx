@@ -10,6 +10,7 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
     name?: string;
     size?: AvatarSize;
     shape?: "circle" | "rounded";
+    color?: string;
     badge?: React.ReactNode;
 }
 
@@ -21,7 +22,7 @@ function getInitials(name?: string) {
 }
 
 export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
-    ({ src, alt = "", name, size = "md", shape = "circle", badge, className, ...rest }, ref) => {
+    ({ src, alt = "", name, size = "md", shape = "circle", color = '--ds-color-neutral-300', badge, className, ...rest }, ref) => {
         const [errored, setErrored] = React.useState(false);
         const initials = getInitials(name).toUpperCase();
 
@@ -29,6 +30,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
             <div
                 ref={ref}
                 className={cx(styles.root, styles[size], styles[shape], className)}
+                style={{ backgroundColor: color || '--ds-color-neutral-300' }}
                 {...rest}
             >
                 {src && !errored ? (

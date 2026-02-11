@@ -10,12 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@lytos/design-system": "workspace:*",
     "@lytos/contracts": "workspace:*",
+    "@lytos/design-system": "workspace:*",
     "@tanstack/query-sync-storage-persister": "^5.85.6",
     "@tanstack/react-query": "^5.85.6",
     "@tanstack/react-query-persist-client": "^5.85.6",
     "axios": "^1.11.0",
+    "crypto-js": "^4.2.0",
     "i18next": "^25.4.2",
     "localforage": "^1.10.0",
     "lucide-react": "^0.438.0",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@types/crypto-js": "^4.2.2",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react-swc": "^4.0.0",

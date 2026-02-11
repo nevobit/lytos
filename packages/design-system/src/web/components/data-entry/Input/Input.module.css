@@ -95,10 +95,10 @@
     padding-block: calc(var(--ds-pad-2) * 0.85);
   }
   .md .control {
-    font-size: var(--ds-font-size-16);
+    font-size: var(--ds-font-size-14);
   }
   .lg .control {
-    font-size: var(--ds-font-size-18);
+    font-size: var(--ds-font-size-16);
     padding-block: calc(var(--ds-pad-2) * 1.15);
   }
 

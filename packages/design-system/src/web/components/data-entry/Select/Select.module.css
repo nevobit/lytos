@@ -38,7 +38,7 @@
     width: 100%;
     padding-block: var(--ds-pad-2);
     padding-inline: var(--ds-pad-3);
-    font-size: var(--ds-font-size-16);
+    font-size: var(--ds-font-size-14);
     border: none;
     background: transparent;
     color: var(--ds-input-fg);

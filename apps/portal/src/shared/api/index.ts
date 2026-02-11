@@ -1,5 +1,25 @@
 import axios, { AxiosError, type AxiosInstance } from "axios";
+import CryptoJS from "crypto-js";
 import { useSession } from "../state-manager";
+
+const API_KEY = import.meta.env.VITE_API_KEY;
+const SECRET = import.meta.env.VITE_API_SECRET;
+
+
+function stableStringify(obj: unknown): string {
+    if (obj === null || typeof obj !== "object") return JSON.stringify(obj);
+    if (Array.isArray(obj)) return `[${obj.map(stableStringify).join(",")}]`;
+    return `{${Object.keys(obj).sort()
+        .map(k => `"${k}":${stableStringify((obj as Record<string, unknown>)[k])}`)
+        .join(",")}}`;
+}
+
+function signRequest(method: string, path: string, body: unknown, timestamp: string) {
+    const bodyStr = body ? stableStringify(body) : "";
+    const bodyHash = CryptoJS.SHA256(bodyStr).toString(CryptoJS.enc.Hex);
+    const payload = `${method.toUpperCase()}\n${path}\n${timestamp}\n${bodyHash}`;
+    return CryptoJS.HmacSHA256(payload, SECRET).toString(CryptoJS.enc.Hex);
+}
 
 export const api: AxiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_URL ?? "/api",
@@ -10,6 +30,17 @@ export const api: AxiosInstance = axios.create({
 api.interceptors.request.use(cfg => {
     const token = useSession.getState().token;
     if (token) cfg.headers.Authorization = `Bearer ${token}`;
+    const timestamp = Date.now().toString();
+
+    const url = new URL(cfg.url ?? "", cfg.baseURL);
+    const path = url.pathname + (url.search ?? "");
+
+    const signature = signRequest(cfg.method ?? "GET", path, cfg.data, timestamp);
+    cfg.headers["api-key"] = API_KEY;
+    cfg.headers["x-client-user-agent"] = "Portal/1.0.0 (web)";
+    cfg.headers["x-timestamp"] = timestamp;
+    cfg.headers["x-path"] = `/api/v1${path}`;
+    cfg.headers["x-signature"] = `sha256=${signature}`;
     return cfg;
 });
 

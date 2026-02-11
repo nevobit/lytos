@@ -39,6 +39,9 @@ export interface Ticket extends Base {
     assigneeMembershipId?: string;
     customerId: string;
 
+    workspaceId: string;
+    userId: string;
+
     source: Source;
 
     tags: string[];

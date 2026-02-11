@@ -9,3 +9,14 @@ export interface Base<TId = string> {
     updatedAt?: Timestamp;
     readonly deletedAt?: Timestamp;
 }
+
+export interface Params {
+    workspaceId: string;
+    page?: number;
+    limit?: number;
+    search?: string;
+}
+
+export interface Query {
+    lifecycleStatus: LifecycleStatus;
+}

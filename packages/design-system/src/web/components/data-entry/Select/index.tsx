@@ -17,7 +17,6 @@ export interface SelectProps
     status?: SelectStatus;
     size?: SelectSize;
     fullWidth?: boolean;
-    /** Optional leading icon (decorative) */
     icon?: React.ReactNode;
 }
 

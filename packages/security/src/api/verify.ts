@@ -153,9 +153,10 @@ const requireApiKey: Checker = (input) => {
 };
 
 const requireUserAgent: Checker = (input) => {
+
     const ua = parseHeaderString(input.headers["user-agent"] ?? input.headers["User-Agent"]);
     const xua = parseHeaderString(input.headers["x-client-user-agent"]);
-    const agent = ua || xua;
+    const agent = xua || ua;
     if (!agent) {
         return { type: "error", code: VerifyCode.BAD_USER_AGENT, message: "Missing User-Agent" };
     }

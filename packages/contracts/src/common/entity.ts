@@ -7,7 +7,7 @@ export const baseFields = {
     deletedAt: { type: Date },
 } as const;
 
-export const tenantField = {
+export const tenantFields = {
     workspaceId: { type: String, required: true, index: true },
     userId: { type: String, required: true, index: true },
 } as const;
