@@ -7,7 +7,7 @@ interface Branding {
     backgroundColor?: string;
 }
 
-interface Plan {
+export interface Plan {
     name: "free" | "pro" | "enterprise";
     seatsLimit: number;
     channelsEnabled: ("email" | "widget" | "whatsapp" | "webchat" | "calls")[]
@@ -33,11 +33,11 @@ export interface Workspace extends Base {
     timezone: string;
     locale: string;
 
-    branding: Branding;
+    branding?: Branding;
 
     plan: Plan;
 
-    settings: Settings;
+    settings?: Settings;
 
     domains?: Domain[];
 

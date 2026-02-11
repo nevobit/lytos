@@ -1,14 +1,6 @@
-import { jwtVerify, createRemoteJWKSet } from "jose";
+import { jwtVerify } from "jose";
 
-const JWKS_URL = process.env.JWT_JWKS_URL;
-const ISSUER = process.env.JWT_ISSUER;
-const AUDIENCE = process.env.JWT_AUDIENCE;
-
-if (!JWKS_URL) {
-    throw new Error("JWT_JWKS_URL is not defined");
-}
-
-const jwks = createRemoteJWKSet(new URL(JWKS_URL));
+const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
 interface RequestInterface {
     Body: unknown;
@@ -65,14 +57,11 @@ export const verifyJwt: AuthFunction = async (
             };
         }
 
-        const { payload } = await jwtVerify(token, jwks, {
-            issuer: ISSUER,
-            audience: AUDIENCE,
-            clockTolerance: 5,
-        });
+
+        const { payload } = await jwtVerify(token, secret);
 
         const claims: JwtClaims = {
-            sub: payload.sub as string,
+            sub: payload.id as string,
             workspaceId: payload.workspaceId as string | undefined,
             role: payload.role as string | undefined,
             scopes: Array.isArray(payload.scopes)
@@ -80,7 +69,7 @@ export const verifyJwt: AuthFunction = async (
                 : typeof payload.scope === "string"
                     ? payload.scope.split(" ")
                     : undefined,
-            sessionId: payload.sid as string | undefined,
+            sessionId: payload.sessionId as string | undefined,
         };
 
         if (!claims.sub) {

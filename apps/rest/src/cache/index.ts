@@ -1,8 +1,6 @@
 import { getRedisReadClient, getRedisWriteClient } from '@lytos/constant-definitions';
 import { Logger, MonoContext } from '@lytos/core-modules';
 
-const logger = MonoContext.getStateValue("logger") as Logger;
-
 export const getFromCache = async <R>(key: string) => {
     const cache = getRedisReadClient();
 
@@ -18,6 +16,7 @@ export const setCache = async (key: string, value: unknown) => {
 };
 
 export const invalidateCache = async (key: string) => {
+    const logger = MonoContext.getStateValue("logger") as Logger;
     const cache = getRedisWriteClient();
 
     const res = await cache.hdel("api-cache", key);

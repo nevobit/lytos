@@ -1,9 +1,9 @@
 import { Base } from '../../../common';
 
 interface Device {
-    userAgent: string;
-    ipAddress: string;
-    type: "desktop" | "mobile" | "tablet" | "other";
+    userAgent?: string;
+    ipAddress?: string;
+    type?: "desktop" | "mobile" | "tablet" | "other";
 }
 
 export interface Session extends Base {

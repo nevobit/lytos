@@ -42,3 +42,4 @@ export * from './saved-views';
 export * from './csat-surveys';
 export * from './csat-responses';
 export * from './tenant';
+export * from './matos';

@@ -1,29 +1,30 @@
-import React from 'react';
+import React from "react";
 
-type ProvidersType = [React.ElementType, Record<string, unknown>];
-type ChildrenType = {
-  children: React.ReactNode;
-};
+type ProviderEntry = [React.ElementType, Record<string, unknown>?];
+type MountEntry = [React.ElementType, Record<string, unknown>?];
 
-export const buildProvidersTree = (
-  componentsWithProps: Array<ProvidersType>,
-) => {
-  const initialComponent = ({ children }: ChildrenType) => <>{children}</>;
-  return componentsWithProps.reduce(
-    (
-      AccumulatedComponents: React.ElementType,
-      [Provider, props = {}]: ProvidersType,
-    ) => {
-      return ({ children }: ChildrenType) => {
-        return (
-          <AccumulatedComponents>
-            <Provider {...props}>{children}</Provider>
-          </AccumulatedComponents>
-        );
-      };
-    },
-    initialComponent,
+export function buildAppShell(
+  providers: ProviderEntry[] = [],
+  mounts: MountEntry[] = []
+) {
+  const ProvidersTree = providers.reduce(
+    (Accumulated, [Provider, props = {}]) =>
+      ({ children }: { children: React.ReactNode }) => (
+        <Accumulated>
+          <Provider {...props}>{children}</Provider>
+        </Accumulated>
+      ),
+    ({ children }: { children: React.ReactNode }) => <>{children}</>
   );
-};
 
-export default buildProvidersTree;
+  const Shell = ({ children }: { children: React.ReactNode }) => (
+    <ProvidersTree>
+      {children}
+      {mounts.map(([Mount, props = {}], i) => (
+        <Mount key={i} {...props} />
+      ))}
+    </ProvidersTree>
+  );
+
+  return Shell;
+}

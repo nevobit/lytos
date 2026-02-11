@@ -238,7 +238,7 @@ export const buildApp = (opts: BuildAppOpts) => {
                 "Check that the route is correct",
                 "Make sure to use the /api/v1 prefix if applicable",
             ],
-            docs: "https://domain.com/docs",
+            docs: "https://api.lytos.app/docs",
         };
 
         reply

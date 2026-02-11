@@ -16,18 +16,18 @@ interface AuthProviders {
 export interface User extends Base {
     name: string;
     email: string;
-    password: string;
-    avatar: string;
+    password?: string;
+    avatar?: string;
 
-    security: Security;
+    security?: Security;
 
-    isEmailVerified: boolean;
-    locked: boolean;
+    isEmailVerified?: boolean;
+    locked?: boolean;
     userAgent: string;
 
-    authProviders: AuthProviders;
+    authProviders?: AuthProviders;
 
-    loginAttempts: number;
-    lastLogin: Date;
+    loginAttempts?: number;
+    lastLogin?: Date;
 
 }

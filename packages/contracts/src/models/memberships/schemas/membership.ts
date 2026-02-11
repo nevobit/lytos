@@ -22,8 +22,8 @@ export interface Membership extends Base {
     primaryDepartmentId?: string;
     title: string;
     status: "invited" | "active" | "suspended";
-    profile: Profile;
-    preferences: Preferences;
+    profile?: Profile;
+    preferences?: Preferences;
     invitedBy?: string;
     invitedAt?: Date;
     joinedAt?: Date;

@@ -8,8 +8,8 @@ export const SessionSchemaMongo = new Schema<Session>({
     sessionId: { type: String },
     status: { type: String, enum: ["active", "revoked"], required: true },
     device: {
-        userAgent: { type: String, required: true },
-        ipAddress: { type: String, required: true },
+        userAgent: { type: String },
+        ipAddress: { type: String },
         type: { type: String, enum: ["desktop", "mobile", "tablet", "other"], }
     },
     expiresAt: { type: Date, required: true },
