@@ -5,10 +5,10 @@ import withSuspense from "../utils/with-suspense";
 import { PrivateRoutes } from "./route-paths";
 import ErrorBoundary from "@/app/screens/ErrorBoundary";
 import Testing from "@/app/screens/Testing";
-import Accounts from "@/modules/auth/screens/Accounts";
 import NewAccount from "@/modules/auth/screens/NewAccount";
 
 const AppShell = lazy(() => import("@/app/components/Layout/AppShell"));
+const Accounts = lazy(() => import("@/modules/auth/screens/Accounts"));
 
 export const privateRoutes: RouteObject[] = [
     {
@@ -18,15 +18,12 @@ export const privateRoutes: RouteObject[] = [
         errorElement: <ErrorBoundary />,
         children: [
             { index: true, element: withSuspense(<Testing />) },
-            // { path: PrivateRoutes.CONTACTS.replace, element: withSuspense(<Contacts />) },
-            // { path: PrivateRoutes.PRODUCTS.replace, element: withSuspense(<Products />) },
         ]
     },
     {
         loader: authLoader,
         errorElement: <ErrorBoundary />,
         children: [
-
             { path: PrivateRoutes.ACCOUNTS, element: withSuspense(<Accounts />) },
             { path: PrivateRoutes.NEW_ACCOUNT, element: withSuspense(<NewAccount />) },
         ]

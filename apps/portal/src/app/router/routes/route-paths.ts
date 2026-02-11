@@ -8,6 +8,6 @@ export const PublicRoutes = {
 export const PrivateRoutes = {
     ROOT: "/",
     ACCOUNTS: "/accounts",
-    NEW_ACCOUNT: "/new",
+    NEW_ACCOUNT: "/accounts/new",
     DAHSBOARD: "/dahsboard",
 } as const;
