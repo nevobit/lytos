@@ -1,11 +1,12 @@
 import { Schema } from "mongoose";
 import { Membership } from "./membership";
-import { baseFields, opts, tenantField } from "../../../common";
+import { baseFields, opts, tenantFields } from "../../../common";
 
 export const MembershipSchemaMongo = new Schema<Membership>({
     roleId: { type: String },
     departmentIds: [{ type: String }],
     primaryDepartmentId: { type: String },
+    inviteeEmail: { type: String },
     title: { type: String },
     status: { type: String, enum: ["invited", "active", "suspended"] },
     profile: {
@@ -23,6 +24,6 @@ export const MembershipSchemaMongo = new Schema<Membership>({
     invitedBy: { type: String, ref: 'users' },
     invitedAt: { type: Date },
     joinedAt: { type: Date },
-    ...tenantField,
+    ...tenantFields,
     ...baseFields,
 }, opts);

@@ -18,8 +18,9 @@
   grid-template-columns: 40px 1fr 28px;
   align-items: center;
   gap: 10px;
-  padding: 6px 6px;
-  border-radius: 12px;
+  padding: 0 6px;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--ds-bg-subtle);
 }
 
 .avatar {
@@ -89,36 +90,6 @@
   background: var(--ds-bg-subtle);
   border-color: var(--ds-border-default);
   color: var(--ds-fg-default);
-}
-
-.searchWrap {
-  padding: 2px 6px 4px;
-}
-
-.search {
-  height: 34px;
-  border-radius: 10px;
-  border: 1px solid var(--ds-border-default);
-  background: var(--ds-bg-subtle);
-
-  display: grid;
-  grid-template-columns: 28px 1fr auto;
-  align-items: center;
-  gap: 8px;
-  padding: 0 8px;
-}
-
-.searchIcon {
-  color: var(--ds-fg-muted);
-}
-
-.searchInput {
-  border: none;
-  outline: none;
-  background: transparent;
-  padding: 0;
-  font-size: var(--ds-font-size-14);
-  min-width: 0;
 }
 
 .kbd {
@@ -396,6 +367,7 @@
   align-items: center;
   gap: 8px;
   color: var(--ds-fg-default);
+  font-size: 1.2rem;
 }
 
 .poweredDot {

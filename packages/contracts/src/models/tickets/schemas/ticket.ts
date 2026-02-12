@@ -1,4 +1,4 @@
-import { Base } from '../../../common';
+import { type Base } from '../../../common';
 
 interface Source {
     channel: "email" | "widget" | "webchat" | "whatsapp" | "call" | "manual"

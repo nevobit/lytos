@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { Workspace } from "./workspace";
+import { type Workspace } from "./workspace";
 import { baseFields, opts } from "../../../common";
 
 export const WorkspaceSchemaMongo = new Schema<Workspace>({

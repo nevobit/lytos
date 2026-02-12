@@ -1,5 +1,7 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { CreateWorkspaceDto, Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
+import { CreateWorkspaceDto, Membership, MembershipSchemaMongo, Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
+import { seedWorkspaceRoles } from "../roles";
+import { seedDefaultDepartment } from "../departments";
 
 export function generateTicketPrefixFromSlug(slug: string) {
     const letters = slug.replace(/[^a-z0-9]/g, "").toUpperCase();
@@ -14,35 +16,42 @@ export function normalizeTicketPrefix(prefix?: string) {
     return p;
 }
 
-export const createWorkspace = async (workspaceData: CreateWorkspaceDto): Promise<Workspace> => {
-    const model = getModel<Workspace>(Collection.WORKSPACES, WorkspaceSchemaMongo);
+export const createWorkspace = async (workspaceData: CreateWorkspaceDto) => {
+    const workspaces = getModel<Workspace>(Collection.WORKSPACES, WorkspaceSchemaMongo);
+    const memberships = getModel<Membership>(Collection.MEMBERSHIPS, MembershipSchemaMongo);
+
 
     const ticketNumberPrefix =
         normalizeTicketPrefix(workspaceData?.settings?.ticketNumberPrefix) ??
         generateTicketPrefixFromSlug(workspaceData.slug);
 
-    const workspace = new model({ ...workspaceData, settings: { ...workspaceData.settings, ticketNumberPrefix } });
+    const workspace = new workspaces({ ...workspaceData, settings: { ...workspaceData.settings, ticketNumberPrefix } });
+
+    const roles = await seedWorkspaceRoles(workspace.id);
+    const defaultDept = await seedDefaultDepartment(workspace.id);
+
+    const membership = new memberships({
+        workspaceId: workspace.id,
+        userId: workspaceData.ownerId,
+        roleId: roles.ownerId,
+        departmentIds: [defaultDept.id],
+        primaryDepartmentId: defaultDept.id,
+        title: "Owner",
+        status: "active",
+        profile: { displayName: undefined, signature: undefined, avatar: undefined, locale: undefined },
+        preferences: { notifications: { email: true, inApp: true } },
+        joinedAt: new Date(),
+    })
+
+
 
     const createdWorkspace = await workspace.save();
+    const createdMembership = await membership.save();
 
-    if (!createdWorkspace) {
+
+    if (!createdWorkspace || !createdMembership) {
         throw new Error("Failed to create workspace");
     }
 
-    return createdWorkspace;
+    return { workspaceId: createdWorkspace.id, membershipId: createdMembership.id, slug: createdWorkspace.slug };
 }
-
-//   const workspace = await createWorkspace({
-//         name: input.workspaceName,
-//         slug: input.workspaceSlug,
-//         timezone: input.timezone ?? "America/Bogota",
-//         settings: {
-//             ticketNumberPrefix: "TC",
-//             defaultTicketStatus: "open",
-//             allowReopenClosed: true,
-//         },
-//         plan: {
-//             name: "starter",
-//             seatsLimit: 5,
-//         },
-//     });

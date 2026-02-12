@@ -1,4 +1,4 @@
-import { Base } from '../../../common';
+import { type Base } from '../../../common';
 
 interface Profile {
     displayName?: string;
@@ -17,6 +17,7 @@ interface Preferences {
 export interface Membership extends Base {
     workspaceId: string;
     userId: string;
+    inviteeEmail: string;
     roleId: string;
     departmentIds: string[];
     primaryDepartmentId?: string;

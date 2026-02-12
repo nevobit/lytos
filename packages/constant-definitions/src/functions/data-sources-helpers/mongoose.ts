@@ -1,6 +1,7 @@
-import { model, Model, Schema } from 'mongoose';
+import { model, models, Model, Schema } from 'mongoose';
 import { Collection } from "./constants";
 
 export const getModel = <T>(collectionName: Collection, schema: Schema): Model<T> => {
-    return model<T>(collectionName, schema);
+    const existing = models[collectionName] as Model<T> | undefined;
+    return existing ?? model<T>(collectionName, schema, collectionName);
 }

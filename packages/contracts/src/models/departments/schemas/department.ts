@@ -1,5 +1,10 @@
-import { Base } from '../../../common';
+import { type Base } from '../../../common';
 
 export interface Department extends Base {
-    title: string;
+    workspaceId: string;
+    name: string;
+    slug: string;
+    description: string;
+    isDefault: boolean;
+    leadMembershipIds: string[];
 }

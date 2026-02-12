@@ -13,7 +13,7 @@ export const findWorkspaceBySlug = async (slug: string): Promise<Workspace | nul
 
 
     const model = getModel<Workspace>(Collection.WORKSPACES, WorkspaceSchemaMongo);
-    const workspace = await model.findOne({ slug, lifecycleStatus: LifecycleStatus.ACTIVE }).lean();
+    const workspace = await model.findOne({ slug, lifecycleStatus: LifecycleStatus.ACTIVE });
     if (!workspace) return null;
 
     const scache = getRedisWriteClient();

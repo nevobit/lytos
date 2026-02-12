@@ -29,6 +29,8 @@ export const api: AxiosInstance = axios.create({
 
 api.interceptors.request.use(cfg => {
     const token = useSession.getState().token;
+    const workspaceId = useSession.getState().workspaceId;
+
     if (token) cfg.headers.Authorization = `Bearer ${token}`;
     const timestamp = Date.now().toString();
 
@@ -41,6 +43,8 @@ api.interceptors.request.use(cfg => {
     cfg.headers["x-timestamp"] = timestamp;
     cfg.headers["x-path"] = `/api/v1${path}`;
     cfg.headers["x-signature"] = `sha256=${signature}`;
+    cfg.headers["x-workspace"] = workspaceId;
+
     return cfg;
 });
 

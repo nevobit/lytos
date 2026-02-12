@@ -1,4 +1,5 @@
-import jwt, { JwtPayload, SignOptions, VerifyOptions } from "jsonwebtoken";
+import jwt, { type JwtPayload, type SignOptions, type VerifyOptions } from "jsonwebtoken";
+import { JwtClaims } from "./verify-jwt";
 
 export interface RequestInterface {
   Body: unknown;
@@ -22,7 +23,7 @@ export interface NormalizedRequest<R extends RequestInterface = RequestInterface
 
 export interface IssueJwtOptions extends SignOptions {
   secretOrPrivateKey: string;
-  payload: Record<string, unknown>;
+  payload: JwtClaims;
 }
 
 export function issueJwt(opts: IssueJwtOptions): string {

@@ -9,7 +9,6 @@ import {
     User,
     MessagesSquare,
     BarChart3,
-    Search,
     Phone,
     MessageCircle,
     HelpCircle,
@@ -17,37 +16,38 @@ import {
     MoreVertical,
     ChevronDown,
 } from "lucide-react";
+import { useSession } from "@/shared";
+import { Avatar } from "@lytos/design-system";
 
 type NavItem = {
     label: string;
+    href: string;
     icon: React.ElementType;
     active?: boolean;
 };
 
 const NAV: NavItem[] = [
-    { label: "Dashboard", icon: LayoutDashboard },
-    { label: "Inbox", icon: Inbox },
-    { label: "Notification", icon: Bell },
-    { label: "Ticket", icon: Ticket, active: true },
-    { label: "Knowledge Base", icon: BookOpen },
-    { label: "Customer", icon: User },
-    { label: "Forum", icon: MessagesSquare },
-    { label: "Report", icon: BarChart3 },
+    { label: "Dashboard", href: '/', icon: LayoutDashboard },
+    { label: "Inbox", href: '/inbox', icon: Inbox },
+    { label: "Notification", href: '/notifications', icon: Bell },
+    { label: "Ticket", href: '/tickets', icon: Ticket, active: true },
+    { label: "Knowledge Base", href: '/knowledge', icon: BookOpen },
+    { label: "Customer", href: '/customers', icon: User },
+    { label: "Forum", href: '/forum', icon: MessagesSquare },
+    { label: "Report", href: '/report', icon: BarChart3 },
 ];
 
 const Sidebar = () => {
+    const { workspace } = useSession();
     return (
         <aside className={styles.sidebar} aria-label="Sidebar">
-            {/* Workspace header */}
             <div className={styles.workspace}>
-                <div className={styles.avatar} aria-hidden="true">
-                    <span className={styles.avatarText}>FIK</span>
-                    <span className={styles.presenceDot} aria-hidden="true" />
-                </div>
+                <Avatar name={workspace?.name} />
+
 
                 <div className={styles.workspaceText}>
                     <div className={styles.workspaceNameRow}>
-                        <div className={styles.workspaceName}>Fikri Studio</div>
+                        <div className={styles.workspaceName}>{workspace?.name}</div>
                     </div>
                     <div className={styles.workspaceRole}>Agent Admin</div>
                 </div>
@@ -57,21 +57,11 @@ const Sidebar = () => {
                 </button>
             </div>
 
-            {/* Search */}
-            <div className={styles.searchWrap}>
-                <div className={styles.search}>
-                    <Search size={16} className={styles.searchIcon} />
-                    <input className={styles.searchInput} placeholder="Search" />
-                    <div className={styles.kbd}>⌘&nbsp;&nbsp;K</div>
-                </div>
-            </div>
-
-            {/* Nav */}
             <nav className={styles.nav} aria-label="Main navigation">
-                {NAV.map(({ label, icon: Icon, active }) => (
+                {NAV.map(({ label, href, icon: Icon, active }) => (
                     <a
                         key={label}
-                        href="#!"
+                        href={href}
                         className={active ? styles.navItemActive : styles.navItem}
                     >
                         <Icon size={16} className={styles.navIcon} />
@@ -116,7 +106,6 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            {/* Favorites */}
             <div className={styles.section}>
                 <div className={styles.sectionTitle}>FAVORITES</div>
                 <div className={styles.mutedHelp}>
@@ -124,7 +113,6 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            {/* Pinned tickets */}
             <div className={styles.section}>
                 <div className={styles.sectionHeaderRow}>
                     <div className={styles.sectionTitle}>PINNED TICKETS</div>
@@ -163,7 +151,6 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            {/* Bottom */}
             <div className={styles.bottom}>
                 <button className={styles.helpRow}>
                     <HelpCircle size={16} />

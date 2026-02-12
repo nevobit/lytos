@@ -22,14 +22,25 @@ interface NormalizedRequest<R extends RequestInterface = RequestInterface> {
     ip?: string;
 }
 
-type JwtClaims = {
+type GlobalAccessClaims = {
+    kind: "global",
     sub: string;
-    workspaceId?: string;
-    companyId?: string;
-    role?: 'owner' | 'admin' | 'member' | string;
+    userId: string;
+    sessionId?: string;
+}
+
+type WorkspaceAccessClaims = {
+    kind: "workspace";
+    sub: string;
+    userId: string;
+    workspaceId: string;
+    membershipId: string;
+    roleId: string;
     scopes?: string[];
     sessionId?: string;
-};
+}
+
+export type JwtClaims = GlobalAccessClaims | WorkspaceAccessClaims;
 
 type VerifyTokenResult =
     | { ok: true; claims: JwtClaims }
@@ -58,21 +69,21 @@ export const verifyJwt: AuthFunction = async (
         }
 
 
-        const { payload } = await jwtVerify(token, secret);
+        const { payload } = await jwtVerify(token, secret) as { payload: JwtClaims };
 
-        const claims: JwtClaims = {
-            sub: payload.id as string,
-            workspaceId: payload.workspaceId as string | undefined,
-            role: payload.role as string | undefined,
-            scopes: Array.isArray(payload.scopes)
-                ? payload.scopes
-                : typeof payload.scope === "string"
-                    ? payload.scope.split(" ")
-                    : undefined,
-            sessionId: payload.sessionId as string | undefined,
-        };
+        // const claims: JwtClaims = {
+        //     sub: payload.id as string,
+        //     workspaceId: payload.workspaceId as string | undefined,
+        //     role: payload.role as string | undefined,
+        //     scopes: Array.isArray(payload.scopes)
+        //         ? payload.scopes
+        //         : typeof payload.scope === "string"
+        //             ? payload.scope.split(" ")
+        //             : undefined,
+        //     sessionId: payload.sessionId as string | undefined,
+        // };
 
-        if (!claims.sub) {
+        if (!payload.sub) {
             return {
                 ok: false,
                 code: 401,
@@ -81,7 +92,7 @@ export const verifyJwt: AuthFunction = async (
             };
         }
 
-        return { ok: true, claims };
+        return { ok: true, claims: payload };
     } catch (err) {
         return {
             ok: false,

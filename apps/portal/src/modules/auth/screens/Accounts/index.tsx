@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom';
 import { InvitationCard } from '../../components';
 import AccountCard from '../../components/AccountCard';
 import { PrivateRoutes } from '@/app/router/routes';
+import { useWorkspaces } from '../../hooks';
 
 const Accounts = () => {
     const { user } = useSession();
+    const { isLoading, workspaces } = useWorkspaces();
+
+    if (isLoading) return <span>Cargando....</span>
     return (
         <div className={styles.container} >
             <header className={styles.header} >
@@ -34,10 +38,11 @@ const Accounts = () => {
                     </div>
                 </div>
                 <div className={styles.accounts} >
-                    <h3 className={styles.title}>Sus cuentas</h3>
+                    <h3 className={styles.title}>Sus cuentas ({workspaces?.memberships.length})</h3>
                     <div className={styles.accountList} >
-                        <AccountCard id='1' name='Nestor Mosquera' />
-                        <AccountCard id='1' name='Diego Alten' />
+                        {workspaces?.memberships?.map((workspace: { membershipId: string, workspaceId: string, workspaceName: string }) => (
+                            <AccountCard key={workspace.workspaceId} id={workspace.workspaceId} name={workspace.workspaceName} />
+                        ))}
                     </div>
                 </div>
             </div>

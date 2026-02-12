@@ -1,6 +1,6 @@
 import { Logger, MonoContext } from '@lytos/core-modules';
 import IORedis, {
-  RedisOptions,
+  type RedisOptions,
 } from 'ioredis';
 import { URL } from 'url';
 

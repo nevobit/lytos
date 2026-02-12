@@ -1,10 +1,6 @@
-import { Base } from '../../../common';
+import { Scopes } from '@lytos/contracts';
+import { type Base } from '../../../common';
 
-interface Scopes {
-    ticketsRead: "all" | "department" | "assigned"
-    ticketsAssign: "all" | "department"
-    customersRead?: "all" | "department" | "assigned"
-}
 export interface Role extends Base {
     workspaceId: string;
     name: string;

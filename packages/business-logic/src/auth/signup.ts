@@ -5,8 +5,8 @@ export const signup = async (input: CreateUserDto): Promise<UpdateUserDto> => {
     const email = input.email.trim().toLowerCase();
     if (!email || !input.password) throw new Error("INVALID_INPUT");
 
-    const existing = await findOneUser("email", email);
-    if (existing) throw new Error("EMAIL_ALREADY_EXISTS");
+    const exists = await findOneUser("email", email);
+    if (exists) throw new Error("EMAIL_TAKEN");
 
     const user = await createUser({
         ...input,

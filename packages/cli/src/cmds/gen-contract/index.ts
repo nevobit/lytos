@@ -55,7 +55,7 @@ async function upsertModelsBarrel(modelsDir: string, resourceName: string) {
     }
 }
 
-const schemaInterface = (model: string) => `import { Base } from '../../../common';
+const schemaInterface = (model: string) => `import { type Base } from '../../../common';
 
 export interface ${model} extends Base {
     title: string;

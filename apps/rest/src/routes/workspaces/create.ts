@@ -2,14 +2,17 @@ import { invalidateCache } from "@/cache";
 import { createWorkspace } from "@lytos/business-logic";
 import { makeFastifyRoute, RouteMethod } from "@lytos/constant-definitions";
 import type { CreateWorkspaceDto } from "@lytos/contracts";
+import { verifyJwt } from "@lytos/security";
 import { slugify } from "@lytos/tools";
 
 export const createWorkspaceRoute = makeFastifyRoute(
     RouteMethod.POST,
     "/",
-    null,
-    { tenant: "none", auth: "none" },
+    verifyJwt,
+    { tenant: "none", auth: "required" },
     async (request, reply) => {
+        if (!request.auth?.userId) return reply.code(401).send({ message: "Unauthorized" });
+
         const body = request.body as CreateWorkspaceDto;
 
         if (!body || typeof body !== "object") {
