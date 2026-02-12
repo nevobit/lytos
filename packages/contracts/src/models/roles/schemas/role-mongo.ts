@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
-import { Role } from "./role";
-import { baseFields, opts, tenantField } from "../../../common";
+import type { Role } from "./role";
+import { baseFields, opts, tenantFields } from "../../../common";
 
 export const RoleSchemaMongo = new Schema<Role>({
     name: { type: String, required: true, trim: true },
@@ -13,5 +13,5 @@ export const RoleSchemaMongo = new Schema<Role>({
     },
     isSystem: { type: Boolean },
     ...baseFields,
-    ...tenantField
+    ...tenantFields
 }, opts);

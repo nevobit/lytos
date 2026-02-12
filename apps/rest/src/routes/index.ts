@@ -5,13 +5,15 @@ import { meRoute } from './users/me';
 import { withPrefix } from '@lytos/constant-definitions';
 import { authRoutes } from './auth';
 import { customerRoutes } from './customers';
+import { ticketRoutes } from './tickets';
 
 const routes: RouteOptions[] = [
     healthCheckRoute,
     meRoute,
     ...withPrefix('/workspaces', workspaceRoutes),
     ...withPrefix('/auth', authRoutes),
-    ...withPrefix('/customers', customerRoutes)
+    ...withPrefix('/customers', customerRoutes),
+    ...withPrefix('/tickets', ticketRoutes),
 
 ];
 

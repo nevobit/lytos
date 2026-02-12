@@ -8,5 +8,6 @@ export enum Collection {
     MEMBERSHIPS = 'memberships',
     ROLES = 'roles',
     SESSIONS = 'sessions',
-    CUSTOMERS = 'customers'
+    CUSTOMERS = 'customers',
+    TICKETS = 'tickets'
 }

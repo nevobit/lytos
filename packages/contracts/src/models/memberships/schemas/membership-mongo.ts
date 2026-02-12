@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
-import { Membership } from "./membership";
-import { baseFields, opts, tenantField } from "../../../common";
+import type { Membership } from "./membership";
+import { baseFields, opts, tenantFields } from "../../../common";
 
 export const MembershipSchemaMongo = new Schema<Membership>({
     roleId: { type: String },
@@ -23,6 +23,6 @@ export const MembershipSchemaMongo = new Schema<Membership>({
     invitedBy: { type: String, ref: 'users' },
     invitedAt: { type: Date },
     joinedAt: { type: Date },
-    ...tenantField,
+    ...tenantFields,
     ...baseFields,
 }, opts);

@@ -62,9 +62,6 @@ export async function googleLogin(input: GoogleLoginInput): Promise<GoogleLoginO
     const sessionId = `sess_${crypto.randomBytes(16).toString("hex")}`;
     const { accessToken, refreshToken } = await issueTokens(
         user.id,
-        membership.workspaceId,
-        role.name,
-        scopes,
         sessionId,
     );
 
