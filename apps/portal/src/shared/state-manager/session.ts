@@ -3,16 +3,35 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 type SessionState = {
-    token: string | null;
+    globalToken: string | null;     
+    token: string | null;          
+    refreshToken: string | null;
+
     accessExp?: string;
-    refreshToken?: string;
+
     user: User | null;
-    role?: string;
+
     workspace: Partial<Workspace> | null;
+    activeMembershipId?: string;
+    roleId?: string;
+
     status?: "auth" | "unauth";
-    signIn: (user: User, role: string, token: string, accessExp: string, refreshToken: string) => void;
+
+    signIn: (p: {
+        user: User;
+        globalToken: string;
+        accessExp?: string;
+        refreshToken: string;
+    }) => void;
+
     signOut: () => void;
-    singWorkspace: (workspaceId: string, workspaceName: string) => void;
+
+    setWorkspaceContext: (p: {
+        workspaceToken: string;
+        membershipId: string;
+        workspace: { id: string; name: string };
+    }) => void;
+
     isAuthenticated: () => boolean;
 };
 
@@ -20,24 +39,40 @@ export const useSession = create<SessionState>()(
     persist(
         (set, get) => ({
             token: null,
+            globalToken: null,
+            refreshToken: null,
             user: null,
             workspace: null,
-            signIn: (user, role, token, accessExp, refreshToken) => {
+
+            signIn: ({ user, globalToken, accessExp, refreshToken }) => {
                 set({
                     user,
-                    role,
-                    token,
+                    globalToken,
+                    token: globalToken, 
                     accessExp,
                     refreshToken,
                     status: "auth",
                 });
             },
-            singWorkspace: (workspaceId, name) => {
+
+            setWorkspaceContext: ({ workspaceToken, membershipId, workspace }) => {
                 set({
-                    workspace: { name, id: workspaceId },
-                })
+                    token: workspaceToken, // ahora token workspace
+                    activeMembershipId: membershipId,
+                    workspace,
+                });
             },
-            signOut: () => set({ token: null, workspace: null, user: null }),
+
+            signOut: () =>
+                set({
+                    token: null,
+                    globalToken: null,
+                    refreshToken: null,
+                    workspace: null,
+                    user: null,
+                    status: "unauth",
+                    activeMembershipId: undefined,
+                }),
             isAuthenticated: () => !!get().token,
         }),
         {
@@ -45,8 +80,14 @@ export const useSession = create<SessionState>()(
             storage: typeof window !== "undefined"
                 ? createJSONStorage(() => window.localStorage)
                 : undefined,
-            partialize: (s) => ({ token: s.token, workspace: s.workspace, user: s.user }),
-            version: 1,
+            partialize: (s) => ({
+                token: s.token,
+                globalToken: s.globalToken,
+                refreshToken: s.refreshToken,
+                workspace: s.workspace,
+                user: s.user,
+                activeMembershipId: s.activeMembershipId,
+            }), version: 1,
         }
     )
 );

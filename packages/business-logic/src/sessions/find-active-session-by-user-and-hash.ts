@@ -11,7 +11,7 @@ export async function findActiveSessionByUserIdAndHash(
         userId,
         refreshTokenHash,
         status: "active",
-    }).lean();
+    });
 
     if (!session) return null;
 

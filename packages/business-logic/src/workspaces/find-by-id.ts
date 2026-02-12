@@ -12,7 +12,7 @@ export const findWorkspaceById = async (id: string): Promise<Workspace | null> =
     }
 
     const model = getModel<Workspace>(Collection.WORKSPACES, WorkspaceSchemaMongo);
-    const workspace = await model.findById(id).lean();
+    const workspace = await model.findById(id);
     if (!workspace) return null;
 
     const scache = getRedisWriteClient();

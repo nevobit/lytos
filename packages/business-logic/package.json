@@ -22,6 +22,7 @@
     "@lytos/contracts": "workspace:*",
     "@lytos/security": "workspace:*",
     "@lytos/typescript-config": "workspace:*",
+    "@lytos/tools": "workspace:*",
     "@types/bcrypt": "^6.0.0",
     "@types/node": "^24.3.0",
     "tslib": "^2.8.1",

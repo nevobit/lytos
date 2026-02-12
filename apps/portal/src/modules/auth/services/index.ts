@@ -15,3 +15,8 @@ export const workspaces = async () => {
     const { data } = await api.get(`/workspaces`,);
     return data;
 }
+
+export const switchWorkspace = async (membershipId: string) => {
+    const { data } = await api.post(`/auth/switch-workspace`, { membershipId });
+    return data;
+}

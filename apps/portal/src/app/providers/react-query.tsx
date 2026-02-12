@@ -24,7 +24,7 @@ const persister: Persister = {
 };
 
 export const queryClient = new QueryClient({
-    defaultOptions: { queries: { retry: 2, staleTime: 60_000, gcTime: 1000 * 60 * 60 * 24, networkMode: "offlineFirst", refetchOnWindowFocus: false }, mutations: { retry: 1, networkMode: "offlineFirst" } }
+    defaultOptions: { queries: { retry: 2, /*staleTime: 60_000, gcTime: 1000 * 60 * 60 * 24,*/ networkMode: "offlineFirst", refetchOnWindowFocus: false }, mutations: { retry: 1, networkMode: "offlineFirst" } }
 });
 
 export function PersistedQueryProvider({ children }: { children: React.ReactNode }) {

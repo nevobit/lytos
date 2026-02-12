@@ -11,7 +11,7 @@ export const useLogin = () => {
     const { isPending: isLogging, mutate, error } = useMutation({
         mutationFn: login,
         onSuccess: async (data) => {
-            signIn(data.user, data.role, data.accessToken, data.accessExp, data.refreshToken);
+            signIn({ user: data.user, globalToken: data.accessToken, accessExp: data.accessExp, refreshToken: data.refreshToken });
             navigate(PrivateRoutes.ACCOUNTS);
         },
     });

@@ -29,7 +29,11 @@ interface Domain {
 
 export interface Workspace extends Base {
     name: string;
+    employees: string;
+    url: string;
+
     slug: string;
+    country: string;
     timezone: string;
     locale: string;
 
@@ -42,4 +46,6 @@ export interface Workspace extends Base {
     domains?: Domain[];
 
     ownerId: string;
+
+    legalForm: string;
 }

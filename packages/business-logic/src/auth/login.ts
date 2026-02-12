@@ -30,12 +30,13 @@ export async function login(input: LoginInput): Promise<LoginOutput> {
 
     const sessionId = `sess_${crypto.randomBytes(16).toString("hex")}`;
 
-    const { accessToken, refreshToken } = await issueTokens(
-        user.id, sessionId
-    );
+    const { accessToken, refreshToken } = await issueTokens({
+        kind: "global",
+        userId: user.id,
+        sessionId
+    });
 
     const refreshHash = crypto.createHash("sha256").update(refreshToken).digest("hex");
-
     await createSession({ userId: user.id, sessionId, refreshTokenHash: refreshHash, status: "active", device: { userAgent: "", ipAddress: "", type: "other" }, expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) });
 
     return {

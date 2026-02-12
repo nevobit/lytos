@@ -12,14 +12,28 @@ export enum RouteMethod {
     OPTIONS = 'OPTIONS',
 }
 
-export type JwtClaims = {
-    sub: string;
-    workspaceId?: string;
-    companyId?: string;
-    role?: 'owner' | 'admin' | 'member' | string;
-    scopes?: string[];
+
+type GlobalAccessClaims = {
+    kind: "global",
+    typ: string;
+    userId: string;
     sessionId?: string;
-};
+    jti: string;
+}
+
+type WorkspaceAccessClaims = {
+    kind: "workspace";
+    typ: string;
+    userId: string;
+    workspaceId?: string;
+    membershipId?: string;
+    roleId?: string;
+    sessionId?: string;
+    jti: string;
+}
+
+
+export type JwtClaims = GlobalAccessClaims | WorkspaceAccessClaims;
 
 export type VerifyTokenResult =
     | { ok: true; claims: JwtClaims }
@@ -49,7 +63,7 @@ declare module "fastify" {
             slug: string;
             mode: 'host' | 'path' | 'header';
         },
-        auth?: { userId: string; workspaceId?: string; role?: string; claims: JwtClaims };
+        auth?: { userId: string; workspaceId?: string; roleId?: string; claims: JwtClaims };
     }
 
     interface FastifyInstance {
@@ -108,8 +122,23 @@ export const makeFastifyRoute = (
                     return reply.code(result.code).send({ error: result.type, message: result.message });
                 }
             } else {
-                const { sub, workspaceId, role, ...rest } = result.claims;
-                request.auth = { userId: sub, workspaceId, role, claims: { sub, workspaceId, role, ...rest } as JwtClaims };
+                const claims = result.claims;
+
+                if (claims.kind === "workspace") {
+                    request.auth = {
+                        userId: claims.userId,
+                        workspaceId: claims.workspaceId,
+                        roleId: claims.roleId,
+                        claims,
+                    };
+                } else {
+                    request.auth = {
+                        userId: claims.userId,
+                        workspaceId: undefined,
+                        roleId: undefined,
+                        claims,
+                    };
+                }
             }
         } else if (authPolicy === "required" && !authFunction) {
             return problem(reply, 500, "Auth is required but authFunction is null", "auth_config_error");

@@ -1,59 +1,58 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { Membership, MembershipSchemaMongo, Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
+import { Invitation, InvitationSchemaMongo, Membership, MembershipSchemaMongo, Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
 
 export const getAllWorkspaces = async (userId: string, email?: string) => {
     const membershipsModel = getModel<Membership>(Collection.MEMBERSHIPS, MembershipSchemaMongo);
     const workspacesModel = getModel<Workspace>(Collection.WORKSPACES, WorkspaceSchemaMongo);
+    const invitationsModel = getModel<Invitation>(Collection.INVITATIONS, InvitationSchemaMongo)
 
-    const activeMemberships = await membershipsModel
-        .find({ userId, status: "active" });
+    const memberships = await membershipsModel.find({ userId, lifecycleStatus: 'active' });
 
-    const invitationsQuery: { userId?: string, status: string, inviteeEmail?: string }[] = [{ userId, status: "invited" }];
-    if (email) invitationsQuery.push({ inviteeEmail: email, status: "invited" });
-
-    const invitations = await membershipsModel
-        .find({ $or: invitationsQuery })
+    const invitations = await invitationsModel.find({
+        email,
+        status: "pending",
+        expiresAt: { $gt: new Date() },
+    });
 
     const workspaceIds = Array.from(
-        new Set([...activeMemberships, ...invitations].map((m) => m.workspaceId))
-    );
+        new Set([
+            ...memberships.map((m) => String(m.workspaceId)),
+            ...invitations.map((i) => String(i.workspaceId)),
+        ])
+    ).map((id) => id);
 
-    const workspaces = await workspacesModel
-        .find({ _id: { $in: workspaceIds } });
 
+    const workspaces = await workspacesModel.find({ _id: { $in: workspaceIds } });
+    const byId = new Map(workspaces.map((w) => [String(w.id), w]));
 
-    const byId = new Map(workspaces.map((w) => [w.id, w]));
-
-    const memberships = activeMemberships
+    const membershipsOut = memberships
         .map((m) => {
-            const w = byId.get(m.workspaceId);
+            const w = byId.get(String(m.workspaceId));
             if (!w) return null;
             return {
-                membershipId: m.id,
-                workspaceId: w.id,
+                membershipId: String(m.id),
+                workspaceId: String(w.id),
                 workspaceName: w.name,
                 workspaceSlug: w.slug,
-                roleId: m.roleId,
-                status: "active" as const,
+                roleId: String(m.roleId),
             };
         })
-        .filter(Boolean);
+        .filter(Boolean)
 
     const invitationsOut = invitations
-        .map((m) => {
-            const w = byId.get(m.workspaceId);
+        .map((i) => {
+            const w = byId.get(String(i.workspaceId));
             if (!w) return null;
             return {
-                membershipId: m.id,
-                workspaceId: w.id,
+                invitationId: String(i._id),
+                workspaceId: String(w._id),
                 workspaceName: w.name,
                 workspaceSlug: w.slug,
-                invitedAt: (m.invitedAt ?? new Date()).toISOString(),
-                status: "invited" as const,
+                roleId: String(i.roleId),
+                expiresAt: new Date(i.expiresAt).toISOString(),
             };
         })
-        .filter(Boolean);
+        .filter(Boolean)
 
-
-    return { memberships, invitations: invitationsOut };
+    return { memberships: membershipsOut, invitations: invitationsOut };
 }

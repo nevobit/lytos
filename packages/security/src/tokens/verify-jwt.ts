@@ -24,20 +24,21 @@ interface NormalizedRequest<R extends RequestInterface = RequestInterface> {
 
 type GlobalAccessClaims = {
     kind: "global",
-    sub: string;
+    typ: string;
     userId: string;
     sessionId?: string;
+    jti: string;
 }
 
 type WorkspaceAccessClaims = {
     kind: "workspace";
-    sub: string;
+    typ: string;
     userId: string;
-    workspaceId: string;
-    membershipId: string;
-    roleId: string;
-    scopes?: string[];
+    workspaceId?: string;
+    membershipId?: string;
+    roleId?: string;
     sessionId?: string;
+    jti: string;
 }
 
 export type JwtClaims = GlobalAccessClaims | WorkspaceAccessClaims;
@@ -83,7 +84,7 @@ export const verifyJwt: AuthFunction = async (
         //     sessionId: payload.sessionId as string | undefined,
         // };
 
-        if (!payload.sub) {
+        if (!payload.userId) {
             return {
                 ok: false,
                 code: 401,

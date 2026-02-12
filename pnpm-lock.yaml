@@ -486,6 +486,9 @@ importers:
       '@lytos/security':
         specifier: workspace:*
         version: link:../security
+      '@lytos/tools':
+        specifier: workspace:*
+        version: link:../tools
       '@lytos/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
