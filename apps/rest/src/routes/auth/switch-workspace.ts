@@ -12,11 +12,13 @@ export const switchWorkspaceRoute = makeFastifyRoute(
 
         const data = req.body as {
             membershipId: string;
+            workspaceId: string;
         }
 
         try {
             const out = await switchWorkspace(
                 userId,
+                data.workspaceId,
                 data.membershipId
             );
             return reply.code(200).send(out);

@@ -16,7 +16,7 @@ export const workspaces = async () => {
     return data;
 }
 
-export const switchWorkspace = async (membershipId: string) => {
-    const { data } = await api.post(`/auth/switch-workspace`, { membershipId });
+export const switchWorkspace = async ({ membershipId, workspaceId }: { membershipId: string, workspaceId: string }) => {
+    const { data } = await api.post(`/auth/switch-workspace`, { membershipId, workspaceId });
     return data;
 }

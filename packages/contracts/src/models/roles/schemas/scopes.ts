@@ -6,6 +6,11 @@ export interface Scopes {
     ticketsMerge?: TicketsMergeScope;
     ticketsDelete?: TicketsDeleteScope;
 
+    departmentsRead: DepartmentsReadScope;
+    departmentsWrite: DepartmentsWriteScope;
+    departmentsMembersManage?: DepartmentsMembersManageScope;
+    departmentsRoutingManage?: DepartmentsRoutingManageScope;
+
     messagesRead?: MessagesReadScope;
     messagesSend?: MessagesSendScope;
     notesWrite?: NotesWriteScope;
@@ -64,7 +69,14 @@ type ScopeLevelAll = "all";
 type ScopeLevelDept = "department";
 type ScopeLevelAssigned = "assigned";
 type ScopeLevelOwn = "own";
+
 export type ScopeLevel = ScopeLevelAll | ScopeLevelDept | ScopeLevelAssigned | ScopeLevelOwn;
+
+
+type DepartmentsReadScope = "all" | "department" | "assigned";
+type DepartmentsWriteScope = "all" | "department" | "assigned";
+type DepartmentsMembersManageScope = "all" | "department";
+type DepartmentsRoutingManageScope = "all" | "department";
 
 type TicketsReadScope = "all" | "department" | "assigned";
 type TicketsWriteScope = "all" | "department" | "assigned";

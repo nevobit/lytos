@@ -9,6 +9,7 @@ export const authorizePermission = async (p: {
     const model = getModel<Role>(Collection.ROLES, RoleSchemaMongo);
 
     const role = await model.findOne({ _id: p.roleId, workspaceId: p.workspaceId });
+
     if (!role) throw new Error("ROLE_NOT_FOUND");
     if (role.permissions.includes("*")) return;
     if (!role.permissions.includes(p.permission)) throw new Error("FORBIDDEN");

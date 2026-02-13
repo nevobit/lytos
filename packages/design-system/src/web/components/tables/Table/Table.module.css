@@ -1,5 +1,4 @@
 .wrap {
-  border: 1px solid var(--ds-color-border-default);
   border-radius: var(--ds-radius-6);
   overflow: clip;
   background: var(--ds-color-bg-elevated);
@@ -7,9 +6,12 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-}
-.thead {
-  background: var(--ds-color-bg-subtle);
+  border-spacing: 0;
+  overflow: hidden;
+  font-size: 1.4rem;
+  border-radius: 0.5rem;
+  border-spacing: 0;
+  margin-top: 2rem;
 }
 .sticky {
   position: sticky;

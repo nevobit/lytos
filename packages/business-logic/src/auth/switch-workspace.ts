@@ -3,7 +3,7 @@ import { LifecycleStatus, Membership, MembershipSchemaMongo, Workspace, Workspac
 import { issueTokens } from "./tokens";
 import crypto from 'crypto';
 
-export const switchWorkspace = async (userId: string, membershipId: string) => {
+export const switchWorkspace = async (userId: string, workspaceId: string, membershipId: string) => {
     if (!userId || !membershipId) throw new Error("BAD_REQUEST");
 
     const model = getModel<Membership>(Collection.MEMBERSHIPS, MembershipSchemaMongo);
@@ -11,8 +11,10 @@ export const switchWorkspace = async (userId: string, membershipId: string) => {
 
     const membership = await model.findOne({
         userId: userId,
+        workspaceId,
         lifecycleStatus: LifecycleStatus.ACTIVE,
     });
+
 
     if (!membership) throw new Error("NOT_FOUND");
 
@@ -27,7 +29,7 @@ export const switchWorkspace = async (userId: string, membershipId: string) => {
         sessionId: sessionId
     });
 
-    const workspace = await workspaceModel.findById(membership.workspaceId);
+    const workspace = await workspaceModel.findById(workspaceId);
 
     return { accessToken, refreshToken, workspace }
 

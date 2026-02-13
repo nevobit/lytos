@@ -17,7 +17,7 @@ const AccountCard = ({
     const { switchWorkspace, isLoading } = useSwitchWorkspace();
 
     const selectAccount = async () => {
-        await switchWorkspace(membershipId);
+        await switchWorkspace({ membershipId, workspaceId });
         navigate("/");
     };
     return (

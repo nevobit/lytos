@@ -29,7 +29,7 @@ export const api: AxiosInstance = axios.create({
 
 api.interceptors.request.use(cfg => {
     const token = useSession.getState().token;
-    const workspaceId = useSession.getState().workspaceId;
+    const workspaceId = useSession.getState().workspace?.slug;
 
     if (token) cfg.headers.Authorization = `Bearer ${token}`;
     const timestamp = Date.now().toString();

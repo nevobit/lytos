@@ -1,23 +1,26 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
 import {
-    LayoutDashboard,
-    Inbox,
-    Bell,
+    // LayoutDashboard,
+    // Inbox,
+    // Bell,
     Ticket,
-    BookOpen,
-    User,
-    MessagesSquare,
-    BarChart3,
+    // BookOpen,
+    // User,
+    // MessagesSquare,
+    // BarChart3,
     Phone,
     MessageCircle,
     HelpCircle,
     Pin,
     MoreVertical,
     ChevronDown,
+    Boxes,
 } from "lucide-react";
 import { useSession } from "@/shared";
 import { Avatar } from "@lytos/design-system";
+import { Link } from "react-router-dom";
+import { PrivateRoutes } from "@/app/router/routes";
 
 type NavItem = {
     label: string;
@@ -27,14 +30,16 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
-    { label: "Dashboard", href: '/', icon: LayoutDashboard },
-    { label: "Inbox", href: '/inbox', icon: Inbox },
-    { label: "Notification", href: '/notifications', icon: Bell },
-    { label: "Ticket", href: '/tickets', icon: Ticket, active: true },
-    { label: "Knowledge Base", href: '/knowledge', icon: BookOpen },
-    { label: "Customer", href: '/customers', icon: User },
-    { label: "Forum", href: '/forum', icon: MessagesSquare },
-    { label: "Report", href: '/report', icon: BarChart3 },
+    { label: "Departamentos", href: PrivateRoutes.DEPARTMENTS, icon: Boxes },
+    { label: "Tickets", href: PrivateRoutes.TICKETS, icon: Ticket },
+
+    // { label: "Dashboard", href: '/', icon: LayoutDashboard },
+    // { label: "Inbox", href: '/inbox', icon: Inbox },
+    // { label: "Notification", href: '/notifications', icon: Bell },
+    // { label: "Knowledge Base", href: '/knowledge', icon: BookOpen },
+    // { label: "Customer", href: '/customers', icon: User },
+    // { label: "Forum", href: '/forum', icon: MessagesSquare },
+    // { label: "Report", href: '/report', icon: BarChart3 },
 ];
 
 const Sidebar = () => {
@@ -59,14 +64,14 @@ const Sidebar = () => {
 
             <nav className={styles.nav} aria-label="Main navigation">
                 {NAV.map(({ label, href, icon: Icon, active }) => (
-                    <a
+                    <Link
                         key={label}
-                        href={href}
+                        to={href}
                         className={active ? styles.navItemActive : styles.navItem}
                     >
                         <Icon size={16} className={styles.navIcon} />
                         <span className={styles.navLabel}>{label}</span>
-                    </a>
+                    </Link>
                 ))}
             </nav>
 

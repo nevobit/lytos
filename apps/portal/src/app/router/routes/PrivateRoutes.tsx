@@ -6,6 +6,8 @@ import { PrivateRoutes } from "./route-paths";
 import ErrorBoundary from "@/app/screens/ErrorBoundary";
 import Testing from "@/app/screens/Testing";
 import NewAccount from "@/modules/auth/screens/NewAccount";
+import Departments from "@/modules/departments/screens/List";
+import Tickets from "@/modules/tickets/screens/List";
 
 const AppShell = lazy(() => import("@/app/components/Layout/AppShell"));
 const Accounts = lazy(() => import("@/modules/auth/screens/Accounts"));
@@ -18,6 +20,9 @@ export const privateRoutes: RouteObject[] = [
         errorElement: <ErrorBoundary />,
         children: [
             { index: true, element: withSuspense(<Testing />) },
+            { path: PrivateRoutes.DEPARTMENTS, element: withSuspense(<Departments />) },
+            { path: PrivateRoutes.TICKETS, element: withSuspense(<Tickets />) },
+
         ]
     },
     {

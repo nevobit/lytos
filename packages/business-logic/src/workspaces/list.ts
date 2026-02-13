@@ -7,7 +7,6 @@ export const getAllWorkspaces = async (userId: string, email?: string) => {
     const invitationsModel = getModel<Invitation>(Collection.INVITATIONS, InvitationSchemaMongo)
 
     const memberships = await membershipsModel.find({ userId, lifecycleStatus: 'active' });
-
     const invitations = await invitationsModel.find({
         email,
         status: "pending",
@@ -20,7 +19,6 @@ export const getAllWorkspaces = async (userId: string, email?: string) => {
             ...invitations.map((i) => String(i.workspaceId)),
         ])
     ).map((id) => id);
-
 
     const workspaces = await workspacesModel.find({ _id: { $in: workspaceIds } });
     const byId = new Map(workspaces.map((w) => [String(w.id), w]));

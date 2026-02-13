@@ -39,7 +39,7 @@ const Accounts = () => {
                     </div>
                 </div>
                 <div className={styles.accounts} >
-                    <h3 className={styles.title}>Sus cuentas ({workspaces?.memberships.length})</h3>
+                    <h3 className={styles.title}>Sus cuentas ({workspaces?.memberships?.length})</h3>
                     <div className={styles.accountList} >
                         {workspaces?.memberships?.map((workspace: { membershipId: string, workspaceId: string, workspaceName: string }) => (
                             <AccountCard key={workspace.workspaceId} membershipId={workspace.membershipId} workspaceId={workspace.workspaceId} name={workspace.workspaceName} />

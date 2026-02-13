@@ -43,8 +43,6 @@ export const createWorkspace = async (workspaceData: CreateWorkspaceDto) => {
         joinedAt: new Date(),
     })
 
-
-
     const createdWorkspace = await workspace.save();
     const createdMembership = await membership.save();
 

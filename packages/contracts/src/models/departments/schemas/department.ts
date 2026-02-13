@@ -7,4 +7,5 @@ export interface Department extends Base {
     description: string;
     isDefault: boolean;
     leadMembershipIds: string[];
+    primaryLeadMembershipId?: string;
 }

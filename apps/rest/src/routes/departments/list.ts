@@ -21,3 +21,5 @@ export const listDepartmentsRoute = makeFastifyRoute(
         return reply.code(200).send(out);
     }
 );
+
+
