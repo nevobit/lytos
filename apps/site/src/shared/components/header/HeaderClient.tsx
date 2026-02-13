@@ -6,7 +6,7 @@ import styles from "./Header.module.css";
 
 
 export function HeaderClient() {
-
+    console.log("Informacion")
     return (
         <header className={styles.header}>
             <div className={styles.container}>
