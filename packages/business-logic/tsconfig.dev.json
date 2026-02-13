@@ -1,13 +1,9 @@
 {
-  "extends": "@lytos/typescript-config/base.json",
+  "extends": "../typescript-config/base.json",
   "compilerOptions": {
     "noEmit": true,
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "baseUrl": "./src",
-    "paths": {
-      "@lytos/contracts": ["../../packages/contracts/src/index.ts"]
-    }
+    "moduleResolution": "bundler"
   },
   "include": ["src"]
 }

@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "tap test/**/*.test.ts",
-    "dev": "tsx watch --tsconfig ./tsconfig.dev.json src/server/index.ts",
+    "dev": "DOTENV_CONFIG_PATH=./.env tsx watch --tsconfig ./tsconfig.dev.json src/server/index.ts",
     "build": "tsc -p tsconfig.build.json",
-    "start": "node dist/index.js"
+    "start": "DOTENV_CONFIG_PATH=./.env node dist/index.js"
   },
   "keywords": [],
   "author": "",

@@ -1,6 +1,6 @@
 import { type FastifyDynamicSwaggerOptions } from '@fastify/swagger';
 import { type OpenAPIV3_1 } from 'openapi-types';
-import { readFileSync, readdirSync } from 'fs';
+import { existsSync, readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import yaml from 'js-yaml';
 import * as schemas from "./schemas";
@@ -10,7 +10,9 @@ const routesPath = !isProduction
   ? join(__dirname, 'routes')
   : join(__dirname, '..', 'routes');
 
-const yamlFiles = readdirSync(routesPath).filter(file => file.endsWith('.yaml'));
+const yamlFiles = existsSync(routesPath)
+  ? readdirSync(routesPath).filter(file => file.endsWith('.yaml'))
+  : [];
 
 const paths: OpenAPIV3_1.PathsObject = {};
 

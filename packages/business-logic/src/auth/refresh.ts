@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { Role, scopesForRole, verifyMainJwt } from "@lytos/security";
+import { verifyMainJwt } from "@lytos/security";
 import { issueTokens } from "./tokens";
 import { findRoleById } from "../roles";
 import { findActiveMembershipUserByUserId } from "../memberships";
@@ -72,13 +72,8 @@ export async function refresh(input: RefreshInput): Promise<RefreshOutput> {
     const role = await findRoleById(membership?.roleId);
     if (!role) throw new Error("ROLE_NOT_FOUND");
 
-    const scopes = scopesForRole(role.name as Role);
-
     const { accessToken, refreshToken: newRefreshToken } = await issueTokens(
         id,
-        membership.workspaceId,
-        role.name,
-        scopes,
         sessionId,
     );
 

@@ -6,6 +6,7 @@ import { withPrefix } from '@lytos/constant-definitions';
 import { authRoutes } from './auth';
 import { customerRoutes } from './customers';
 import { departmentRoutes } from './departments';
+import { ticketRoutes } from './tickets';
 
 const routes: RouteOptions[] = [
     healthCheckRoute,
@@ -13,7 +14,9 @@ const routes: RouteOptions[] = [
     ...withPrefix('/workspaces', workspaceRoutes),
     ...withPrefix('/auth', authRoutes),
     ...withPrefix('/customers', customerRoutes),
-    ...departmentRoutes
+    ...departmentRoutes,
+    ...withPrefix('/tickets', ticketRoutes),
+
 ];
 
 export const registerRoutes = (fastify: FastifyInstance) => {

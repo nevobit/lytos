@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { Role } from "./role";
+import type { Role } from "./role";
 import { baseFields, opts, tenantFields } from "../../../common";
 
 export const RoleSchemaMongo = new Schema<Role>({
