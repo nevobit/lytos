@@ -38,6 +38,7 @@ export const buildApp = (opts: BuildAppOpts) => {
         readiness,
         environment = process.env.NODE_ENV ?? "development",
     } = opts;
+    console.log("Informacion")
 
     const app = fastify({
         logger: false,
