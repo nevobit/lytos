@@ -42,6 +42,6 @@ export async function login(input: LoginInput): Promise<LoginOutput> {
     return {
         accessToken,
         refreshToken,
-        user: { id: user.id, email: user.email, name: user.name ?? null },
+        user
     };
 }

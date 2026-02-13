@@ -4,6 +4,9 @@ import { baseFields, opts } from "../../../common";
 
 export const WorkspaceSchemaMongo = new Schema<Workspace>({
     name: { type: String, required: true, trim: true },
+    employees: { type: String, required: true, trim: true },
+
+
     slug: { type: String, required: true, trim: true, index: true },
     timezone: { type: String, required: true },
     locale: { type: String, required: true },
@@ -32,6 +35,7 @@ export const WorkspaceSchemaMongo = new Schema<Workspace>({
         businessHoursId: { type: String },
     },
 
+    url: { type: String, required: true, trim: true },
     domains: [{
         customDomains: [{ type: String }],
         allowedOrigins: [{ type: String }],

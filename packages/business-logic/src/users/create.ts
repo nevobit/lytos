@@ -1,8 +1,8 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { UpdateUserDto, UserSchemaMongo, type CreateUserDto, type User } from "@lytos/contracts";
+import { UserSchemaMongo, type CreateUserDto, type User } from "@lytos/contracts";
 import { hashPassword } from "@lytos/security";
 
-export async function createUser(input: CreateUserDto): Promise<UpdateUserDto> {
+export async function createUser(input: CreateUserDto): Promise<User> {
     const email = input.email.trim().toLowerCase();
 
     const model = getModel<User>(Collection.USERS, UserSchemaMongo);
