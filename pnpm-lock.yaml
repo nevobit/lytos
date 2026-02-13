@@ -443,6 +443,9 @@ importers:
       '@lytos/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
+      lucide-react:
+        specifier: ^0.438.0
+        version: 0.438.0(react@19.1.0)
       next:
         specifier: 15.5.2
         version: 15.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)

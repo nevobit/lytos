@@ -5,7 +5,14 @@ import "@lytos/design-system/css/web.css";
 import { AppProviders } from "@/providers/app-providers";
 import { Header } from "@/shared/components/header";
 import { Sidebar } from "@/shared/components/Sidebar";
+import { Manrope } from "next/font/google";
 
+const manrope = Manrope({
+    subsets: ["latin"],
+    weight: ["200", "300", "400", "500", "600", "700", "800"],
+    variable: "--font-manrope",
+    display: "swap",
+});
 
 export const metadata: Metadata = {
     verification: {
@@ -13,11 +20,11 @@ export const metadata: Metadata = {
     },
     metadataBase: new URL('https://repo.com.co'),
     title: {
-        default: 'Repo',
-        template: '%s | Repo'
+        default: 'Lytos - Plataforma de Operaciones con Clientes',
+        template: '%s | Lytos'
     },
     description: 'desc',
-    applicationName: 'Repo',
+    applicationName: 'Lytos',
     keywords: [''],
     authors: [{ name: 'Nevobit', url: 'https://nevobit.co' }],
     creator: 'Nevobit Software',
@@ -48,7 +55,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="es" suppressHydrationWarning className={manrope.variable} >
             <body>
                 <AppProviders>
                     <Header />

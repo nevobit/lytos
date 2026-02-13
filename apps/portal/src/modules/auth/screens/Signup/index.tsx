@@ -42,7 +42,7 @@ const Signup = () => {
                 <div>
                     <h2 className={styles.title} >Bienvenido a Lytos</h2>
                     <p className={styles.copy}>Plataforma operativa para equipos y agentes</p>
-                    <Button image={{ src: '/glogo.png', alt: 'Google Logo' }} fullWidth variant='monochromePlain' >Continuar con Google</Button>
+                    <Button image={{ src: '/glogo.png', alt: 'Google Logo' }} fullWidth variant='monochromePlain' disabled  >Continuar con Google</Button>
                     <div className={styles.divider}>
                         <div className={styles.line} />
                         <p className={styles.or}>O</p>
