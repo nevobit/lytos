@@ -60,10 +60,15 @@ export async function googleLogin(input: GoogleLoginInput): Promise<GoogleLoginO
     const scopes = scopesForRole(role.name as Role);
 
     const sessionId = `sess_${crypto.randomBytes(16).toString("hex")}`;
-    const { accessToken, refreshToken } = await issueTokens(
-        user.id,
+    const { accessToken, refreshToken } = await issueTokens({
+        kind: "workspace",
+        userId: user.id,
         sessionId,
-    );
+        workspaceId: membership.workspaceId,
+        membershipId: membership.id,
+        roleId: membership.roleId,
+    });
+
 
     const refreshHash = crypto.createHash("sha256").update(refreshToken).digest("hex");
     await createSession({

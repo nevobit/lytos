@@ -72,10 +72,11 @@ export async function refresh(input: RefreshInput): Promise<RefreshOutput> {
     const role = await findRoleById(membership?.roleId);
     if (!role) throw new Error("ROLE_NOT_FOUND");
 
-    const { accessToken, refreshToken: newRefreshToken } = await issueTokens(
-        id,
+    const { accessToken, refreshToken: newRefreshToken } = await issueTokens({
+        kind: "global",
+        userId: id,
         sessionId,
-    );
+    });
 
     const newRefreshHash = crypto.createHash("sha256").update(newRefreshToken).digest("hex");
 
