@@ -10,11 +10,11 @@ export default async function HomePage() {
                 <span className={styles.dot} aria-hidden="true"></span>
                 <span className={styles.heroBadgeText}><strong>Novedad</strong> · Descubre el motor inteligente de soporte</span>
             </div>
+
             <h1 className={styles.heroTitle}>
                 Operaciones más Inteligentes.<br />
                 Resultados más Rápidos.
             </h1>
-
             <p className={styles.heroSubtitle}>
                 Centraliza conversaciones, tickets y equipos en una sola plataforma.
                 Convierte cada interacción en datos accionables para tu organización.
