@@ -14,7 +14,6 @@
   },
   "scripts": {
     "dev": "tsup src/index.ts --dts --format esm,cjs --sourcemap --watch",
-    "build": "tsup src/index.ts --format esm,cjs --dts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
