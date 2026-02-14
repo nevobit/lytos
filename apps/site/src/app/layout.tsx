@@ -4,8 +4,9 @@ import type { Metadata } from "next";
 import "@lytos/design-system/css/web.css";
 import { AppProviders } from "@/providers/app-providers";
 import { Header } from "@/shared/components/header";
-import { Sidebar } from "@/shared/components/Sidebar";
 import { Manrope } from "next/font/google";
+import Pricing from "@/modules/home/Pricing";
+import { Footer } from "@/shared/components/footer";
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -56,11 +57,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang="es" suppressHydrationWarning className={manrope.variable} >
-            <body>
+            <body  >
                 <AppProviders>
                     <Header />
-                    <Sidebar />
                     {children}
+                    <Pricing />
+                    <Footer />
                 </AppProviders>
             </body>
         </html>
