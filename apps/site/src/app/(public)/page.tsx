@@ -1,6 +1,7 @@
 import styles from './Page.module.css';
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
+import Link from 'next/link';
 
 export default async function HomePage() {
     return (
@@ -22,12 +23,12 @@ export default async function HomePage() {
 
 
             <div className={styles.heroCta}>
-                <a href="/signup">
+                <Link href="/signup">
                     Comenzar ahora <MoveRight strokeWidth="1px" />
-                </a>
-                <a href="#demo">
+                </Link>
+                <Link href="#demo">
                     <span className="ly-play" aria-hidden="true">▶</span> Ver demostración
-                </a>
+                </Link>
             </div>
             <picture className={styles.heroImage} >
                 <Image src='/banner.png' alt="Banner Lytos" width={1280} height={900} />

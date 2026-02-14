@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     verification: {
         google: ''
     },
-    metadataBase: new URL('https://repo.com.co'),
+    metadataBase: new URL('https://lytos.com.app'),
     title: {
         default: 'Lytos - Plataforma de Operaciones con Clientes',
         template: '%s | Lytos'
