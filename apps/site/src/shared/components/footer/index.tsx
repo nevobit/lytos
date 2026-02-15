@@ -1,13 +1,29 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 export async function Footer() {
     return (
         <div className={styles.footer}>
-            <div>
-
+            <div className={styles.mainFooter} >
+                <h2 className={styles.ctaTitle}>
+                    ¿Listo para poner orden<br />
+                    en tu soporte?
+                </h2>
             </div>
             <div className={styles.middleFooter} >
+                <ul>
+                    <li>
+                        <h3 className={styles.logo}>Lytos</h3>
+                    </li>
+                    <li><p>Centraliza tickets, conversaciones <br /> y equipos en una sola consola.</p></li>
+                    <li><div className={styles.social}>
+                        <span><Facebook /></span>
+                        <span><Linkedin /></span>
+                        <span><Instagram /></span>
+                        <span><Twitter /></span>
+                    </div></li>
+                </ul>
                 <ul>
                     <li>
                         <h3>Inicio</h3>
@@ -40,7 +56,8 @@ export async function Footer() {
                 </ul>
                 <ul>
                     <li><h3>Descarga nuestra App</h3></li>
-                    <li><button></button></li>
+                    <li><button className={styles.btn} >Google Play</button></li>
+                    <li><button className={styles.btn} >App Store</button></li>
                 </ul>
 
             </div>

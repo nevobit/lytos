@@ -1,11 +1,39 @@
 .footer {
   background-color: #0b1725;
   color: #fff;
+  padding: 4rem;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .middleFooter {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  padding-inline: 10rem;
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.middleFooter h3 {
+  color: #fff;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.middleFooter .logo {
+  font-size: 3rem;
+}
+
+.middleFooter ul li {
+  margin-bottom: 1rem;
+  font-weight: 300;
+  color: #b7b7b7;
+  font-size: 1.4rem;
 }
 
 .bottomFooter {
@@ -14,4 +42,47 @@
   align-items: center;
   padding-inline: 10rem;
   padding-block: 2rem;
+  padding-top: 4rem;
+  color: #fff;
+  border-top: 1px solid rgba(255 255, 255, 0.1);
+  margin-top: 3rem;
+}
+
+.bottomFooter a {
+  color: #fff;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  border: 1px solid rgba(255 255, 255, 0.1);
+  width: 100%;
+  border-radius: 4rem;
+  padding-block: 1.5rem;
+  padding-inline: 2rem;
+  text-align: left;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0710193f;
+}
+
+.mainFooter {
+  padding-inline: 10rem;
+  margin-bottom: 6rem;
+  border-bottom: 1px solid rgba(255 255, 255, 0.1);
+  padding-bottom: 4rem;
+}
+
+.ctaTitle {
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin: 0 0 14px 0;
+  color: #fff;
 }

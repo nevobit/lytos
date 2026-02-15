@@ -7,6 +7,7 @@ import { Header } from "@/shared/components/header";
 import { Manrope } from "next/font/google";
 import Pricing from "@/modules/home/Pricing";
 import { Footer } from "@/shared/components/footer";
+import Platform from "@/modules/home/Platform";
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <AppProviders>
                     <Header />
                     {children}
+                    <Platform />
                     <Pricing />
                     <Footer />
                 </AppProviders>
