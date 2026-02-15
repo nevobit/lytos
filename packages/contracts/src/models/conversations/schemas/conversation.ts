@@ -9,14 +9,12 @@ export interface Conversation extends Base {
     channel: "email" | "widget" | "webchat" | "whatsapp" | "internal";
 
     participants: {
-        customers?: string[];
-        agents?: string[];
+        customers: string[];
+        agents: string[];
         visitorId?: string;
     };
 
     subject?: string;
 
     status: "open" | "closed";
-    createdAt: Date;
-    updatedAt: Date;
 }
