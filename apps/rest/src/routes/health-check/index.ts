@@ -1,5 +1,5 @@
 import { type RouteOptions } from "fastify";
-import os from "os";
+import * as os from "os";
 import { MonoContext } from "@lytos/core-modules";
 
 export const healthCheckRoute: RouteOptions = {

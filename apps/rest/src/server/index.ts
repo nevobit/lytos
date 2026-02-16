@@ -1,4 +1,4 @@
-import os from "os";
+import * as os from "os";
 import "dotenv/config";
 import { version, name } from "../../package.json";
 import {
@@ -8,8 +8,8 @@ import {
   MonoContext,
 } from "@lytos/core-modules";
 import { setLogger } from "@lytos/constant-definitions";
-import { swaggerOptions, swaggerUiOptions } from "../docs";
-import { buildApp } from "./app";
+import { swaggerOptions, swaggerUiOptions } from "../docs/index.js";
+import { buildApp } from "./app.js";
 import { registerRoutes } from "@/routes";
 import { initDataSources } from '@lytos/data-sources';
 
