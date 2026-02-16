@@ -1,6 +1,6 @@
 import { Collection, getModel } from "@lytos/constant-definitions"
-import { CreateRoleDto, RoleSchemaMongo } from "@lytos/contracts"
-import { Role } from "@lytos/security";
+import { type CreateRoleDto, RoleSchemaMongo } from "@lytos/contracts"
+import { type Role } from "@lytos/security";
 
 export const seedWorkspaceRoles = async (workspaceId: string) => {
     const model = getModel<Role

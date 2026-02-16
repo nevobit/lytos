@@ -1,5 +1,6 @@
-import jwt, { type JwtPayload, type SignOptions, type VerifyOptions } from "jsonwebtoken";
-import { JwtClaims } from "./verify-jwt";
+import * as jwt from "jsonwebtoken";
+import { type JwtPayload, type SignOptions, type VerifyOptions } from "jsonwebtoken"
+import { type JwtClaims } from "./verify-jwt";
 
 export interface RequestInterface {
   Body: unknown;

@@ -1,7 +1,7 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { LifecycleStatus, Membership, MembershipSchemaMongo, Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
+import { LifecycleStatus, type Membership, MembershipSchemaMongo, type Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
 import { issueTokens } from "./tokens";
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 
 export const switchWorkspace = async (userId: string, workspaceId: string, membershipId: string) => {
     if (!userId || !membershipId) throw new Error("BAD_REQUEST");

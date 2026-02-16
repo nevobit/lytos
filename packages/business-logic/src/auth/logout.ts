@@ -1,5 +1,5 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { LifecycleStatus, Session, SessionSchemaMongo } from "@lytos/contracts";
+import { LifecycleStatus, type Session, SessionSchemaMongo } from "@lytos/contracts";
 
 type LogoutInput = {
     userId: string;
@@ -18,7 +18,7 @@ export const logout = async (input: LogoutInput) => {
             { userId: input.userId, lifecicleStatus: LifecycleStatus.ACTIVE },
             { $set: { status: "revoked", revokedAt: now, revokeReason: "logout_all" } }
         );
-        return { ok: true, revokedCount: res.modifiedCount ?? res.nModified ?? 0 };
+        return { ok: true, revokedCount: res.modifiedCount ?? 0 };
     }
 
 
@@ -27,5 +27,5 @@ export const logout = async (input: LogoutInput) => {
         { $set: { status: "revoked", revokedAt: now, revokeReason: "logout" } }
     );
 
-    return { ok: true, revoked: (res.modifiedCount ?? res.nModified ?? 0) > 0 };
+    return { ok: true, revoked: (res.modifiedCount) > 0 };
 };
