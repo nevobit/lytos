@@ -1,21 +1,35 @@
 import { build } from 'esbuild';
+import { nodeExternals } from 'esbuild-plugin-node-externals';
 
 const isProd = process.env.NODE_ENV === 'production';
 
 await build({
-  entryPoints: ['src/server/index.ts'], // tu entry real
+  entryPoints: ['src/server/index.ts'],
   bundle: true,
   platform: 'node',
-  target: 'node20', // o node22; evita node24 si no es necesario en prod
+  target: 'node24',
   format: 'cjs',
   outfile: 'dist/server/index.cjs',
   sourcemap: isProd ? false : true,
   minify: isProd,
   logLevel: 'info',
 
-  external: ['fs', 'path', 'url', 'crypto', 'http', 'https', 'zlib', 'stream'],
+  external: ['fs', 'path', 'url', 'bcrypt', 'crypto', 'http', 'https', 'zlib', 'stream'],
 
   loader: {
     '.json': 'json',
   },
+
+  plugins: [
+    nodeExternals({
+      include: [
+        '@lytos/business-logic',
+        '@lytos/contracts',
+        '@lytos/constant-definitions',
+        '@lytos/security',
+        '@lytos/tools',
+        '@lytos/core-modules',
+      ],
+    }),
+  ],
 }).catch(() => process.exit(1));
