@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import * as crypto from "crypto";
 import { verifyMainJwt } from "@lytos/security";
 import { issueTokens } from "./tokens";
 import { findRoleById } from "../roles";

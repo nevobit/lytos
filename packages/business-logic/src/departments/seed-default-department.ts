@@ -1,5 +1,5 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { Department, DepartmentSchemaMongo } from "@lytos/contracts";
+import { type Department, DepartmentSchemaMongo } from "@lytos/contracts";
 
 export const seedDefaultDepartment = async (workspaceId: string) => {
     const model = getModel<Department>(Collection.DEPARTMENTS, DepartmentSchemaMongo);

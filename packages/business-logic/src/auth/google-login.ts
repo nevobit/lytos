@@ -1,5 +1,5 @@
-import crypto from "crypto";
-import { Role, scopesForRole } from "@lytos/security";
+import * as crypto from "crypto";
+import { type Role, scopesForRole } from "@lytos/security";
 import { issueTokens } from "./tokens";
 import { createSession } from "../sessions";
 import { findRoleById } from "../roles";

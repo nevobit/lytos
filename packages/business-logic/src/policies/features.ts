@@ -1,4 +1,4 @@
-import { FeatureFlag } from "@lytos/contracts";
+import type { FeatureFlag } from "@lytos/contracts";
 
 export const planFeatures: Record<"free" | "pro" | "enterprise", FeatureFlag[]> = {
     free: [],

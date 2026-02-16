@@ -1,5 +1,5 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { CreateWorkspaceDto, Membership, MembershipSchemaMongo, Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
+import { type Membership, MembershipSchemaMongo, type Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
 import { seedWorkspaceRoles } from "../roles";
 import { seedDefaultDepartment } from "../departments";
 
@@ -16,14 +16,14 @@ export function normalizeTicketPrefix(prefix?: string) {
     return p;
 }
 
-export const createWorkspace = async (workspaceData: CreateWorkspaceDto) => {
+export const createWorkspace = async (workspaceData: Partial<Workspace>) => {
     const workspaces = getModel<Workspace>(Collection.WORKSPACES, WorkspaceSchemaMongo);
     const memberships = getModel<Membership>(Collection.MEMBERSHIPS, MembershipSchemaMongo);
 
 
     const ticketNumberPrefix =
         normalizeTicketPrefix(workspaceData?.settings?.ticketNumberPrefix) ??
-        generateTicketPrefixFromSlug(workspaceData.slug);
+        generateTicketPrefixFromSlug(workspaceData.slug || '');
 
     const workspace = new workspaces({ ...workspaceData, settings: { ...workspaceData.settings, ticketNumberPrefix } });
 

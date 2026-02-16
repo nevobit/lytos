@@ -1,5 +1,5 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { User, UserSchemaMongo } from "@lytos/contracts";
+import { type User, UserSchemaMongo } from "@lytos/contracts";
 
 export const findUserById = async (id: string): Promise<User> => {
     const model = getModel<User>(Collection.USERS, UserSchemaMongo);

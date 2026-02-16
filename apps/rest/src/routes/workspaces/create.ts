@@ -1,7 +1,7 @@
 import { invalidateCache } from "@/cache";
 import { createWorkspace } from "@lytos/business-logic";
 import { makeFastifyRoute, RouteMethod } from "@lytos/constant-definitions";
-import type { CreateWorkspaceDto } from "@lytos/contracts";
+import type { Workspace } from "@lytos/contracts";
 import { verifyJwt } from "@lytos/security";
 import { slugify } from "@lytos/tools";
 
@@ -13,7 +13,7 @@ export const createWorkspaceRoute = makeFastifyRoute(
     async (request, reply) => {
         if (!request.auth?.userId) return reply.code(401).send({ message: "Unauthorized" });
 
-        const body = request.body as CreateWorkspaceDto;
+        const body = request.body as Partial<Workspace>;
 
         if (!body || typeof body !== "object") {
             return reply.status(400).send({ message: "Invalid body" });

@@ -1,4 +1,4 @@
-import StackTrace from 'stacktrace-js';
+import * as StackTrace from 'stacktrace-js';
 import { inspect } from 'util';
 
 export enum LoggerTransportName {

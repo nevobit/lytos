@@ -2,7 +2,7 @@ import { type FastifyDynamicSwaggerOptions } from '@fastify/swagger';
 import { type OpenAPIV3_1 } from 'openapi-types';
 import { existsSync, readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import * as schemas from "./schemas";
 
 const isProduction = process.env.NODE_ENV === 'production';

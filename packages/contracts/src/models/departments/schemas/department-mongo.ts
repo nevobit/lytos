@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 import { baseFields, opts, tenantFields } from "../../../common";
-import { Department } from "./department";
+import { type Department } from "./department";
 
 export const DepartmentSchemaMongo = new Schema<Department>({
     name: { type: String, required: true, trim: true },
