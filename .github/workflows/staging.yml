@@ -39,7 +39,7 @@ jobs:
           IMAGE_URI_SHA="$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
           IMAGE_URI_LATEST="$ECR_REGISTRY/$ECR_REPOSITORY:stg-latest"
 
-          docker build -t "$IMAGE_URI_SHA" -t "$IMAGE_URI_LATEST" apps/rest/Dockerfile
+          docker build -t "$IMAGE_URI_SHA" -t "$IMAGE_URI_LATEST" -f apps/rest/Dockerfile apps/rest
           docker push "$IMAGE_URI_SHA"
           docker push "$IMAGE_URI_LATEST"
 
