@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "api",
-      "image": "${{ secrets.ECR_REGISTRY }}/cmv-ecr:latest",
+      "image": "743569699917.dkr.ecr.us-east-1.amazonaws.com/nevobit/lytos-api",
       "memory": 512,
       "cpu": 256,
       "essential": true,
@@ -13,7 +13,7 @@
           "hostPort": 8000
         }
       ],
-      "envitonment": [
+      "environment": [
         { "name": "NODE_ENV", "value": "staging" },
         { "name": "APP_ENV", "value": "staging" }
       ],
