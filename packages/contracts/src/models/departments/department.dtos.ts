@@ -1,4 +1,4 @@
-import { User } from '../users';
+import { type User } from '../users';
 import type { Department } from './schemas';
 
 export type CreateDepartmentDto = Omit<Department, 'id' | 'createdAt' | 'updatedAt'>;

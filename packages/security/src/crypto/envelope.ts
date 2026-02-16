@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import * as crypto from "crypto";
 
 export function encrypt(secret: Buffer, data: string) {
   const iv = crypto.randomBytes(16);

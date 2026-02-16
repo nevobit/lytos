@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { Session } from "./session";
+import { type Session } from "./session";
 import { baseFields, opts } from "../../../common";
 
 export const SessionSchemaMongo = new Schema<Session>({

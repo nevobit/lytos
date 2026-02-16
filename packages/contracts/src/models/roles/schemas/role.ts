@@ -1,5 +1,5 @@
-import { Scopes } from '@lytos/contracts';
 import { type Base } from '../../../common';
+import { type Scopes } from './scopes';
 
 export interface Role extends Base {
     workspaceId: string;

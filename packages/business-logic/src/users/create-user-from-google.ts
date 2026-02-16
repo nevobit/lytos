@@ -1,6 +1,6 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
 import { UserSchemaMongo, type LifecycleStatus, type User } from "@lytos/contracts";
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 
 type CreateUserFromGoogleInput = {
     email: string;

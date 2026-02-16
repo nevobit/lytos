@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { User } from "./user";
+import { type User } from "./user";
 import { baseFields, opts } from "../../../common";
 
 export const UserSchemaMongo = new Schema<User>({

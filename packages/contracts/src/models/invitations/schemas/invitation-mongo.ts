@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { Invitation } from "./invitation";
+import { type Invitation } from "./invitation";
 import { baseFields, opts, tenantFields } from "../../../common";
 
 export const InvitationSchemaMongo = new Schema<Invitation>({

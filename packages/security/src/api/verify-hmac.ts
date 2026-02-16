@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import * as crypto from "crypto";
 import { canonicalJson } from "../crypto/canonical-json";
 
 export function verifyHmac(

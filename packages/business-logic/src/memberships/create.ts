@@ -1,5 +1,5 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { CreateMembershipDto, Membership, MembershipSchemaMongo } from "@lytos/contracts";
+import { type CreateMembershipDto, type Membership, MembershipSchemaMongo } from "@lytos/contracts";
 
 export const createMembership = async (membershipData: CreateMembershipDto): Promise<Membership> => {
     const model = getModel<Membership>(Collection.WORKSPACES, MembershipSchemaMongo);

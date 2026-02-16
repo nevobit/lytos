@@ -1,6 +1,6 @@
-import { CreateUserDto, LifecycleStatus, User } from "@lytos/contracts";
+import { type CreateUserDto, LifecycleStatus, type User } from "@lytos/contracts";
 import { findOneUser, createUser } from "../users";
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 import { issueTokens } from "./tokens";
 import { createSession } from "../sessions";
 

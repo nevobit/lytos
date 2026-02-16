@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import * as crypto from "crypto";
 
 export function issueCsrf(secret: string, sessionId: string) {
   return crypto.createHmac("sha256", secret).update(sessionId).digest("hex");
