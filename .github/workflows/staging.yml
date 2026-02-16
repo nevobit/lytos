@@ -44,6 +44,8 @@ jobs:
           docker push "$IMAGE_URI_LATEST"
 
           echo "image=$IMAGE_URI_SHA" >> $GITHUB_OUTPUT
+          echo "CLUSTER: ${{secrets.ECS_CLUSTER}}""
+          echo "SERVICE: ${{secrets.ECS_SERVICE}}""
 
       - name: Render Amazon ECS task definition
         id: render-task
