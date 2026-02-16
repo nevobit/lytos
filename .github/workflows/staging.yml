@@ -55,6 +55,13 @@ jobs:
           container-name: ${{ secrets.CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
 
+      - name: Who am I? (AWS account) + region
+        run: |
+          aws sts get-caller-identity
+          aws configure list
+          echo "AWS_REGION=$AWS_REGION"
+          echo "AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION"
+
       - name: Deploy to ECS (STAGING)
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
