@@ -17,9 +17,15 @@
         { "name": "NODE_ENV", "value": "staging" },
         { "name": "APP_ENV", "value": "staging" }
       ],
-      "readonlyRootFilesystem": true,
       "linuxParameters": {
-        "initProcessEnabled": true
+        "initProcessEnabled": true,
+        "tmpfs": [
+          {
+            "containerPath": "/tmp",
+            "size": 64,
+            "mountOptions": ["rw", "nosuid", "noexec", "nodev"]
+          }
+        ]
       },
       "logConfiguration": {
         "logDriver": "awslogs",
