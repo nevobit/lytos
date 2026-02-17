@@ -17,19 +17,8 @@ export const MessageSchemaMongo = new Schema<Message>({
 
     conversationId: {
         type: String,
+        required: true,
         index: true,
-    },
-
-    kind: {
-        type: String,
-        enum: ["reply", "note", "system"],
-        required: true,
-    },
-
-    visibility: {
-        type: String,
-        enum: ["public", "internal"],
-        required: true,
     },
 
     direction: {
@@ -38,75 +27,53 @@ export const MessageSchemaMongo = new Schema<Message>({
         required: true,
     },
 
-    channel: {
+    kind: {
         type: String,
-        enum: ["email", "widget", "webchat", "whatsapp", "internal"],
+        enum: ["message", "note", "system"],
         required: true,
-    },
-
-    author: {
-        type: {
-            type: String,
-            enum: ["agent", "customer", "visitor", "system"],
-            required: true,
-        },
-        membershipId: {
-            type: String,
-            ref: "Membership",
-        },
-        customerId: {
-            type: String,
-            ref: "Customer",
-        },
-        visitorId: {
-            type: String,
-        },
     },
 
     body: {
         text: {
             type: String,
-            required: true,
         },
         html: {
             type: String,
         },
     },
-
-    attachments: [
-        {
-            attachmentId: {
-                type: Schema.Types.ObjectId,
-                required: true,
-            },
-            name: {
-                type: String,
-                required: true,
-            },
-        },
-    ],
-
-    emailMeta: {
-        messageId: String,
-        inReplyTo: String,
-        references: [String],
-        subject: String,
-        from: String,
-        to: [String],
-    },
-
-    delivery: {
-        status: {
-            type: String,
-            enum: ["queued", "sent", "delivered", "failed"],
-        },
-        provider: String,
-        providerMessageId: String,
-        error: {
-            code: String,
-            message: String,
-        },
-        sentAt: Date,
-        deliveredAt: Date,
-    },
 }, opts);
+
+MessageSchemaMongo.add({
+    authorMembershipId: {
+        type: String,
+        required: function requiredAuthorMembershipId(this: Message) {
+            return this.direction === "internal" || this.direction === "outbound";
+        },
+    },
+    customerId: {
+        type: String,
+        required: function requiredCustomerId(this: Message) {
+            return this.direction === "inbound";
+        },
+    },
+});
+
+MessageSchemaMongo.pre("validate", function validateBody(next) {
+    const body = this.body;
+
+    if (!body) {
+        this.invalidate("body", "Either body.text or body.html is required");
+        return next();
+    }
+
+    const text = typeof body.text === "string" ? body.text.trim() : "";
+    const html = typeof body.html === "string" ? body.html.trim() : "";
+
+    if (text.length === 0 && html.length === 0) {
+        this.invalidate("body", "Either body.text or body.html is required");
+    }
+
+    return next();
+});
+
+MessageSchemaMongo.index({ workspaceId: 1, conversationId: 1, createdAt: 1 });
