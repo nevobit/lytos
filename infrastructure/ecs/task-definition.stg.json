@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "api",
-      "image": "743569699917.dkr.ecr.us-east-1.amazonaws.com/nevobit/lytos-api",
+      "image": "743569699917.dkr.ecr.us-east-1.amazonaws.com/nevobit/lytos-api:stg-latest",
       "memory": 512,
       "cpu": 256,
       "essential": true,
