@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 25rem;
+  width: auto;
   padding: 2rem;
   background-color: #fff;
   border-radius: 1rem;

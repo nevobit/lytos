@@ -120,7 +120,7 @@ export const Menus: React.FC<MenusProps> & {
             <div data-ds-menu-root="true" className={styles.scope}>
                 {React.Children.map(children, (child) =>
                     React.isValidElement(child)
-                        ? React.cloneElement(child as unknown, { __setLastToggleRef: (el: HTMLElement | null) => { lastToggleRef.current = el; } })
+                        ? React.cloneElement(child as React.ReactElement<{ __setLastToggleRef: (e: HTMLElement | null) => void }>, { __setLastToggleRef: (el: HTMLElement | null) => { lastToggleRef.current = el; } })
                         : child
                 )}
             </div>
@@ -347,7 +347,7 @@ function computePosition(rect: DOMRect, placement: Placement, offset = 8): React
     // const vw = typeof window !== "undefined" ? window.innerWidth : 0;
     // const vh = typeof window !== "undefined" ? window.innerHeight : 0;
 
-    const base: React.CSSProperties = { position: "fixed", zIndex: "var(--ds-z-dropdown)" as unknown };
+    const base: React.CSSProperties = { position: "fixed", zIndex: "var(--ds-z-dropdown)" as string | undefined };
     const w = rect.width;
     const h = rect.height;
 

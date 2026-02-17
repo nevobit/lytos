@@ -1,4 +1,4 @@
-import { LifecycleStatus, Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
+import { LifecycleStatus, type Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
 import { Collection, getModel, getRedisReadClient, getRedisWriteClient } from "@lytos/constant-definitions";
 
 export const findWorkspaceBySlug = async (slug: string): Promise<Workspace | null> => {

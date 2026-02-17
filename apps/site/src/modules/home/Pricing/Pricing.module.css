@@ -1,0 +1,87 @@
+.container {
+  padding-block: 8rem;
+}
+
+.container h2 {
+  text-align: center;
+}
+
+.container > p {
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.cards > .card {
+  background-color: #f2f2f2;
+  border-radius: 2rem;
+  padding: 2rem;
+  max-width: 45rem;
+}
+
+.cards > .card:nth-child(2) {
+  background-color: #0b1725;
+}
+
+.cards > .card:nth-child(2) > p {
+  color: #fff;
+}
+
+.cards > .card:nth-child(2) > h3 {
+  color: #fff;
+}
+
+.card ul {
+  padding: 0;
+}
+.card li {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card a {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem 2.5rem;
+  color: #0b1725;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  margin: 0 auto;
+  margin-block: 2rem;
+}
+
+.include {
+  background-color: #fff;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.card h3 {
+  font-size: 4rem;
+  font-weight: 700;
+  padding-left: 1rem;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.card span {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.card span:first-child {
+  position: absolute;
+  top: 1rem;
+  left: 0rem;
+  margin-right: 1rem;
+}

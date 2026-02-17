@@ -3,6 +3,7 @@ import styles from './Login.module.css';
 import { Button, Input, useForm } from "@lytos/design-system";
 import { useLogin } from "../../hooks/useLogin";
 import type { FormEvent } from "react";
+import { PublicRoutes } from "@/app/router/routes";
 
 const Login = () => {
     const { login, isLogging, error } = useLogin();
@@ -28,7 +29,7 @@ const Login = () => {
                 <div>
                     <h2 className={styles.title} >Bienvenido a Lytos</h2>
                     <p className={styles.copy}>Plataforma operativa para equipos y agentes</p>
-                    <Button image={{ src: '/glogo.png', alt: 'Google Logo' }} fullWidth variant='monochromePlain' >Continaur con Google</Button>
+                    <Button image={{ src: '/glogo.png', alt: 'Google Logo' }} fullWidth variant='monochromePlain' disabled  >Continuar con Google</Button>
                     <div className={styles.divider}>
                         <div className={styles.line} />
                         <p className={styles.or}>O</p>
@@ -39,7 +40,7 @@ const Login = () => {
                         <Input error={error?.message} name="password" label="Contrasena" placeholder="**********" type="password" togglePassword onChange={handleChange} />
                         <Link className={styles.forgot} to='/'>Olvidaste tu contrasena?</Link>
                         <Button loading={isLogging} fullWidth type="submit" >Entrar</Button>
-                        <p className={styles.signup} > Aun no tiene cuenta? <Link to='/' > Crea una cuenta</Link></p>
+                        <p className={styles.signup} > Aun no tiene cuenta? <Link to={PublicRoutes.SIGNUP} > Crea una cuenta</Link></p>
                     </form>
 
                     <p className={styles.policy}>Al iniciase sesin aceptas las politicas de seguridad y de yso de cookies esenciales.</p>

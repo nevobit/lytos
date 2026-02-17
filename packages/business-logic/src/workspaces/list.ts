@@ -1,5 +1,5 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { Invitation, InvitationSchemaMongo, Membership, MembershipSchemaMongo, Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
+import { type Invitation, InvitationSchemaMongo, type Membership, MembershipSchemaMongo, type Workspace, WorkspaceSchemaMongo } from "@lytos/contracts";
 
 export const getAllWorkspaces = async (userId: string, email?: string) => {
     const membershipsModel = getModel<Membership>(Collection.MEMBERSHIPS, MembershipSchemaMongo);
