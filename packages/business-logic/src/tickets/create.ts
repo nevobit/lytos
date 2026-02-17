@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { Collection, getModel } from "@lytos/constant-definitions";
 import { ConversationSchemaMongo, LifecycleStatus, TicketSchemaMongo } from "@lytos/contracts";
 import type { Conversation, CreateTicketDto, Ticket } from "@lytos/contracts";
@@ -23,7 +22,7 @@ function mapTicketSourceToConversationChannel(
 export const createTicket = async (data: CreateTicketDto): Promise<Ticket | null> => {
     const ticketModel = getModel<Ticket>(Collection.TICKETS, TicketSchemaMongo);
     const conversationModel = getModel<Conversation>(Collection.CONVERSATIONS, ConversationSchemaMongo);
-    const session = await mongoose.startSession();
+    const session = await ticketModel.db.startSession();
 
     let createdTicket: Ticket | null = null;
 
