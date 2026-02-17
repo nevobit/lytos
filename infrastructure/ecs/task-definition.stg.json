@@ -15,7 +15,114 @@
       ],
       "environment": [
         { "name": "NODE_ENV", "value": "staging" },
-        { "name": "APP_ENV", "value": "staging" }
+        { "name": "APP_ENV", "value": "staging" },
+        { "name": "REGION", "value": "us-east-1" },
+        { "name": "TZ", "value": "America/Bogota" },
+
+        { "name": "APP_NAME", "value": "lytos-api" },
+        { "name": "APP_VERSION", "value": "1.0.0" },
+        { "name": "APP_HOST", "value": "0.0.0.0" },
+        { "name": "APP_PORT", "value": "8000" },
+
+        { "name": "LOG_LEVEL", "value": "info" },
+        { "name": "LOG_FORMAT", "value": "json" },
+        { "name": "REQUEST_TIMEOUT_MS", "value": "30000" },
+        { "name": "ENABLE_HEALTHCHECKS", "value": "true" },
+        { "name": "HEALTHCHECK_PATH", "value": "/health-check" },
+        { "name": "GRACEFUL_SHUTDOWN_TIMEOUT_MS", "value": "10000" },
+
+        {
+          "name": "CORS_ORIGINS",
+          "value": "http://localhost:5173,https://lytos.vercel.app,https://lytos.app"
+        },
+        { "name": "CORS_METHODS", "value": "GET,POST,PUT,PATCH,DELETE,OPTIONS" },
+        { "name": "SECURITY_HEADERS", "value": "true" },
+
+        { "name": "RATE_LIMIT_PROVIDER", "value": "redis" },
+        { "name": "RATE_LIMIT_MAX", "value": "100" },
+        { "name": "RATE_LIMIT_WINDOW_MS", "value": "60000" },
+
+        { "name": "FASTIFY_BODY_LIMIT", "value": "1048576" },
+        { "name": "FASTIFY_TRUST_PROXY", "value": "true" },
+        { "name": "COMPRESSION_ENABLED", "value": "true" },
+
+        { "name": "AUTH_ISSUER", "value": "https://lytos.app" },
+        { "name": "AUTH_AUDIENCE", "value": "lytos-api" },
+        { "name": "JWT_EXPIRATION", "value": "15m" },
+        { "name": "JWT_REFRESH_EXPIRATION", "value": "30d" },
+        { "name": "PASSWORD_HASH_ROUNDS", "value": "12" },
+
+        { "name": "MONGO_DB_NAME", "value": "lytos" },
+        { "name": "MONGO_REPLICA_SET", "value": "rs0" },
+        { "name": "MONGO_SSL", "value": "true" },
+        { "name": "MONGO_MAX_POOL_SIZE", "value": "50" },
+        { "name": "MONGO_MIN_POOL_SIZE", "value": "5" },
+
+        { "name": "REDIS_DB", "value": "0" },
+        { "name": "CACHE_NAMESPACE", "value": "api-cache" },
+        { "name": "CACHE_TTL_SECONDS", "value": "3600" },
+
+        { "name": "AWS_REGION", "value": "us-east-1" },
+        { "name": "WORKER_CONCURRENCY", "value": "5" },
+        { "name": "WORKER_POLL_INTERVAL_MS", "value": "500" },
+
+        { "name": "OPENAI_ENABLED", "value": "false" },
+        { "name": "GOOGLE_ENABLED", "value": "false" },
+        { "name": "FIREBASE_ENABLED", "value": "false" },
+        { "name": "STRIPE_ENABLED", "value": "false" },
+
+        { "name": "PROMETHEUS_METRICS_ENABLED", "value": "true" },
+        { "name": "PROMETHEUS_METRICS_PATH", "value": "/metrics" },
+
+        { "name": "FEATURE_MULTI_TENANCY", "value": "true" },
+        { "name": "FEATURE_AUDIT_LOGS", "value": "true" },
+        { "name": "FEATURE_EXPORTS", "value": "true" },
+
+        { "name": "PAGINATION_DEFAULT_LIMIT", "value": "20" },
+        { "name": "PAGINATION_MAX_LIMIT", "value": "100" },
+        { "name": "FILE_UPLOAD_MAX_MB", "value": "25" },
+
+        { "name": "CURRENCY_DEFAULT", "value": "USD" }
+      ],
+
+      "secrets": [
+        {
+          "name": "JWT_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:743569699917:secret:helebba/dev:JWT_SECRET::"
+        },
+        {
+          "name": "JWT_REFRESH_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:743569699917:secret:helebba/dev:JWT_REFRESH_SECRET::"
+        },
+        {
+          "name": "SESSION_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:743569699917:secret:helebba/dev:SESSION_SECRET::"
+        },
+
+        {
+          "name": "MONGO_URI",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:743569699917:secret:helebba/dev:MONGO_URI::"
+        },
+
+        {
+          "name": "REDIS_URL",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:743569699917:secret:helebba/dev:REDIS_URL::"
+        },
+
+        {
+          "name": "OPENAI_API_KEY",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:743569699917:secret:helebba/dev:OPENAI_API_KEY::"
+        },
+
+        {
+          "name": "EMAIL_SMTP_PASSWORD",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:743569699917:secret:helebba/dev:EMAIL_SMTP_PASSWORD::"
+        },
+
+        {
+          "name": "API_HMAC_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:743569699917:secret:helebba/dev:API_HMAC_SECRET::"
+        }
       ],
       "linuxParameters": {
         "initProcessEnabled": true,
