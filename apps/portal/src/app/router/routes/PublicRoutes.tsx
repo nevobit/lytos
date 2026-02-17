@@ -6,6 +6,7 @@ import withSuspense from "../utils/with-suspense";
 import ErrorBoundary from "@/app/screens/ErrorBoundary";
 import Testing from "@/app/screens/Testing";
 import { AppShell } from "@/app/components/Layout";
+import Signup from "@/modules/auth/screens/Signup";
 
 const Signin = lazy(() => import("@/modules/auth/screens/Login"));
 
@@ -14,6 +15,12 @@ export const publicRoutes: RouteObject[] = [
         path: PublicRoutes.SIGNIN,
         loader: guestLoader,
         element: withSuspense(<Signin />),
+        errorElement: <ErrorBoundary />,
+    },
+    {
+        path: PublicRoutes.SIGNUP,
+        loader: guestLoader,
+        element: withSuspense(<Signup />),
         errorElement: <ErrorBoundary />,
     },
     {

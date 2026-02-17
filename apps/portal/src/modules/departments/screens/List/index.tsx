@@ -11,7 +11,7 @@ const Departments = () => {
     const { departments } = useDepartments();
     return (
         <div>
-            <Table columns={columns} rows={departments.items || []} />
+            <Table columns={columns} rows={departments?.items || []} />
         </div>
     )
 }

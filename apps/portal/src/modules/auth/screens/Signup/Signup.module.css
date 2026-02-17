@@ -1,0 +1,103 @@
+.container {
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.08), transparent 50%), #f8fafc;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 4rem;
+}
+
+.content {
+  width: 100%;
+  max-width: 55rem;
+  margin: 0rem auto;
+  padding: 6rem 4rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  height: max-content;
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.05),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.copy {
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.line {
+  position: relative;
+  height: 0.1rem;
+  background-color: rgb(205 206 214);
+  width: 50%;
+}
+
+.or {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #686868;
+}
+
+.form > div {
+  margin-top: 2rem;
+}
+
+.col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.forgot {
+  display: inline-block;
+  margin-block: 1rem 2rem;
+  font-size: 1.4rem;
+}
+
+.signup {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.4rem;
+}
+
+.signup a {
+  font-weight: 600;
+}
+
+.policy {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem;
+  font-size: 1.4rem;
+}

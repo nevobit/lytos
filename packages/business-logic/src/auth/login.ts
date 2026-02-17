@@ -1,9 +1,9 @@
-import { User } from "@lytos/contracts";
+import { type User } from "@lytos/contracts";
 import { findOneUser } from "../users";
 import { verifyPassword } from "@lytos/security";
 import { createSession } from "../sessions";
 import { issueTokens } from "./tokens";
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 
 export type LoginInput = {
     email: string;
@@ -42,6 +42,6 @@ export async function login(input: LoginInput): Promise<LoginOutput> {
     return {
         accessToken,
         refreshToken,
-        user: { id: user.id, email: user.email, name: user.name ?? null },
+        user
     };
 }

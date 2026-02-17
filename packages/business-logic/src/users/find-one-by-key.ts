@@ -1,5 +1,5 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { UpdateUserDto, UserSchemaMongo, type User } from "@lytos/contracts";
+import { type UpdateUserDto, UserSchemaMongo, type User } from "@lytos/contracts";
 
 export type FindUserKey = "email" | "id" | "googleSub";
 

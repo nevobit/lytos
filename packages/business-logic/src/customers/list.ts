@@ -1,5 +1,5 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { Customer, CustomerSchemaMongo, Params, Result } from "@lytos/contracts";
+import { type Customer, CustomerSchemaMongo, type Params, type Result } from "@lytos/contracts";
 
 export const getAllCustomers = async ({ page = 1, limit = 10, search = '', workspaceId }: Params): Promise<Result<Customer>> => {
     const model = getModel<Customer>(Collection.CUSTOMERS, CustomerSchemaMongo);

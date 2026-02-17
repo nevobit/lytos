@@ -5,7 +5,7 @@ import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifyMultipart from "@fastify/multipart";
 import type { Logger } from "@lytos/core-modules";
 import { version, name } from "../../package.json";
-import os from "os";
+import * as os from "os";
 import { verify, mapVerifyCode } from "@lytos/security";
 import { registerTenancy } from "./tenancy";
 
@@ -146,9 +146,9 @@ export const buildApp = (opts: BuildAppOpts) => {
             if ((result as { type?: "error" | "ok"; message?: string; code?: number })?.type === "error") {
                 const r = result as { message?: string; code?: number; type?: string };
                 const status = mapVerifyCode(r.code);
-                req.log?.warn(
-                    { requestId: req.id, status, reason: r.message, path },
+                logger?.warn(
                     "Verification failed",
+                    { requestId: req.id, status, reason: r.message, path },
                 );
                 return reply
                     .code(status)
@@ -168,9 +168,9 @@ export const buildApp = (opts: BuildAppOpts) => {
             const isTimeout = getErrorMessage(err) === "verify_timeout";
             const status = isTimeout ? 504 : 500;
 
-            req.log?.error(
-                { requestId: req.id, path, err: isTimeout ? "verify_timeout" : getErrorMessage(err) },
+            logger?.error(
                 "Verification crash",
+                { requestId: req.id, path, err: isTimeout ? "verify_timeout" : getErrorMessage(err) },
             );
 
             return reply.code(status).type("application/json").send({

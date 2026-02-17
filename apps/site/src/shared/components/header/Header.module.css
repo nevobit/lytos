@@ -3,18 +3,21 @@
   top: 0;
   z-index: 40;
   border-bottom: 1px solid rgba(17, 24, 39, 0.08);
-  background: rgba(255, 255, 255, 0.8);
+  background-color: #0b1725;
+  color: #fff;
   backdrop-filter: saturate(180%) blur(8px);
 }
 
 .container {
   margin: 0 auto;
-  max-width: 80rem; /* 1280px */
-  height: 3.5rem; /* 56px */
-  display: flex;
-  align-items: center;
+  max-width: 120rem;
+  height: 4.5rem;
   gap: 0.75rem;
   padding: 0 1rem;
+  background-color: #0b1725;
+  display: grid;
+  grid-template-columns: 40rem 1fr 20rem;
+  justify-content: space-between;
 }
 
 .navToggle {
@@ -36,7 +39,7 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  color: #111827;
+  color: #fff;
   text-decoration: none;
   margin-right: 0.25rem;
 }
@@ -50,7 +53,7 @@
 }
 
 .brandText {
-  font-size: 0.95rem;
+  font-size: 1.8rem;
 }
 
 .nav {
@@ -70,8 +73,9 @@
 }
 
 .navLink {
-  color: #374151;
-  font-size: 0.9rem;
+  color: #fff;
+
+  font-size: 1.4rem;
   text-decoration: none;
 }
 

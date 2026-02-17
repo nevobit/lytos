@@ -19,7 +19,7 @@ const AppShell = buildAppShell(
     [PersistedQueryProvider, {}],
   ],
   [
-    [ReactQueryDevtools, { initialIsOpen: true }],
+    [ReactQueryDevtools, { initialIsOpen: false }],
   ]
 );
 const container = document.getElementById("root");

@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { Customer } from "./customer";
+import { type Customer } from "./customer";
 import { baseFields, opts, tenantFields } from "../../../common";
 
 export const CustomerSchemaMongo = new Schema<Customer>({

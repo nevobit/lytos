@@ -1,20 +1,27 @@
 import styles from './NewAccount.module.css';
 import { Avatar, Button, Input, Select, useForm } from "@lytos/design-system";
-import { useLogin } from "../../hooks/useLogin";
 import type { FormEvent } from "react";
 import { useSession } from "@/shared";
+import type { CreateWorkspaceDto } from '@lytos/contracts';
+import { useCreateWorkspace } from '../../hooks';
 
 const NewAccount = () => {
     const { user } = useSession();
-    const { login, isLogging, error } = useLogin();
-    const { formState: userData, handleChange } = useForm({
-        email: '',
-        password: ''
+    const { isLoading, create } = useCreateWorkspace();
+    const { formState: workspace, handleChange } = useForm<CreateWorkspaceDto>({
+        name: '',
+        employees: '',
+        url: '',
+        country: 'chile',
+        legalForm: '',
+        locale: '',
+        plan: { name: 'free', seatsLimit: 3, channelsEnabled: ['email', 'webchat'] },
     });
+
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        login({ email: userData.email, password: userData.password });
+        create({ ...workspace, url: generateTenantUrl(workspace.name || '') });
     }
 
     return (
@@ -37,23 +44,29 @@ const NewAccount = () => {
 
                     <form className={styles.form} onSubmit={onSubmit} >
                         <div className={styles.col} >
-                            <Input name="email" label="Razón social" placeholder="tu@empresa.com" onChange={handleChange} />
+                            <Input name="name" label="Razón social" placeholder="tu@empresa.com" onChange={handleChange} />
 
-                            <Select label="Número de empleados">
-                                <option value="">1</option>
-                                <option value="">2-5</option>
-                                <option value="">6-10</option>
-                                <option value="">11-25</option>
-                                <option value="">26-50</option>
-                                <option value="">51+</option>
+                            <Select name='employees' onChange={handleChange} label="Número de empleados">
+                                <option value="1">1</option>
+                                <option value="2-5">2-5</option>
+                                <option value="6-10">6-10</option>
+                                <option value="11-25">11-25</option>
+                                <option value="26-5">26-50</option>
+                                <option value="51+">51+</option>
                             </Select>
                         </div>
 
-                        <Input name="email" label="URL" placeholder="tu@empresa.com" onChange={handleChange} />
-                        <Input error={error?.message} name="password" label="País" placeholder="**********" type="password" togglePassword onChange={handleChange} />
-                        <Input error={error?.message} name="password" label="Forma jurídica" />
+                        <Input name="url" label="URL" value={generateTenantUrl(workspace.name || '')}
+                            placeholder={generateTenantUrl(workspace.name || '')} onChange={handleChange} />
+                        <Select name='country' label="País" onChange={handleChange} >
+                            <option value="chile">Chile</option>
+                            <option value="colombia">Colombia</option>
+                            <option value="argentina">Argentina</option>
+                            <option value="peru">Peru</option>
+                        </Select>
+                        <Input name="legalForm" label="Forma jurídica" onChange={handleChange} />
 
-                        <Button loading={isLogging} fullWidth type="submit" >Entrar</Button>
+                        <Button loading={isLoading} fullWidth type="submit" >Entrar</Button>
                     </form>
 
                     <p className={styles.policy}>Al crear una cuenta, aceptas nuestros Términos y condiciones y nuestra Política de privacidad.</p>
@@ -66,3 +79,16 @@ const NewAccount = () => {
 }
 
 export default NewAccount
+
+const generateTenantUrl = (companyName: string) => {
+    return (
+        companyName
+            .toLowerCase()
+            .replace(/spa|sas|scc|scs|ltda|s\.a\.?/gi, '')
+            .trim()
+            .replace(/\s+/g, '-')
+            .replace(/[^a-z0-9-]/g, '')
+            .replace(/-+/g, '-')
+            .replace(/-$/, '') + '.lytos.app'
+    );
+};
