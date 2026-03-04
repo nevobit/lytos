@@ -1,4 +1,4 @@
-export const APP_NAME = "Portal";
+export const APP_NAME = "Console";
 export const ORG_NAME = "lytos";
 
 export const DEFAULT_LOCALE = "es";
