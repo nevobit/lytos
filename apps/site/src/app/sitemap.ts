@@ -1,5 +1,5 @@
 export default function sitemap() {
-    const baseUrl = 'https://helebba.com.co'
+    const baseUrl = 'https://prooving.co'
 
     return [
         {

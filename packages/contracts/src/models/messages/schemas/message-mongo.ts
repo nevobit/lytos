@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { Message } from "./message";
+import { type Message } from "./message";
 import { opts } from "../../../common";
 
 export const MessageSchemaMongo = new Schema<Message>({
