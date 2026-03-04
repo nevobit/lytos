@@ -1,5 +1,5 @@
 export const APP_NAME = "Portal";
-export const ORG_NAME = "repo";
+export const ORG_NAME = "lytos";
 
 export const DEFAULT_LOCALE = "es";
 export const SUPPORTED_LOCALES = ["es", "en", "pt"] as const;
@@ -8,7 +8,6 @@ export type Locale = (typeof SUPPORTED_LOCALES)[number];
 export const DEFAULT_CURRENCY = "COP";
 export const SUPPORTED_CURRENCIES = ["COP", "USD", "EUR"] as const;
 export type CurrencyCode = (typeof SUPPORTED_CURRENCIES)[number];
-
 export const STORAGE_KEYS = {
     theme: `${ORG_NAME.toLowerCase()}:theme`,
     locale: `${ORG_NAME.toLowerCase()}:locale`,
