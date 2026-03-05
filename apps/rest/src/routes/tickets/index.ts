@@ -4,9 +4,11 @@ import { getTicketByIdRoute } from "./get-by-id";
 import { listTicketsRoute } from "./list";
 import { updateTicketRoute } from "./update";
 import { deleteTicketRoute } from "./delete";
+import { getTicketTimelineRoute } from "./timeline";
 
 export const ticketRoutes: RouteOptions[] = [
     createTicketRoute,
+    getTicketTimelineRoute,
     getTicketByIdRoute,
     listTicketsRoute,
     updateTicketRoute,
