@@ -41,13 +41,13 @@ function tagMeta(tag: "fast" | "slow" | "none") {
     return { label: "Sin respuesta", tone: "tagNone" as const };
 }
 
-function OrgIcon({ kind }: { kind?: CustomerRow["organizationIcon"] }) {
-    // sin imágenes: usamos mini “logo” por CSS (circulitos + letra)
-    const k = kind ?? "generic";
-    return <span className={`${styles.orgIcon} ${styles[`org_${k}`]}`} aria-hidden />;
-}
+// function OrgIcon({ kind }: { kind?: CustomerRow["organizationIcon"] }) {
+//     // sin imágenes: usamos mini “logo” por CSS (circulitos + letra)
+//     const k = kind ?? "generic";
+//     return <span className={`${styles.orgIcon} ${styles[`org_${k}`]}`} aria-hidden />;
+// }
 
-export default function Customers(): JSX.Element {
+export default function Customers() {
     const [query, setQuery] = useState("");
     const [tab, setTab] = useState<"lista" | "organizaciones">("lista");
 
@@ -66,14 +66,14 @@ export default function Customers(): JSX.Element {
         });
     }, [rows, query]);
 
-    const columns: DataTableColumn<CustomerRow>[] = useMemo(
-        () => [
+    const columns: DataTableColumn<CustomerRow>[] =
+        [
             {
                 key: "name",
                 header: "Nombre",
                 sortable: true,
-                render: (row) => {
-                    const name = row.name ?? "—";
+                render: (value) => {
+                    const name = value ?? "—";
                     return (
                         <span className={styles.clientCell}>
                             <span className={styles.avatar}>
@@ -88,10 +88,10 @@ export default function Customers(): JSX.Element {
                 key: "email",
                 header: "Email",
                 sortable: true,
-                render: (row) =>
-                    row.email ? (
-                        <a className={styles.linkCell} href={`mailto:${row.email}`}>
-                            {row.email}
+                render: (value) =>
+                    value ? (
+                        <a className={styles.linkCell} href={`mailto:${value}`}>
+                            {(value as string)}
                         </a>
                     ) : (
                         "—"
@@ -101,10 +101,10 @@ export default function Customers(): JSX.Element {
                 key: "phone",
                 header: "Teléfono",
                 sortable: true,
-                render: (row) =>
-                    row.phone ? (
-                        <a className={styles.linkCell} href={`tel:${row.phone.replace(/\s+/g, "")}`}>
-                            {row.phone}
+                render: (value) =>
+                    value ? (
+                        <a className={styles.linkCell} href={`tel:${(value as string).replace(/\s+/g, "")}`}>
+                            {(value as string)}
                         </a>
                     ) : (
                         "—"
@@ -114,18 +114,18 @@ export default function Customers(): JSX.Element {
                 key: "dateCreated",
                 header: "Fecha de creación",
                 sortable: true,
-                render: (row) => <span className={styles.date}>{formatCLDate(row.dateCreated)}</span>,
+                render: (value) => <span className={styles.date}>{formatCLDate(value as string)}</span>,
             },
             {
                 key: "organizationName",
                 header: "Organización",
                 sortable: true,
-                render: (row) => {
-                    const org = row.organizationName ?? "—";
+                render: (value) => {
+                    const org = value ?? "—";
                     return (
                         <span className={styles.orgCell}>
-                            <OrgIcon kind={row.organizationIcon} />
-                            <span className={styles.orgName}>{org}</span>
+                            {/* <OrgIcon kind={(value as string)} /> */}
+                            <span className={styles.orgName}>{(org as string)}</span>
                         </span>
                     );
                 },
@@ -133,13 +133,13 @@ export default function Customers(): JSX.Element {
             {
                 key: "tags",
                 header: "Etiquetas",
-                render: (row) => {
-                    const tags = row.tags ?? [];
+                render: (value) => {
+                    const tags = (value as string[]) ?? [];
                     if (!tags.length) return "—";
                     return (
                         <span className={styles.tagsWrap}>
                             {tags.slice(0, 2).map((t) => {
-                                const m = tagMeta(t);
+                                const m = tagMeta(t as 'fast' | 'slow');
                                 return (
                                     <span key={t} className={`${styles.tagBadge} ${styles[m.tone]}`}>
                                         {m.label}
@@ -154,22 +154,9 @@ export default function Customers(): JSX.Element {
                 key: "latestUpdateDaysAgo",
                 header: "Última actualización",
                 sortable: true,
-                render: (row) => <span className={styles.mutedCell}>{formatDaysAgo(row.latestUpdateDaysAgo)}</span>,
-            },
-            {
-                key: "__actions",
-                header: "",
-                sortable: false,
-                render: () => (
-                    <button className={styles.kebab} type="button" aria-label="Más acciones">
-                        …
-                    </button>
-                ),
-                width: 44,
-            },
-        ],
-        []
-    );
+                render: (value) => <span className={styles.mutedCell}>{formatDaysAgo(value as number)}</span>,
+            }
+        ];
 
     return (
         <div className={styles.page}>
