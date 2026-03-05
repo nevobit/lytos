@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { Message } from "./message";
+import { type Message } from "./message";
 import { opts } from "../../../common";
 
 export const MessageSchemaMongo = new Schema<Message>({
@@ -76,5 +76,4 @@ MessageSchemaMongo.pre("validate", function validateBody(next) {
     return next();
 });
 
-MessageSchemaMongo.index({ workspaceId: 1, conversationId: 1, createdAt: 1 });
 MessageSchemaMongo.index({ workspaceId: 1, ticketId: 1, createdAt: 1 });
