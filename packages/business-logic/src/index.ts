@@ -6,3 +6,4 @@ export * from "./roles";
 export * from "./customers";
 export * from "./departments";
 export * from "./tickets";
+export * from "./messages";

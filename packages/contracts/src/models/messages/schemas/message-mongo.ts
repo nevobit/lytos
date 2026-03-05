@@ -76,4 +76,4 @@ MessageSchemaMongo.pre("validate", function validateBody(next) {
     return next();
 });
 
-MessageSchemaMongo.index({ workspaceId: 1, conversationId: 1, createdAt: 1 });
+MessageSchemaMongo.index({ workspaceId: 1, ticketId: 1, createdAt: 1 });
