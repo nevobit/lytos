@@ -11,7 +11,7 @@ export const createTicketRoute = makeFastifyRoute(
     async (request, reply) => {
         const body = request.body as Omit<CreateTicketDto, "workspaceId" | "userId">;
         const { userId } = (request as { auth: { userId: string } }).auth;
-        const ticket = await createTicket({ ...body, workspaceId: request.tenant!.slug!, userId });
+        const ticket = await createTicket({ ...body, workspaceId: request.tenant!.workspaceId, userId });
         return reply.status(201).send(ticket);
     },
 );
