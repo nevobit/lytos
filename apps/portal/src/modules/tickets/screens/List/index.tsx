@@ -54,7 +54,6 @@ export default function Tickets() {
 
     // UI state (por ahora solo visual)
     const [query, setQuery] = useState("");
-    const [selectedIds, setSelectedIds] = useState<Record<string, boolean>>({});
     const [focusMode, setFocusMode] = useState(false);
 
     const rows: Row[] = tickets?.items ?? [];
@@ -70,20 +69,19 @@ export default function Tickets() {
         });
     }, [rows, query]);
 
-    const columns: DataTableColumn<Row>[] = useMemo(
-        () => [
-            { key: "ticketNumber", header: "Ticket ID", sortable: true, render: (row: Row) => <span className={styles.ticketId}>#{String((row)?.ticketNumber ?? "—")}</span> },
+    const columns: DataTableColumn<Row>[] = [
+        { key: "ticketNumber", header: "Ticket ID", sortable: true, render: (value) => <span className={styles.ticketId}>#{String(value ?? "—")}</span> },
             {
                 key: "subject",
                 header: "Asunto",
                 sortable: true,
-                render: (row: Row) => <span className={styles.subject}>{String((row)?.subject ?? "—")}</span>,
+                render: (value) => <span className={styles.subject}>{String(value ?? "—")}</span>,
             },
             {
                 key: "priorityId",
                 header: "Prioridad",
-                render: (row: Row) => {
-                    const meta = priorityMeta((row)?.priorityId);
+                render: (value) => {
+                    const meta = priorityMeta(value);
                     return (
                         <span className={`${styles.badge} ${styles[`badge_${meta.tone}`]}`}>
                             <span className={styles.badgeDot} />
@@ -95,8 +93,8 @@ export default function Tickets() {
             {
                 key: "categoryId",
                 header: "Tipo",
-                render: (row: Row) => {
-                    const meta = typeMeta((row)?.categoryId);
+                render: (value) => {
+                    const meta = typeMeta(value);
                     return (
                         <span className={styles.typePill}>
                             <span className={styles.typeIcon} aria-hidden>
@@ -110,9 +108,9 @@ export default function Tickets() {
             {
                 key: "customerId",
                 header: "Cliente",
-                render: (row: Row) => {
-                    const name = String((row)?.customerId ?? (row)?.customerId ?? "—");
-                    const avatarUrl = (row)?.customerId as string | undefined;
+                render: (value) => {
+                    const name = String(value ?? (value) ?? "—");
+                    const avatarUrl = value as string | undefined;
                     return (
                         <span className={styles.clientCell}>
                             <span className={styles.avatar}>
@@ -127,22 +125,10 @@ export default function Tickets() {
                 key: "createdAt",
                 header: "Fecha de solicitud",
                 sortable: true,
-                render: (row: Row) => <span className={styles.date}>{formatCLDateTime((row)?.createdAt)}</span>,
+                render: (value) => <span className={styles.date}>{formatCLDateTime((value as string))}</span>,
             },
-            {
-                key: "__actions",
-                header: "",
-                sortable: false,
-                render: () => (
-                    <button className={styles.kebab} type="button" aria-label="Más acciones">
-                        …
-                    </button>
-                ),
-                width: 44,
-            },
-        ],
-        [selectedIds]
-    );
+
+    ];
 
     return (
         <div className={styles.page}>
@@ -195,7 +181,7 @@ export default function Tickets() {
                         </span>
                         Origen
                     </button>
-                    <button type="button" onClick={() => setSelectedIds} className={styles.filterBtn}>
+                    <button type="button" className={styles.filterBtn}>
                         <Info strokeWidth="1.5px" size={16} />
                         Prioridad
                     </button>

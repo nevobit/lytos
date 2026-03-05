@@ -77,9 +77,9 @@ export default function Customers() {
                     return (
                         <span className={styles.clientCell}>
                             <span className={styles.avatar}>
-                                <span className={styles.avatarFallback}>{getInitials(name)}</span>
+                                <span className={styles.avatarFallback}>{getInitials(name as string)}</span>
                             </span>
-                            <span className={styles.clientName}>{name}</span>
+                            <span className={styles.clientName}>{name as string}</span>
                         </span>
                     );
                 },

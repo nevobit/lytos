@@ -292,7 +292,7 @@ function SatisfactionCard({
     );
 }
 
-export default function SupportDashboard(): JSX.Element {
+export default function SupportDashboard() {
     const { rangeLabel, days } = useMemo(() => getLast7DaysRange(), []);
     const [range, setRange] = useState<string>(rangeLabel);
 
