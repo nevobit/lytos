@@ -49,7 +49,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             disabled,
             readOnly,
             className,
-            "aria-label": ariaLabel,
+            // "aria-label": ariaLabel,
             "aria-describedby": ariaDescribedByProp,
             deprecatedCheckbox,
             ...rest
@@ -83,14 +83,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             onClear?.();
         };
 
-        if (process.env.NODE_ENV !== "production") {
-            if (!label && !ariaLabel) {
-                // eslint-disable-next-line no-console
-                console.warn(
-                    "Input: provide either `label` or `aria-label` for accessibility."
-                );
-            }
-        }
+        // if (process.env.NODE_ENV !== "production") {
+        //     if (!label && !ariaLabel) {
+        //         // eslint-disable-next-line no-console
+        //         console.warn(
+        //             "Input: provide either `label` or `aria-label` for accessibility."
+        //         );
+        //     }
+        // }
 
         const rootClass = cx(
             styles.root,
