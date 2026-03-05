@@ -28,7 +28,7 @@ const NewAccount = () => {
         <div className={styles.container} >
             <header className={styles.header} >
                 <picture>
-                    <h2>Lytos</h2>
+                    <img className={styles.logo} src="/images/logo.png" />
                 </picture>
                 <div className={styles.userInfo} >
                     <Avatar size='sm' name={user?.name} color='var(--ds-brand-purple)' />

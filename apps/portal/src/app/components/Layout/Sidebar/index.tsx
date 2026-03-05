@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
 import {
-    // LayoutDashboard,
+    LayoutDashboard,
     // Inbox,
     // Bell,
     Ticket,
@@ -9,11 +9,11 @@ import {
     // User,
     // MessagesSquare,
     // BarChart3,
-    Phone,
-    MessageCircle,
+    // Phone,
+    // MessageCircle,
     HelpCircle,
-    Pin,
-    MoreVertical,
+    // Pin,
+    // MoreVertical,
     ChevronDown,
     Boxes,
 } from "lucide-react";
@@ -30,10 +30,10 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
+    { label: "Dashboard", href: '/', icon: LayoutDashboard },
     { label: "Departamentos", href: PrivateRoutes.DEPARTMENTS, icon: Boxes },
     { label: "Tickets", href: PrivateRoutes.TICKETS, icon: Ticket },
 
-    // { label: "Dashboard", href: '/', icon: LayoutDashboard },
     // { label: "Inbox", href: '/inbox', icon: Inbox },
     // { label: "Notification", href: '/notifications', icon: Bell },
     // { label: "Knowledge Base", href: '/knowledge', icon: BookOpen },
@@ -76,10 +76,10 @@ const Sidebar = () => {
             </nav>
 
             <div className={styles.section}>
-                <div className={styles.sectionTitle}>CONVERSATION</div>
+                <div className={styles.sectionTitle}>CONVERSACIÓN</div>
 
                 <div className={styles.conversationList}>
-                    <button className={styles.convItem}>
+                    {/* <button className={styles.convItem}>
                         <div className={styles.convIcon}>
                             <Phone size={16} />
                         </div>
@@ -107,25 +107,25 @@ const Sidebar = () => {
                         <span className={styles.badgeMuted} aria-label="0 unread">
                             0
                         </span>
-                    </button>
+                    </button> */}
                 </div>
             </div>
 
             <div className={styles.section}>
-                <div className={styles.sectionTitle}>FAVORITES</div>
+                <div className={styles.sectionTitle}>FAVORITOS</div>
                 <div className={styles.mutedHelp}>
-                    Hover over any table and click the star to add it here.
+                    Coloque el cursor sobre cualquier tabla y haga clic en la estrella para agregarla aquí.
                 </div>
             </div>
 
             <div className={styles.section}>
                 <div className={styles.sectionHeaderRow}>
-                    <div className={styles.sectionTitle}>PINNED TICKETS</div>
-                    <button className={styles.linkBtn}>Unpin All</button>
+                    <div className={styles.sectionTitle}>TICKETS FIJADOS</div>
+                    <button className={styles.linkBtn}>Desanclar todo</button>
                 </div>
 
                 <div className={styles.pinnedList}>
-                    <button className={styles.pinnedItem}>
+                    {/* <button className={styles.pinnedItem}>
                         <span className={styles.pinnedLeft}>
                             <Pin size={14} className={styles.pinIcon} />
                             <span className={styles.pinnedLabel}>#TC-192 produc…</span>
@@ -150,16 +150,16 @@ const Sidebar = () => {
                         </span>
 
                         <MoreVertical size={16} className={styles.pinnedMore} />
-                    </button>
+                    </button> */}
 
-                    <button className={styles.addNew}>+&nbsp;&nbsp;Add new</button>
+                    <button className={styles.addNew}>+&nbsp;&nbsp;Agregar nuevo</button>
                 </div>
             </div>
 
             <div className={styles.bottom}>
                 <button className={styles.helpRow}>
                     <HelpCircle size={16} />
-                    <span>Help &amp; Support</span>
+                    <span>Ayuda &amp; Soporte</span>
                 </button>
 
                 <div className={styles.poweredBy}>

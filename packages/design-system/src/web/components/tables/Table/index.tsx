@@ -47,7 +47,7 @@ export function Table<T extends object>({
     stickyHeader = false,
     isLoading = false,
     loadingText = "Loading…",
-    emptyText = "No data",
+    emptyText = "Sin datos",
     defaultSort,
     sort,
     onSortChange,
@@ -118,6 +118,8 @@ export function Table<T extends object>({
         if (onPageChange) onPageChange(p);
         else setUPage(p);
     };
+
+
 
     const pageKeys = pg.slice.map(getKey);
     const pageAllSelected = pageKeys.every((k: React.Key) => selected.has(k));
@@ -236,7 +238,7 @@ export function Table<T extends object>({
                     <button className={styles.pagBtn} onClick={() => setPage(pg.page + 1)} disabled={pg.page === pg.pages}>Next ›</button>
                     <button className={styles.pagBtn} onClick={() => setPage(pg.pages)} disabled={pg.page === pg.pages}>Last »</button>
                 </div>
-            </div>
+            </div> 
         </div>
     );
 }

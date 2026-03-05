@@ -30,7 +30,6 @@
 
 .content {
   min-width: 0;
-  padding: var(--ds-space-6);
 }
 
 @media (max-width: 1024px) {

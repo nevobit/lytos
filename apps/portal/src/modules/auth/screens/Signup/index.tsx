@@ -34,7 +34,7 @@ const Signup = () => {
         <div className={styles.container} >
             <header className={styles.header} >
                 <picture>
-                    <h2>Lytos</h2>
+                    <img className={styles.logo} src="/images/logo.png" />
                 </picture>
                 <Link to="/">Soporte</Link>
             </header>

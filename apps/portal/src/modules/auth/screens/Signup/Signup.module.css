@@ -13,6 +13,10 @@
   padding: 1.5rem 4rem;
 }
 
+.logo {
+  width: 10rem;
+}
+
 .content {
   width: 100%;
   max-width: 55rem;
