@@ -21,7 +21,6 @@ const TicketFormModal = ({
     const { closeModal, requestCloseModal } = useModal();
     const { formState: ticket, handleChange } = useForm<Partial<Ticket> | null | undefined>(initialValues);
 
-    const [touched, setTouched] = React.useState<Record<string, boolean>>({});
     const [submitting, setSubmitting] = React.useState(false);
 
     const initialFocusRef = React.useRef<HTMLInputElement>(null);
@@ -42,14 +41,6 @@ const TicketFormModal = ({
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setTouched({
-            name: true,
-            slug: true,
-            description: true,
-            isDefault: true,
-        });
-
-
         try {
             setSubmitting(true);
 
@@ -100,8 +91,7 @@ const TicketFormModal = ({
                             ref={initialFocusRef}
                             name="title"
                             id="ticket-title"
-                            className={`${styles.input} ${touched.name && errors.title ? styles.inputError : ""
-                                }`}
+                            className={`${styles.input}`}
                             value={ticket?.title}
                             onChange={handleChange}
                             placeholder="Ej. Soporte"
