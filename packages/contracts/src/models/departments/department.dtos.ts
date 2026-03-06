@@ -5,5 +5,5 @@ export type CreateDepartmentDto = Omit<Department, 'id' | 'createdAt' | 'updated
 export type UpdateDepartmentDto = Partial<CreateDepartmentDto>
 
 export interface DepartmentDto extends Department {
-    responsible?: User
+    primaryLeadMembershipId?: User
 }

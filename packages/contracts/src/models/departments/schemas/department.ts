@@ -1,4 +1,5 @@
 import { type Base } from '../../../common';
+import { User } from '../../users';
 
 export interface Department extends Base {
     workspaceId: string;
@@ -7,5 +8,5 @@ export interface Department extends Base {
     description: string;
     isDefault: boolean;
     leadMembershipIds: string[];
-    primaryLeadMembershipId?: string;
+    primaryLeadMembershipId?: User | string;
 }

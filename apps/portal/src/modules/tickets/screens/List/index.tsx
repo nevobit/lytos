@@ -1,29 +1,14 @@
 import { useMemo, useState } from "react";
-import { Table, type DataTableColumn } from "@lytos/design-system";
+import { Table, useModal, type DataTableColumn } from "@lytos/design-system";
 import { useTickets } from "../../hooks/useTickets";
 import type { Ticket } from "@lytos/contracts";
 import styles from "./List.module.css";
 import { Calendar, Filter, Info, Search, Ticket as TicketIcon, } from "lucide-react";
+import { formatCLDateTime } from "@/shared/utils";
+import { useCreateTicket } from "../../hooks/useCreateTicket";
+import TicketFormModal from "../../components/TicketFormModal";
 
 type Row = Partial<Ticket>;
-
-function formatCLDateTime(input?: string | Date | null): string {
-    if (!input) return "—";
-    const d = input instanceof Date ? input : new Date(input);
-    if (Number.isNaN(d.getTime())) return "—";
-
-    const date = d.toLocaleDateString("es-CL", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-    });
-    const time = d.toLocaleTimeString("es-CL", {
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-
-    return `${date}, ${time}`;
-}
 
 function getInitials(name?: string): string {
     if (!name) return "—";
@@ -49,10 +34,72 @@ function typeMeta(categoryId?: unknown): { label: string; icon: string } {
     return { label: "—", icon: "•" };
 }
 
+const columns: DataTableColumn<Row>[] = [
+    { key: "ticketNumber", header: "Ticket ID", sortable: true, render: (value) => <span className={styles.ticketId}>#{String(value ?? "—")}</span> },
+    {
+        key: "subject",
+        header: "Asunto",
+        sortable: true,
+        render: (value) => <span className={styles.subject}>{String(value ?? "—")}</span>,
+    },
+    {
+        key: "priorityId",
+        header: "Prioridad",
+        render: (value) => {
+            const meta = priorityMeta(value);
+            return (
+                <span className={`${styles.badge} ${styles[`badge_${meta.tone}`]}`}>
+                    <span className={styles.badgeDot} />
+                    {meta.label}
+                </span>
+            );
+        },
+    },
+    {
+        key: "categoryId",
+        header: "Tipo",
+        render: (value) => {
+            const meta = typeMeta(value);
+            return (
+                <span className={styles.typePill}>
+                    <span className={styles.typeIcon} aria-hidden>
+                        {meta.icon}
+                    </span>
+                    {meta.label}
+                </span>
+            );
+        },
+    },
+    {
+        key: "customerId",
+        header: "Cliente",
+        render: (value) => {
+            const name = String(value ?? (value) ?? "—");
+            const avatarUrl = value as string | undefined;
+            return (
+                <span className={styles.clientCell}>
+                    <span className={styles.avatar}>
+                        {avatarUrl ? <img className={styles.avatarImg} src={avatarUrl} alt="" /> : <span className={styles.avatarFallback}>{getInitials(name)}</span>}
+                    </span>
+                    <span className={styles.clientName}>{name}</span>
+                </span>
+            );
+        },
+    },
+    {
+        key: "createdAt",
+        header: "Fecha de solicitud",
+        sortable: true,
+        render: (value) => <span className={styles.date}>{formatCLDateTime((value as string))}</span>,
+    },
+
+];
+
 export default function Tickets() {
     const { tickets } = useTickets();
+    const { openModal } = useModal();
+    const { isLoading, create } = useCreateTicket();
 
-    // UI state (por ahora solo visual)
     const [query, setQuery] = useState("");
     const [focusMode, setFocusMode] = useState(false);
 
@@ -69,66 +116,16 @@ export default function Tickets() {
         });
     }, [rows, query]);
 
-    const columns: DataTableColumn<Row>[] = [
-        { key: "ticketNumber", header: "Ticket ID", sortable: true, render: (value) => <span className={styles.ticketId}>#{String(value ?? "—")}</span> },
-            {
-                key: "subject",
-                header: "Asunto",
-                sortable: true,
-                render: (value) => <span className={styles.subject}>{String(value ?? "—")}</span>,
-            },
-            {
-                key: "priorityId",
-                header: "Prioridad",
-                render: (value) => {
-                    const meta = priorityMeta(value);
-                    return (
-                        <span className={`${styles.badge} ${styles[`badge_${meta.tone}`]}`}>
-                            <span className={styles.badgeDot} />
-                            {meta.label}
-                        </span>
-                    );
-                },
-            },
-            {
-                key: "categoryId",
-                header: "Tipo",
-                render: (value) => {
-                    const meta = typeMeta(value);
-                    return (
-                        <span className={styles.typePill}>
-                            <span className={styles.typeIcon} aria-hidden>
-                                {meta.icon}
-                            </span>
-                            {meta.label}
-                        </span>
-                    );
-                },
-            },
-            {
-                key: "customerId",
-                header: "Cliente",
-                render: (value) => {
-                    const name = String(value ?? (value) ?? "—");
-                    const avatarUrl = value as string | undefined;
-                    return (
-                        <span className={styles.clientCell}>
-                            <span className={styles.avatar}>
-                                {avatarUrl ? <img className={styles.avatarImg} src={avatarUrl} alt="" /> : <span className={styles.avatarFallback}>{getInitials(name)}</span>}
-                            </span>
-                            <span className={styles.clientName}>{name}</span>
-                        </span>
-                    );
-                },
-            },
-            {
-                key: "createdAt",
-                header: "Fecha de solicitud",
-                sortable: true,
-                render: (value) => <span className={styles.date}>{formatCLDateTime((value as string))}</span>,
-            },
+    const handleOpenCreate = () => {
+        openModal(
+            <TicketFormModal
+                mode="create"
+                onSubmit={create}
+                isLoading={isLoading}
+            />
+        );
+    };
 
-    ];
 
     return (
         <div className={styles.page}>
@@ -148,7 +145,7 @@ export default function Tickets() {
                         Modo enfoque
                     </button>
 
-                    <button type="button" className={`${styles.btn} ${styles.btnPrimary}`}>
+                    <button type="button" className={`${styles.btn} ${styles.btnPrimary}`} onClick={handleOpenCreate} >
                         Agregar ticket
                     </button>
                 </div>
@@ -163,9 +160,6 @@ export default function Tickets() {
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                     />
-                    {/* <span className={styles.kbdHint} aria-hidden>
-                        ⌘ K
-                    </span> */}
                 </div>
 
                 <div className={styles.filters}>

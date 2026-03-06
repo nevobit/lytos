@@ -1,8 +1,9 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { type Department, DepartmentSchemaMongo, type Params, type Result } from "@lytos/contracts";
+import { type Department, DepartmentSchemaMongo, type Params, type Result, User, UserSchemaMongo } from "@lytos/contracts";
 
 export const getAllDepartments = async ({ page = 1, limit = 10, search = '', workspaceId }: Params): Promise<Result<Department>> => {
     const model = getModel<Department>(Collection.DEPARTMENTS, DepartmentSchemaMongo);
+    getModel<User>(Collection.USERS, UserSchemaMongo);
 
     const skip = (page - 1) * limit;
 
@@ -10,7 +11,7 @@ export const getAllDepartments = async ({ page = 1, limit = 10, search = '', wor
         .find({ workspaceId })
         .skip(skip)
         .limit(limit)
-        .sort({ isDefault: -1, name: 1 });
+        .sort({ isDefault: -1, name: 1 }).populate({ path: 'primaryLeadMembershipId', select: "name" });
 
     const total = await model.countDocuments({ search, workspaceId });
 

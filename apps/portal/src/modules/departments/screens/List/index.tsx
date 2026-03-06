@@ -1,6 +1,6 @@
 import { Table, useModal, type DataTableColumn } from '@lytos/design-system';
 import { useDepartments } from '../../hooks/useDepartments'
-import type { Department } from '@lytos/contracts';
+import type { DepartmentDto, User } from '@lytos/contracts';
 import styles from './List.module.css';
 import { Search } from 'lucide-react';
 import { useState } from 'react';
@@ -8,29 +8,17 @@ import DepartmentFormModal from '../../components/DepartmentFormModal';
 import Actions from '../../components/Actions';
 import { useCreateDepartment } from '../../hooks/useCreateDepartment';
 import { useUsers } from '@/modules/auth/hooks';
+import { formatCLDateTime } from '@/shared/utils';
 
-type Row = Partial<Department>;
-
-function formatCLDateTime(input?: string | Date | null): string {
-    if (!input) return "—";
-    const d = input instanceof Date ? input : new Date(input);
-    if (Number.isNaN(d.getTime())) return "—";
-
-    const date = d.toLocaleDateString("es-CL", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-    });
-    const time = d.toLocaleTimeString("es-CL", {
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-
-    return `${date}, ${time}`;
-}
+type Row = Partial<DepartmentDto>;
 
 const columns: DataTableColumn<Row>[] = [
     { key: "name", header: "Nombre", sortable: true },
+    {
+        key: "primaryLeadMembershipId", header: "Responsable",
+        render: (value) => <span>{(value as User)?.name}</span>,
+
+    },
     {
         key: "createdAt",
         header: "Fecha de solicitud",

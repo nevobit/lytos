@@ -9,7 +9,7 @@ type DepartmentFormValues = {
     description: string;
     isDefault: boolean;
     leadMembershipIds: string[];
-    primaryLeadMembershipId?: string;
+    primaryLeadMembershipId?: User | string;
 };
 
 type DepartmentFormModalProps = {
@@ -107,7 +107,7 @@ const DepartmentFormModal = ({
 
         if (
             form.primaryLeadMembershipId &&
-            !form.leadMembershipIds.includes(form.primaryLeadMembershipId)
+            !form.leadMembershipIds.includes(form.primaryLeadMembershipId as string)
         ) {
             nextErrors.primaryLeadMembershipId =
                 "El líder principal debe existir dentro de los responsables seleccionados.";
@@ -270,7 +270,7 @@ const DepartmentFormModal = ({
                             id="department-lead"
                             className={`${styles.input} ${touched.slug && errors.slug ? styles.inputError : ""
                                 }`}
-                            value={form.primaryLeadMembershipId}
+                            value={form.primaryLeadMembershipId as string}
                             onChange={handleLeadChange}
                             hint="Encargado del departamento y primer contacto.">
                             <option>Seleccionar usuario</option>

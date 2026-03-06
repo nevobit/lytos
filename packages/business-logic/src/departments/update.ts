@@ -24,6 +24,10 @@ export const updateDepartment = async (
         update.slug = slug;
     }
 
+    if (dto.primaryLeadMembershipId !== undefined) {
+        update.primaryLeadMembershipId = dto.primaryLeadMembershipId
+    }
+
     if (dto.leadMembershipIds !== undefined) {
         update.leadMembershipIds = dto.leadMembershipIds.map((id) => id);
     }

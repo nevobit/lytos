@@ -7,6 +7,7 @@ type CreateDepartmentDto = {
     slug?: string;
     description?: string;
     leadMembershipIds?: string[];
+    primaryLeadMembershipId: string;
 };
 
 export const createDepartmentRoute = makeFastifyRoute(

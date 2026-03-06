@@ -8,7 +8,7 @@ export const DepartmentSchemaMongo = new Schema<Department>({
     description: { type: String },
     isDefault: { type: Boolean },
     leadMembershipIds: [{ type: String }],
-    primaryLeadMembershipId: { type: String, ref: 'Users' },
+    primaryLeadMembershipId: { type: String, ref: 'users' },
     ...baseFields,
     ...tenantFields
 }, opts);
