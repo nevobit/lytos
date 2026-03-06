@@ -1,5 +1,5 @@
 import { type Base } from '../../../common';
-import { User } from '../../users';
+import type { User } from '../../users';
 
 export interface Department extends Base {
     workspaceId: string;
