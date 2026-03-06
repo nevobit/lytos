@@ -21,6 +21,7 @@
 .copy {
   font-size: 1.4rem;
 }
+
 .headerActions {
   display: flex;
   gap: var(--ds-space-2);
@@ -116,7 +117,6 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid var(--ds-color-border-default);
   background: var(--ds-color-bg-default);
   color: var(--ds-color-fg-default);
   padding: 8px 10px;

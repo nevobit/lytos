@@ -132,7 +132,6 @@ export default function Tickets() {
 
     return (
         <div className={styles.page}>
-            {/* Header */}
             <div className={styles.header}>
                 <div>
                     <div className={styles.title}>Tickets</div>
@@ -155,7 +154,6 @@ export default function Tickets() {
                 </div>
             </div>
 
-            {/* Toolbar */}
             <div className={styles.toolbar}>
                 <div className={styles.search}>
                     <Search size={14} strokeWidth='1.5px' />
@@ -198,7 +196,6 @@ export default function Tickets() {
 
             <div className={styles.tableWrap}>
                 <Table
-
                     columns={columns}
                     rows={filteredRows}
                 />

@@ -7,6 +7,7 @@ import { authRoutes } from './auth';
 import { customerRoutes } from './customers';
 import { departmentRoutes } from './departments';
 import { ticketRoutes } from './tickets';
+import { userRoutes } from './users';
 
 const routes: RouteOptions[] = [
     healthCheckRoute,
@@ -16,6 +17,7 @@ const routes: RouteOptions[] = [
     ...withPrefix('/customers', customerRoutes),
     ...departmentRoutes,
     ...withPrefix('/tickets', ticketRoutes),
+    ...userRoutes
 
 ];
 

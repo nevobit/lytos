@@ -16,6 +16,7 @@
 .copy {
   font-size: 1.4rem;
 }
+
 .headerActions {
   display: flex;
   gap: var(--ds-space-2);
@@ -53,4 +54,74 @@
   background: var(--ds-accent);
   border-color: color-mix(in srgb, var(--ds-accent) 70%, black);
   color: white;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-3);
+  border: 1px solid var(--ds-color-border-default);
+  border-right: 0;
+  border-left: 0;
+  background: var(--ds-color-bg-elevated);
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-8);
+  background: var(--ds-color-bg-default);
+}
+
+.searchIcon {
+  opacity: 0.65;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--ds-color-fg-default);
+  font: inherit;
+}
+
+.kbdHint {
+  font-size: 1.1rem;
+  color: var(--ds-color-fg-muted);
+  border: 1px solid var(--ds-color-border-default);
+  background: var(--ds-color-bg-elevated);
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.filterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--ds-color-border-default);
+  background: var(--ds-color-bg-default);
+  color: var(--ds-color-fg-default);
+  padding: 8px 10px;
+  border-radius: var(--ds-radius-6);
+  cursor: pointer;
+  font: inherit;
+}
+
+.filterIcon {
+  opacity: 0.7;
 }

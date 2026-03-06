@@ -3,7 +3,7 @@ import { departments } from "../services";
 
 export const useDepartments = () => {
     const { isPending: isLoading, data, } = useQuery({
-        queryKey: ['workspaces'],
+        queryKey: ['departments'],
         queryFn: departments,
     });
     return { isLoading, departments: data }

@@ -20,5 +20,4 @@ export interface Customer extends Base {
     userId: string;
     workspaceId: string;
     emails: ContactInfo[];
-
 }

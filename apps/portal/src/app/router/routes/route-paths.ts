@@ -10,6 +10,7 @@ export const PrivateRoutes = {
     ACCOUNTS: "/accounts",
     NEW_ACCOUNT: "/accounts/new",
     DAHSBOARD: "/dahsboard",
+    SETUP: "/setup",
     DEPARTMENTS: "/departments",
     TICKETS: "/tickets",
 

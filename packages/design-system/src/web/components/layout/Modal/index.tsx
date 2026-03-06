@@ -118,6 +118,7 @@ function Provider({ children, portalRootId = "ds-portal-root" }: ProviderProps) 
                     isOpen
                     onClose={() => setConfirmNode(null)}
                     size="sm"
+                    position="center"
                     ariaLabel={typeof title === "string" ? title : "Confirmation"}
                 >
                     <Header>
@@ -242,6 +243,7 @@ type WindowProps = {
     className?: string;
     overlayClassName?: string;
     size?: "sm" | "md" | "lg" | "xl" | { width?: number | string; maxWidth?: number | string };
+    position?: "center" | "right";
     closeOnOverlay?: boolean;
     closeOnEsc?: boolean;
     ariaLabel?: string;
@@ -258,6 +260,7 @@ function Window({
     className,
     overlayClassName,
     size = "md",
+    position = "right",
     closeOnOverlay = true,
     closeOnEsc = true,
     closeStrategy = "auto",
@@ -342,7 +345,11 @@ function Window({
             />
             <div
                 ref={dialogRef}
-                className={`${styles.modal} ${className ?? ""}`}
+                className={[
+                    styles.modal,
+                    position === "right" ? styles.modalRight : styles.modalCenter,
+                    className ?? "",
+                ].join(" ")}
                 style={sizeStyle}
                 role="dialog"
                 aria-modal="true"

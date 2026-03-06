@@ -1,5 +1,6 @@
 import { authorizePermission, updateDepartment } from "@lytos/business-logic";
 import { makeFastifyRoute, RouteMethod } from "@lytos/constant-definitions";
+import { verifyJwt } from "@lytos/security";
 
 type UpdateDepartmentDto = {
     name?: string;
@@ -11,7 +12,7 @@ type UpdateDepartmentDto = {
 export const updateDepartmentRoute = makeFastifyRoute(
     RouteMethod.PATCH,
     "/:departmentId",
-    null,
+    verifyJwt,
     { tenant: "required", auth: "required" },
     async (req, reply) => {
         const workspaceId = req.auth?.workspaceId;

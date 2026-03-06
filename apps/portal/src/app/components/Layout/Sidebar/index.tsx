@@ -16,6 +16,8 @@ import {
     // MoreVertical,
     ChevronDown,
     Boxes,
+    User,
+    Footprints,
 } from "lucide-react";
 import { useSession } from "@/shared";
 import { Avatar } from "@lytos/design-system";
@@ -30,14 +32,15 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
+    { label: "Primeros pasos", href: '/setup', icon: Footprints },
     { label: "Dashboard", href: '/', icon: LayoutDashboard },
     { label: "Departamentos", href: PrivateRoutes.DEPARTMENTS, icon: Boxes },
     { label: "Tickets", href: PrivateRoutes.TICKETS, icon: Ticket },
+    { label: "Clientes", href: '/customers', icon: User },
 
     // { label: "Inbox", href: '/inbox', icon: Inbox },
     // { label: "Notification", href: '/notifications', icon: Bell },
     // { label: "Knowledge Base", href: '/knowledge', icon: BookOpen },
-    // { label: "Customer", href: '/customers', icon: User },
     // { label: "Forum", href: '/forum', icon: MessagesSquare },
     // { label: "Report", href: '/report', icon: BarChart3 },
 ];

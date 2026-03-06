@@ -1,0 +1,30 @@
+.container {
+  padding-block: 1.5rem;
+  padding-inline: 1rem;
+  display: grid;
+  grid-template-columns: 4rem 1fr 10rem;
+  gap: 1.5rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.4rem;
+}
+
+.copy {
+  font-size: 1.3rem;
+  color: #758191;
+  line-height: 2rem;
+  font-weight: 300;
+}
+
+.icon {
+  background-color: #f3f4f6;
+  border-radius: 50rem;
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

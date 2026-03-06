@@ -1,0 +1,11 @@
+.rowActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.actionToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

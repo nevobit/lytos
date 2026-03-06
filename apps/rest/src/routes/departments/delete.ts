@@ -1,10 +1,11 @@
 import { authorizePermission, deleteDepartment } from "@lytos/business-logic";
 import { makeFastifyRoute, RouteMethod } from "@lytos/constant-definitions";
+import { verifyJwt } from "@lytos/security";
 
 export const deleteDepartmentRoute = makeFastifyRoute(
     RouteMethod.DELETE,
     "/:departmentId",
-    null,
+    verifyJwt,
     { tenant: "required", auth: "required" },
     async (req, reply) => {
         const workspaceId = req.auth?.workspaceId;
