@@ -7,6 +7,7 @@ export type CreateDepartmentDto = {
     slug?: string;
     description?: string;
     leadMembershipIds?: string[];
+    primaryLeadMembershipId: string;
 };
 
 export const createDepartment = async (workspaceId: string, dto: CreateDepartmentDto) => {
@@ -26,6 +27,7 @@ export const createDepartment = async (workspaceId: string, dto: CreateDepartmen
         description: dto.description?.trim() ?? "",
         isDefault: false,
         leadMembershipIds: (dto.leadMembershipIds ?? []).map((id) => id),
+        primaryLeadMembershipId: dto.primaryLeadMembershipId
     });
 
     return created.toObject();

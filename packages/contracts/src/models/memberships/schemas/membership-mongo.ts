@@ -4,7 +4,7 @@ import { baseFields, opts, tenantFields } from "../../../common";
 
 export const MembershipSchemaMongo = new Schema<Membership>({
     roleId: { type: String },
-    userId: { type: String },
+    userId: { type: String, ref: "users", index: true },
     departmentIds: [{ type: String }],
     primaryDepartmentId: { type: String },
     inviteeEmail: { type: String },

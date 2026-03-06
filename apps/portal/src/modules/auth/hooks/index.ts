@@ -3,3 +3,4 @@ export * from './useSignup';
 export * from './useWorkspaces';
 export * from './useSwitchWorkspace';
 export * from './useCreateWorkspace';
+export * from './useUsers';

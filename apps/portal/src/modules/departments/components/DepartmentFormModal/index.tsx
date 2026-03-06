@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Input, Modal, Select, Textarea, useModal } from "@lytos/design-system";
-import type { Department } from "@lytos/contracts";
+import type { Department, User } from "@lytos/contracts";
 import styles from "./DepartmentFormModal.module.css";
 
 type DepartmentFormValues = {
@@ -18,6 +18,7 @@ type DepartmentFormModalProps = {
     isSubmitting?: boolean;
     onSubmit: (values: DepartmentFormValues) => Promise<void> | void;
     isLoading: boolean;
+    users: User[];
 };
 
 function toSlug(value: string) {
@@ -37,6 +38,7 @@ const DepartmentFormModal = ({
     isSubmitting = false,
     onSubmit,
     isLoading,
+    users
 }: DepartmentFormModalProps) => {
     const { closeModal, requestCloseModal } = useModal();
 
@@ -150,10 +152,10 @@ const DepartmentFormModal = ({
     };
 
     const handleLeadChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSlugManuallyEdited(true);
         setForm((prev) => ({
             ...prev,
-            slug: toSlug(e.target.value),
+            leadMembershipIds: [e.target.value],
+            primaryLeadMembershipId: e.target.value,
         }));
     };
 
@@ -268,11 +270,15 @@ const DepartmentFormModal = ({
                             id="department-lead"
                             className={`${styles.input} ${touched.slug && errors.slug ? styles.inputError : ""
                                 }`}
-                            value={form.slug}
+                            value={form.primaryLeadMembershipId}
                             onChange={handleLeadChange}
-                            hint="Encargado del departamento y primer contacto."
-                            error={touched.slug && errors.slug ? errors.slug : ''}>
-                            <option value=""></option>
+                            hint="Encargado del departamento y primer contacto.">
+                            <option>Seleccionar usuario</option>
+
+                            {users?.map((user: User) => (
+                                <option value={user.id}>{user.name}</option>
+
+                            ))}
                         </Select >
                     </div>
 

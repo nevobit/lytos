@@ -1,7 +1,7 @@
-import { getAllUsers } from "@lytos/business-logic";
 import { makeFastifyRoute, RouteMethod } from "@lytos/constant-definitions";
 import type { Params } from "@lytos/contracts";
 import { verifyJwt } from "@lytos/security";
+import { getAllMembershipUsers } from "../../../../../packages/business-logic/src/memberships";
 
 export const listUsersRoute = makeFastifyRoute(
     RouteMethod.GET,
@@ -15,7 +15,7 @@ export const listUsersRoute = makeFastifyRoute(
 
         if (!wsId || !roleId) return reply.code(409).send({ message: "User context required" });
 
-        const out = await getAllUsers({ ...params, workspaceId: wsId });
+        const out = await getAllMembershipUsers({ ...params, workspaceId: wsId });
         return reply.code(200).send(out);
     }
 );

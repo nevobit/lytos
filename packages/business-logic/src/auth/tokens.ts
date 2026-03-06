@@ -31,7 +31,7 @@ export async function issueTokens(input: IssueTokensInput) {
         audience: "lytos.api",
         subject: userId,
         algorithm: "HS256",
-        expiresIn: "15m",
+        expiresIn: "1d",
         notBefore: "0s",
         keyid: "access-hs256-v1"
     });

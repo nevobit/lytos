@@ -5,11 +5,13 @@ import type { Department } from '@lytos/contracts';
 import DepartmentFormModal from '../DepartmentFormModal';
 import { useDeleteDepartment } from '../../hooks/useDeleteDepartment';
 import { useUpdateDepartment } from '../../hooks/useUpdateDepartment';
+import { useUsers } from '@/modules/auth/hooks';
 
 const Actions = ({ id, department }: { id: string, department: Partial<Department> }) => {
     const { openModal, requestCloseModal } = useModal();
     const { deleteFn } = useDeleteDepartment();
     const { update } = useUpdateDepartment();
+    const { users } = useUsers();
 
     const handleOpenEdit = (department: Partial<Department>) => {
         openModal(
@@ -18,6 +20,7 @@ const Actions = ({ id, department }: { id: string, department: Partial<Departmen
                 isLoading={false}
                 initialValues={department}
                 onSubmit={(values) => update({ id: String(department.id), ...values })}
+                users={users}
             />
         );
     };

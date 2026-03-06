@@ -7,6 +7,7 @@ import { useState } from 'react';
 import DepartmentFormModal from '../../components/DepartmentFormModal';
 import Actions from '../../components/Actions';
 import { useCreateDepartment } from '../../hooks/useCreateDepartment';
+import { useUsers } from '@/modules/auth/hooks';
 
 type Row = Partial<Department>;
 
@@ -46,6 +47,8 @@ const columns: DataTableColumn<Row>[] = [
 
 const Departments = () => {
     const { departments } = useDepartments();
+    const { users } = useUsers();
+
     const { openModal } = useModal();
     const { isLoading, create } = useCreateDepartment();
 
@@ -57,6 +60,7 @@ const Departments = () => {
                 mode="create"
                 onSubmit={create}
                 isLoading={isLoading}
+                users={users}
             />
         );
     }; 
