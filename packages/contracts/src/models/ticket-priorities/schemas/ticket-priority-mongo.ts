@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 import { baseFields, opts, tenantFields } from "../../../common";
-import { TicketPriority } from "./ticket-priority";
+import type { TicketPriority } from "./ticket-priority";
 
 export const TicketPrioritySchemaMongo = new Schema<TicketPriority>({
     name: { type: String, trim: true },

@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 import { baseFields, opts, tenantFields } from "../../../common";
-import { ScalationRule } from "./scalation-rule";
+import type { ScalationRule } from "./scalation-rule";
 
 export const ScalationRuleSchemaMongo = new Schema<ScalationRule>({
     departmentId: { type: String },
