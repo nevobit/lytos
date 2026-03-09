@@ -70,7 +70,7 @@
 
 .forgot {
   display: inline-block;
-  margin-block: 1rem 2rem;
+  margin-block: 1rem 0;
   font-size: 1.4rem;
 }
 
@@ -96,4 +96,12 @@
   justify-content: center;
   padding: 2rem;
   font-size: 1.4rem;
+}
+
+.cap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: -2rem;
 }

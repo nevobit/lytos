@@ -84,7 +84,9 @@ const Login = () => {
                         <Link className={styles.forgot} to="/">
                             ¿Olvidaste tu contraseña?
                         </Link>
-                        <GoogleReCaptchaCheckbox onChange={(token) => setTokenr(token)} />
+                        <div className={styles.cap} >
+                            <GoogleReCaptchaCheckbox onChange={(token) => setTokenr(token)} />
+                        </div>
                         <Button
                             loading={isLogging}
                             fullWidth
