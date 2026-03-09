@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Button, Table, useModal, type DataTableColumn } from "@lytos/design-system";
 import styles from "./List.module.css";
 import { Filter, Search, Calendar, Columns3, Building2, Users } from "lucide-react";
@@ -6,6 +6,7 @@ import { useCreateCustomer } from "../../hooks/useCreateCustomer";
 import { useUsers } from "@/modules/auth/hooks";
 import CustomerFormModal from "../../components/CustomerFormModal";
 import { useSession } from "@/shared";
+import { useCustomers } from "../../hooks/useCustomers";
 
 export type CustomerRow = {
     id?: string;
@@ -55,19 +56,7 @@ export default function Customers() {
     const [query, setQuery] = useState("");
     const [tab, setTab] = useState<"lista" | "organizaciones">("lista");
 
-    const rows: CustomerRow[] = useMemo(() => [], []);
-
-    const filteredRows = useMemo(() => {
-        const q = query.trim().toLowerCase();
-        if (!q) return rows;
-        return rows.filter((r) => {
-            const name = String(r.name ?? "").toLowerCase();
-            const email = String(r.email ?? "").toLowerCase();
-            const phone = String(r.phone ?? "").toLowerCase();
-            const org = String(r.organizationName ?? "").toLowerCase();
-            return name.includes(q) || email.includes(q) || phone.includes(q) || org.includes(q);
-        });
-    }, [rows, query]);
+    const { customers } = useCustomers();
 
     const columns: DataTableColumn<CustomerRow>[] =
         [
@@ -242,7 +231,7 @@ export default function Customers() {
             </div>
 
             <div className={styles.tableWrap}>
-                <Table columns={columns} rows={filteredRows} />
+                <Table columns={columns} rows={customers?.items || []} />
             </div>
         </div>
     );
