@@ -15,6 +15,8 @@ import type {
     RuleCondition,
     RuleAction,
 } from "@lytos/contracts";
+import { useTicketPriorities } from "@/modules/ticket-priorities/hooks/useTicketPriorities";
+import { useTicketStatuses } from "@/modules/ticket-statuses/hooks/useTicketStatuses";
 
 type SelectOption = {
     label: string;
@@ -68,20 +70,8 @@ const conditionOperatorOptions: SelectOption[] = [
     { label: "No está en", value: "not_in" },
 ];
 
-const priorityOptions: SelectOption[] = [
-    { label: "Baja", value: "low" },
-    { label: "Media", value: "medium" },
-    { label: "Alta", value: "high" },
-    { label: "Crítica", value: "critical" },
-];
 
-const statusOptions: SelectOption[] = [
-    { label: "Abierto", value: "open" },
-    { label: "En progreso", value: "in_progress" },
-    { label: "Pendiente", value: "pending" },
-    { label: "Resuelto", value: "resolved" },
-    { label: "Cerrado", value: "closed" },
-];
+
 
 const extractItems = <T,>(source: unknown): T[] => {
     if (Array.isArray(source)) return source as T[];
@@ -160,7 +150,8 @@ const Cases = () => {
     const { scalationRules, isLoading } = useScalationRules();
     const { users } = useUsers();
     const { departments } = useDepartments();
-
+    const { ticketPriorities } = useTicketPriorities();
+    const { ticketStatuses } = useTicketStatuses();
     const { create } = useCreateScalationRule();
     const { update } = useUpdateScalationRule();
     const { remove } = useDeleteScalationRule();
@@ -425,7 +416,7 @@ const Cases = () => {
                         )
                     }
                 >
-                    {renderSelectOptions(priorityOptions)}
+                    {renderSelectOptions(ticketPriorities.items.map((ticketPriority) => ({ value: ticketPriority.id, label: ticketPriority.name })))}
                 </Select>
             );
         }
@@ -443,7 +434,7 @@ const Cases = () => {
                         )
                     }
                 >
-                    {renderSelectOptions(statusOptions)}
+                    {renderSelectOptions(ticketStatuses.items.map((ticketStatus) => ({ value: ticketStatus.id, label: ticketStatus.name })))}
                 </Select>
             );
         }
@@ -496,7 +487,7 @@ const Cases = () => {
                         )
                     }
                 >
-                    {renderSelectOptions(priorityOptions)}
+                    {renderSelectOptions(ticketPriorities.items.map((ticketPriority) => ({ value: ticketPriority.id, label: ticketPriority.name })))}
                 </Select>
             );
         }
