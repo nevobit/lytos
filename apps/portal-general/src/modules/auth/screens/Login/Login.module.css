@@ -97,3 +97,9 @@
   padding: 2rem;
   font-size: 1.4rem;
 }
+
+.captchaBlock {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 4px;
+}

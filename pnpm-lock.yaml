@@ -267,6 +267,9 @@ importers:
 
   apps/portal:
     dependencies:
+      '@google-recaptcha/react':
+        specifier: ^2.4.0
+        version: 2.4.0(@types/react@19.1.12)(react@19.1.1)
       '@lytos/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
@@ -306,6 +309,9 @@ importers:
       react-dom:
         specifier: ^19.1.1
         version: 19.1.1(react@19.1.1)
+      react-google-recaptcha-v3:
+        specifier: ^1.11.0
+        version: 1.11.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react-i18next:
         specifier: ^15.7.3
         version: 15.7.3(i18next@25.4.2(typescript@5.8.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3)
@@ -3021,6 +3027,18 @@ packages:
 
   '@formatjs/intl-localematcher@0.6.1':
     resolution: {integrity: sha512-ePEgLgVCqi2BBFnTMWPfIghu6FkbZnnBVhO2sSxvLfrdFw7wCHAHiDoM2h4NRgjbaY7+B7HgOLZGkK187pZTZg==}
+
+  '@google-recaptcha/core@1.1.2':
+    resolution: {integrity: sha512-WHIVXntnc7b0FXkgNOO1Y7kYj+wnWVNkwluHz4ISmGfnGeUw5U/OezBPmZBOD9J+LK+hA11zvFGs0vElnc7UMw==}
+
+  '@google-recaptcha/react@2.4.0':
+    resolution: {integrity: sha512-JkjYifh4znkD30h8fMbU/Nlg8IgOjYoenq3DZ6JJy7WrTJ/lGCF/3S5S+nlommwOTEQ8C26hRE88tXJSbF450w==}
+    peerDependencies:
+      '@types/react': ^17 || ^18|| ^19
+      react: ^17 || ^18 || ^19
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@graphql-tools/merge@9.1.1':
     resolution: {integrity: sha512-BJ5/7Y7GOhTuvzzO5tSBFL4NGr7PVqTJY3KeIDlVTT8YLcTXtBR+hlrC3uyEym7Ragn+zyWdHeJ9ev+nRX1X2w==}
@@ -11067,6 +11085,12 @@ packages:
     peerDependencies:
       react: '>=16.8.6'
 
+  react-google-recaptcha-v3@1.11.0:
+    resolution: {integrity: sha512-kLQqpz/77m8+trpBwzqcxNtvWZYoZ/YO6Vm2cVTHW8hs80BWUfDpC7RDwuAvpswwtSYApWfaSpIDFWAIBNIYxQ==}
+    peerDependencies:
+      react: ^16.3 || ^17.0 || ^18.0 || ^19.0
+      react-dom: ^17.0 || ^18.0 || ^19.0
+
   react-i18next@15.7.3:
     resolution: {integrity: sha512-AANws4tOE+QSq/IeMF/ncoHlMNZaVLxpa5uUGW1wjike68elVYr0018L9xYoqBr1OFO7G7boDPrbn0HpMCJxTw==}
     peerDependencies:
@@ -15464,6 +15488,15 @@ snapshots:
   '@formatjs/intl-localematcher@0.6.1':
     dependencies:
       tslib: 2.8.1
+
+  '@google-recaptcha/core@1.1.2': {}
+
+  '@google-recaptcha/react@2.4.0(@types/react@19.1.12)(react@19.1.1)':
+    dependencies:
+      '@google-recaptcha/core': 1.1.2
+      react: 19.1.1
+    optionalDependencies:
+      '@types/react': 19.1.12
 
   '@graphql-tools/merge@9.1.1(graphql@16.11.0)':
     dependencies:
@@ -25935,6 +25968,12 @@ snapshots:
     dependencies:
       prop-types: 15.8.1
       react: 19.1.1
+
+  react-google-recaptcha-v3@1.11.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+    dependencies:
+      hoist-non-react-statics: 3.3.2
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
 
   react-i18next@15.7.3(i18next@25.4.2(typescript@5.8.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3):
     dependencies:

@@ -12,6 +12,7 @@ import { PWAEvents } from "./pwa/PWAEvents";
 import Application from "./Application";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleReCaptchaProvider } from '@google-recaptcha/react';
 
 const AppShell = buildAppShell(
   [
@@ -19,7 +20,11 @@ const AppShell = buildAppShell(
     [ToastProvider, {}],
     [CurrencyProvider, {}],
     [PersistedQueryProvider, {}],
-    [GoogleOAuthProvider, { clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID }]
+    [GoogleOAuthProvider, { clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID }],
+    [GoogleReCaptchaProvider, {
+      type: 'v3',
+      siteKey: "6LcKGYQsAAAAAHqX7Me6MCcnHxkuythlYm_MLuiv",
+    }]
   ],
   [
     [ReactQueryDevtools, { initialIsOpen: false }],
