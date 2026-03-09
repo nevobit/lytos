@@ -11,14 +11,14 @@ export const ticketPriorities = async (): Promise<Result<TicketPriority>> => {
 };
 
 export const createTicketPriority = async (
-    priority: CreateTicketPripertyDto,
+    priority: Partial<CreateTicketPripertyDto>,
 ): Promise<TicketPriority> => {
     const { data } = await api.post(`/ticket-priorities`, priority);
     return data;
 };
 
 export const updateTicketPriority = async (
-    priority: TicketPriority,
+    priority: Partial<TicketPriority>,
 ): Promise<TicketPriority> => {
     const { data } = await api.patch(`/ticket-priorities/${priority.id}`, priority);
     return data;

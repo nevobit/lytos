@@ -30,22 +30,22 @@ const Categories = () => {
         ]);
     };
 
-    const changeField = (
+    const changeField = <K extends keyof CreateTicketCategoryDto>(
         idx: number,
-        field: keyof CreateTicketCategoryDto,
-        value: undefined,
+        field: K,
+        value: CreateTicketCategoryDto[K],
     ) => {
         const updated = [...local];
         (updated[idx])[field] = value;
         setLocal(updated);
     };
 
-    const saveCategory = async (cat: TicketCategory, idx: number) => {
+    const saveCategory = async (cat: Partial<TicketCategory>, idx: number) => {
         try {
             if (cat.id) {
                 await update(cat);
             } else {
-                const payload: CreateTicketCategoryDto = {
+                const payload: Partial<CreateTicketCategoryDto> = {
                     workspaceId: cat.workspaceId,
                     name: cat.name,
                     description: cat.description,

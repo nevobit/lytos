@@ -30,10 +30,10 @@ const Types = () => {
         ]);
     };
 
-    const changeField = (
+    const changeField = <K extends keyof CreateTicketTypeDto>(
         idx: number,
-        field: keyof CreateTicketTypeDto,
-        value: undefined,
+        field: K,
+        value: CreateTicketTypeDto[K],
     ) => {
         const readOnlyFields = ['id', 'createdAt', 'deletedAt'];
         if (readOnlyFields.includes(field)) {
@@ -44,12 +44,12 @@ const Types = () => {
         setLocal(updated);
     };
 
-    const saveType = async (t: TicketType, idx: number) => {
+    const saveType = async (t: Partial<TicketType>, idx: number) => {
         try {
             if (t.id) {
                 await update(t);
             } else {
-                const payload: CreateTicketTypeDto = {
+                const payload: Partial<CreateTicketTypeDto> = {
                     workspaceId: t.workspaceId,
                     name: t.name,
                     description: t.description,

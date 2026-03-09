@@ -7,14 +7,14 @@ export const ticketCategories = async (): Promise<Result<TicketCategory>> => {
 };
 
 export const createTicketCategory = async (
-    cat: CreateTicketCategoryDto,
+    cat: Partial<CreateTicketCategoryDto>,
 ): Promise<TicketCategory> => {
     const { data } = await api.post(`/ticket-categories`, cat);
     return data;
 };
 
 export const updateTicketCategory = async (
-    cat: TicketCategory,
+    cat: Partial<TicketCategory>,
 ): Promise<TicketCategory> => {
     const { data } = await api.patch(`/ticket-categories/${cat.id}`, cat);
     return data;

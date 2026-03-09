@@ -3,12 +3,12 @@ import { createTicketType } from "../services";
 
 export const useCreateTicketType = () => {
     const queryClient = useQueryClient();
-    const { mutateAsync, isLoading, error } = useMutation({
+    const { mutateAsync, isPending, error } = useMutation({
         mutationFn: createTicketType,
         onSuccess: async () => {
             await queryClient.invalidateQueries({ queryKey: ['ticketTypes'] });
         },
     });
 
-    return { create: mutateAsync, isLoading, error };
+    return { create: mutateAsync, isLoading: isPending, error };
 };

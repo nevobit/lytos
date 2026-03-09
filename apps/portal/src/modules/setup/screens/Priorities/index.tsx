@@ -30,22 +30,22 @@ const Priorities = () => {
         ]);
     };
 
-    const changeField = (
+    const changeField = <K extends keyof CreateTicketPripertyDto>(
         idx: number,
-        field: keyof CreateTicketPripertyDto,
-        value: string,
+        field: K,
+        value: CreateTicketPripertyDto[K],
     ) => {
         const updated = [...local];
         (updated[idx])[field] = value;
         setLocal(updated);
     };
 
-    const savePriority = async (priority: TicketPriority, idx: number) => {
+    const savePriority = async (priority: Partial<TicketPriority>, idx: number) => {
         try {
             if (priority.id) {
                 await update(priority);
             } else {
-                const payload: CreateTicketPripertyDto = {
+                const payload: Partial<CreateTicketPripertyDto> = {
                     workspaceId: priority.workspaceId,
                     name: priority.name,
                     level: priority.level,
