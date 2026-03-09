@@ -8,8 +8,8 @@
   color: var(--_fg);
   background: var(--_bg);
   border: 1px solid var(--_bd);
-  border-radius: var(--ds-radius-6);
-  padding-block: 1rem; /* logical props for RTL */
+  border-radius: var(--ds-radius-8);
+  padding-block: 2rem;
   padding-inline: 1.5rem;
   font-weight: var(--ds-font-weight-medium);
   line-height: 1;
@@ -63,7 +63,7 @@
   font-size: var(--ds-font-size-12);
 }
 .medium {
-  padding-block: 0.8rem;
+  padding-block: 1.2rem;
   padding-inline: 1.5rem;
   font-size: var(--ds-font-size-14);
 }

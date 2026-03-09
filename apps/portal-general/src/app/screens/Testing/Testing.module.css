@@ -1,0 +1,453 @@
+.page {
+  padding: var(--ds-space-10);
+  display: grid;
+  gap: var(--ds-space-6);
+  background: var(--ds-bg-canvas);
+  color: var(--ds-fg-default);
+  min-height: 100vh;
+}
+
+.pageGrid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--ds-border-default) 45%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--ds-border-default) 45%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 24px 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--ds-space-6);
+  padding: var(--ds-space-6);
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-12);
+  background: var(--ds-bg-elevated);
+  box-shadow: var(--ds-elevation-card);
+}
+
+.headerLeft {
+  display: grid;
+  gap: var(--ds-space-2);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+}
+
+.toolbar {
+  display: flex;
+  gap: var(--ds-space-4);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.control {
+  display: grid;
+  gap: var(--ds-space-2);
+}
+
+.label {
+  font-size: var(--ds-font-size-12);
+  color: var(--ds-fg-muted);
+}
+
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-8);
+  overflow: hidden;
+  background: var(--ds-bg-subtle);
+}
+
+.segBtn {
+  padding: var(--ds-pad-2) var(--ds-pad-3);
+  font-size: var(--ds-font-size-14);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+.segBtn:hover {
+  background: var(--ds-state-hover-bg);
+}
+.segBtnActive {
+  background: color-mix(in srgb, var(--ds-accent) 16%, transparent);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  font-size: var(--ds-font-size-14);
+  color: var(--ds-fg-muted);
+  user-select: none;
+}
+
+.h1 {
+  /* tu base ya define h1, aquí solo forzamos margin si algo externo lo mete */
+  margin: 0;
+}
+
+.h2 {
+  margin: 0;
+}
+
+.hint {
+  font-size: var(--ds-font-size-12);
+  color: var(--ds-fg-muted);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--ds-space-6);
+  align-items: start;
+}
+
+.leftCol,
+.rightCol {
+  display: grid;
+  gap: var(--ds-space-6);
+}
+
+.section {
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-12);
+  background: var(--ds-bg-elevated);
+  box-shadow: var(--ds-elevation-card);
+  overflow: hidden;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--ds-space-4);
+  padding: var(--ds-space-5) var(--ds-space-6);
+  border-bottom: 1px solid var(--ds-border-default);
+  background: var(--ds-bg-subtle);
+}
+
+.sectionHeaderLeft {
+  display: grid;
+  gap: var(--ds-space-1);
+}
+
+.sectionHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+}
+
+.sectionBody {
+  padding: var(--ds-space-6);
+  display: grid;
+  gap: var(--ds-space-4);
+}
+
+.muted {
+  color: var(--ds-fg-muted);
+}
+
+.code {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-font-size-12);
+  color: var(--ds-fg-muted);
+}
+
+.inlineCode {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-font-size-14);
+  background: var(--ds-bg-subtle);
+  padding: 0 var(--ds-space-1);
+  border-radius: var(--ds-radius-4);
+  border: 1px solid var(--ds-border-default);
+}
+
+.rowWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-3);
+  align-items: center;
+}
+
+.stack {
+  display: grid;
+  gap: var(--ds-space-3);
+}
+
+/* Tokens */
+.tokenGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ds-space-4);
+}
+
+.tokenCard {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr;
+  gap: var(--ds-space-3);
+  align-items: center;
+  padding: var(--ds-space-3);
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-8);
+  background: var(--ds-bg-elevated);
+}
+
+.tokenSwatch {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: var(--ds-radius-8);
+  border: 1px solid var(--ds-border-strong);
+}
+
+.tokenMeta {
+  display: grid;
+  gap: var(--ds-space-1);
+}
+
+.tokenLabel {
+  font-size: var(--ds-font-size-14);
+}
+
+/* Buttons (helpers, no reemplaza tu DS; solo para la lab page) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  padding: var(--ds-pad-2) var(--ds-pad-4);
+  border-radius: var(--ds-radius-8);
+  border: 1px solid var(--ds-border-default);
+  background: var(--ds-bg-elevated);
+  cursor: pointer;
+  box-shadow: var(--ds-elevation-0);
+  transition:
+    background var(--ds-motion-duration-2) var(--ds-motion-ease-standard),
+    transform var(--ds-motion-duration-1) var(--ds-motion-ease-standard),
+    border-color var(--ds-motion-duration-2) var(--ds-motion-ease-standard);
+}
+
+.btn:hover {
+  background: var(--ds-state-hover-bg);
+}
+
+.btn:active {
+  background: var(--ds-state-active-bg);
+  transform: translateY(0.1rem);
+}
+
+.btn:disabled {
+  opacity: var(--ds-opacity-disabled);
+  cursor: not-allowed;
+}
+
+.btnPrimary {
+  background: var(--ds-button-bg);
+  border-color: var(--ds-button-border);
+  color: var(--ds-button-fg);
+}
+.btnPrimary:hover {
+  background: var(--ds-button-bg-hover);
+}
+
+.btnSoft {
+  background: color-mix(in srgb, var(--ds-accent) 10%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-accent) 30%, var(--ds-border-default));
+}
+
+.btnOutline {
+  background: transparent;
+  border-color: var(--ds-border-strong);
+}
+
+.btnGhost {
+  background: transparent;
+  border-color: transparent;
+}
+.btnGhost:hover {
+  background: var(--ds-state-hover-bg);
+  border-color: var(--ds-border-default);
+}
+
+.btnDanger {
+  background: color-mix(in srgb, var(--ds-danger) 12%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-danger) 35%, var(--ds-border-default));
+  color: var(--ds-fg-default);
+}
+
+.btnSm {
+  padding: var(--ds-pad-2) var(--ds-pad-3);
+  border-radius: var(--ds-radius-6);
+  font-size: var(--ds-font-size-14);
+}
+
+.btnLg {
+  padding: var(--ds-pad-3) var(--ds-pad-4);
+  border-radius: var(--ds-radius-12);
+  font-size: var(--ds-font-size-16);
+}
+
+.btnLoading {
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.spinner {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  border: 0.2rem solid color-mix(in srgb, var(--ds-button-fg) 28%, transparent);
+  border-top-color: color-mix(in srgb, var(--ds-button-fg) 85%, transparent);
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Forms layout only */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ds-space-4);
+}
+
+.field {
+  display: grid;
+  gap: var(--ds-space-2);
+}
+
+.help {
+  font-size: var(--ds-font-size-12);
+  color: var(--ds-fg-muted);
+}
+
+.checkRow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  font-size: var(--ds-font-size-14);
+  color: var(--ds-fg-default);
+}
+
+.colSpan2 {
+  grid-column: span 2;
+}
+
+/* Card (for lab) */
+.card {
+  border: 1px solid var(--ds-card-border);
+  border-radius: var(--ds-radius-12);
+  background: var(--ds-card-bg);
+  box-shadow: var(--ds-card-shadow);
+  overflow: hidden;
+}
+
+.cardHeader {
+  padding: var(--ds-space-5) var(--ds-space-6);
+  border-bottom: 1px solid var(--ds-border-default);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--ds-space-3);
+  background: var(--ds-bg-subtle);
+}
+
+.cardTitle {
+  font-weight: var(--ds-font-weight-semibold);
+}
+
+.cardBody {
+  padding: var(--ds-space-6);
+}
+
+.cardFooter {
+  padding: var(--ds-space-5) var(--ds-space-6);
+  border-top: 1px solid var(--ds-border-default);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ds-space-3);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: var(--ds-font-size-12);
+  border: 1px solid var(--ds-border-default);
+  background: var(--ds-bg-elevated);
+  color: var(--ds-fg-default);
+}
+
+.badgeNeutral {
+  background: var(--ds-bg-subtle);
+}
+.badgePrimary {
+  background: color-mix(in srgb, var(--ds-accent) 12%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-accent) 30%, var(--ds-border-default));
+}
+.badgeSuccess {
+  background: color-mix(in srgb, var(--ds-success) 12%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-success) 30%, var(--ds-border-default));
+}
+.badgeWarning {
+  background: color-mix(in srgb, var(--ds-warning) 12%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-warning) 30%, var(--ds-border-default));
+}
+.badgeDanger {
+  background: color-mix(in srgb, var(--ds-danger) 12%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-danger) 30%, var(--ds-border-default));
+}
+
+/* Alerts */
+.alert {
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-12);
+  padding: var(--ds-space-4);
+  background: var(--ds-bg-elevated);
+}
+
+.alertTitle {
+  font-weight: var(--ds-font-weight-semibold);
+  margin-bottom: var(--ds-space-1);
+}
+.alertBody {
+  color: var(--ds-fg-muted);
+}
+
+.alertInfo {
+  background: color-mix(in srgb, var(--ds-accent) 8%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-accent) 22%, var(--ds-border-default));
+}
+.alertSuccess {
+  background: color-mix(in srgb, var(--ds-success) 8%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-success) 22%, var(--ds-border-default));
+}
+.alertWarning {
+  background: color-mix(in srgb, var(--ds-warning) 8%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-warning) 22%, var(--ds-border-default));
+}
+.alertDanger {
+  background: color-mix(in srgb, var(--ds-danger) 8%, var(--ds-bg-elevated));
+  border-color: color-mix(in srgb, var(--ds-danger) 22%, var(--ds-border-default));
+}
+
+.footer {
+  padding: 0 var(--ds-space-2);
+}

@@ -7,3 +7,7 @@ export * from "./customers";
 export * from "./departments";
 export * from "./tickets";
 export * from "./messages";
+export * from "./ticket-priorities";
+export * from "./ticket-categories";
+export * from "./ticket-types";
+export * from "./scalation-rules";

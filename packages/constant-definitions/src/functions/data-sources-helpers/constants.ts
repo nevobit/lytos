@@ -33,6 +33,9 @@ export enum Collection {
     KB_FEEDBACK = "kbFeedback",
 
     TICKET_PRIORITIES = "ticketPriorities",
+    TICKET_CATEGORIES = "ticketCategories",
+    TICKET_TYPES = "ticketTypes",
+
     ROUTING_RULES = "routingRules",
     SLA_POLICIES = "slaPolicies",
     SLA_BREACHES = "slaBreaches",

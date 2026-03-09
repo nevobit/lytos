@@ -2,11 +2,16 @@ import { OAuth2Client } from "google-auth-library";
 import { googleLogin } from "@lytos/business-logic";
 import { makeFastifyRoute, RouteMethod } from "@lytos/constant-definitions";
 
-const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+const googleClientId = process.env.GOOGLE_CLIENT_ID;
+
+if (!googleClientId) {
+    throw new Error("GOOGLE_CLIENT_ID_MISSING");
+}
+
+const googleClient = new OAuth2Client(googleClientId);
 
 type GoogleLoginRequestBody = {
     credential: string;
-    workspaceSlug?: string;
 };
 
 export const loginGoogleRoute = makeFastifyRoute(
@@ -24,7 +29,7 @@ export const loginGoogleRoute = makeFastifyRoute(
 
             const ticket = await googleClient.verifyIdToken({
                 idToken: body.credential,
-                audience: process.env.GOOGLE_CLIENT_ID,
+                audience: googleClientId,
             });
 
             const payload = ticket.getPayload();
@@ -41,44 +46,22 @@ export const loginGoogleRoute = makeFastifyRoute(
                 return reply.code(400).send({ message: "GOOGLE_SUB_MISSING" });
             }
 
+            if (payload.email_verified === false) {
+                return reply.code(401).send({ message: "GOOGLE_EMAIL_NOT_VERIFIED" });
+            }
+
             const out = await googleLogin({
                 email: payload.email,
                 name: payload.name ?? null,
                 googleSub: payload.sub,
-                workspaceSlug: body.workspaceSlug,
             });
 
-            // reply.setCookie("refreshToken", out.refreshToken, {
-            //     httpOnly: true,
-            //     secure: process.env.NODE_ENV === "production",
-            //     sameSite: "lax",
-            //     path: "/",
-            //     maxAge: 30 * 24 * 60 * 60, // 30 días
-            // });
-
-            return reply.code(200).send({
-                accessToken: out.accessToken,
-                user: out.user,
-                membership: out.membership,
-                scopes: out.scopes,
-            });
+            return reply.code(200).send(out);
         } catch (e) {
             const message = (e as { message?: string })?.message;
 
-            if (message === "NO_WORKSPACE") {
-                return reply.code(403).send({ message: "User has no active workspace" });
-            }
-
             if (message === "USER_DISABLED") {
                 return reply.code(403).send({ message: "User is disabled" });
-            }
-
-            if (message === "MEMBERSHIP_ROLE_MISSING") {
-                return reply.code(500).send({ message: "Membership role missing" });
-            }
-
-            if (message === "ROLE_NOT_FOUND") {
-                return reply.code(500).send({ message: "Role not found" });
             }
 
             return reply.code(500).send({

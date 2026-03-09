@@ -1,0 +1,10 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--ds-space-4);
+  width: 100%;
+}
+
+.col {
+  min-width: 0;
+}

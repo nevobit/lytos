@@ -325,7 +325,6 @@ const DepartmentFormModal = ({
 
                     <Button
                         type="submit"
-                        className={`${styles.btn} ${styles.btnPrimary}`}
                         disabled={disabled}
                         loading={isLoading}
                     >

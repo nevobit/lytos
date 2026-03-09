@@ -1,6 +1,6 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { ConversationSchemaMongo, LifecycleStatus, TicketSchemaMongo } from "@lytos/contracts";
-import type { Conversation, CreateTicketDto, Ticket } from "@lytos/contracts";
+import { ConversationSchemaMongo, LifecycleStatus, TicketSchemaMongo, WorkspaceSchemaMongo } from "@lytos/contracts";
+import type { Conversation, CreateTicketDto, Ticket, Workspace } from "@lytos/contracts";
 
 function mapTicketSourceToConversationChannel(
     channel: CreateTicketDto["source"]["channel"],
@@ -21,13 +21,18 @@ function mapTicketSourceToConversationChannel(
 
 export const createTicket = async (data: CreateTicketDto): Promise<Ticket | null> => {
     const ticketModel = getModel<Ticket>(Collection.TICKETS, TicketSchemaMongo);
+    const workspaceModel = getModel<Workspace>(Collection.WORKSPACES, WorkspaceSchemaMongo);
     const conversationModel = getModel<Conversation>(Collection.CONVERSATIONS, ConversationSchemaMongo);
-    const session = await ticketModel.db.startSession();
 
     let createdTicket: Ticket | null = null;
 
+    const workspace = await workspaceModel.findById(data.workspaceId);
+    const tickets = await ticketModel.countDocuments();
+
+
+    const ticketNumber = workspace?.settings?.ticketNumberPrefix || "LY" + "-" + (tickets + 100).toLocaleString();
     const created = await ticketModel.create(
-        [{ ...data, lifecycleStatus: LifecycleStatus.ACTIVE }],
+        [{ ...data, ticketNumber, lifecycleStatus: LifecycleStatus.ACTIVE }],
     );
     const ticket = created[0];
     if (!ticket) {

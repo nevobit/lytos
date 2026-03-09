@@ -6,6 +6,10 @@ import { withPrefix } from '@lytos/constant-definitions';
 import { authRoutes } from './auth';
 import { customerRoutes } from './customers';
 import { departmentRoutes } from './departments';
+import { scalationRuleRoutes } from './scalation-rules';
+import { ticketPriorityRoutes } from './ticket-priorities';
+import { ticketCategoryRoutes } from './ticket-categories';
+import { ticketTypeRoutes } from './ticket-types';
 import { ticketRoutes } from './tickets';
 import { userRoutes } from './users';
 
@@ -16,6 +20,10 @@ const routes: RouteOptions[] = [
     ...withPrefix('/auth', authRoutes),
     ...withPrefix('/customers', customerRoutes),
     ...departmentRoutes,
+    ...scalationRuleRoutes,
+    ...ticketPriorityRoutes,
+    ...ticketCategoryRoutes,
+    ...ticketTypeRoutes,
     ...withPrefix('/tickets', ticketRoutes),
     ...userRoutes
 

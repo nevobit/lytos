@@ -1,0 +1,359 @@
+.screen {
+  display: grid;
+  gap: 20px;
+  padding: 0 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #111827;
+}
+
+.description {
+  margin: 8px 0 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #667085;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  border-block: 1px solid #e5e7eb;
+}
+
+.statCard {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px;
+  display: grid;
+  gap: 8px;
+  min-height: 112px;
+}
+
+.statCard:not(:last-child) {
+  border-right: 1px solid #e5e7eb;
+  border-radius: 0;
+}
+
+.tone-neutral {
+  border-color: #e5e7eb;
+}
+
+.tone-success {
+  border-color: #b7ebc6;
+  background: linear-gradient(180deg, #ffffff 0%, #f6fff8 100%);
+}
+
+.tone-warning {
+  border-color: #f3d3a1;
+  background: linear-gradient(180deg, #ffffff 0%, #fffaf3 100%);
+}
+
+.statLabel {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #667085;
+}
+
+.statValue {
+  font-size: 1.8rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #111827;
+}
+
+.statHint {
+  font-size: 1.2rem;
+  color: #667085;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(320px, 0.95fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.mainColumn,
+.sideColumn {
+  display: grid;
+  gap: 16px;
+}
+
+.card,
+.tipCard {
+  background: #ffffff;
+  border: 1px solid #e8eaef;
+  border-radius: 22px;
+  padding: 20px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.cardSubtitle {
+  margin: 6px 0 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #667085;
+}
+
+.cardBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: #eef7ff;
+  color: #175cd3;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.workspaceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid #edf1f5;
+}
+
+.infoIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #475467;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoLabel {
+  display: block;
+  font-size: 1.2rem;
+  color: #667085;
+  margin-bottom: 4px;
+}
+
+.infoValue {
+  display: block;
+  font-size: 1.4rem;
+  color: #111827;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.activityList {
+  display: grid;
+  gap: 14px;
+}
+
+.activityItem {
+  display: flex;
+  gap: 12px;
+}
+
+.activityDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #1570ef;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.activityBody {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #edf1f5;
+}
+
+.activityItem:last-child .activityBody {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.activityTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.activityTitle {
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+.activityTime {
+  font-size: 0.82rem;
+  color: #667085;
+  white-space: nowrap;
+}
+
+.activityDescription {
+  margin: 6px 0 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #667085;
+}
+
+.progressValue {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.progressBar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: #eef2f6;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #1570ef 0%, #53b1fd 100%);
+}
+
+.checklist {
+  display: grid;
+  gap: 12px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkDoneIcon {
+  color: #12b76a;
+  flex-shrink: 0;
+}
+
+.checkPendingIcon {
+  color: #f79009;
+  flex-shrink: 0;
+}
+
+.checkDoneText,
+.checkPendingText {
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.checkDoneText {
+  color: #344054;
+}
+
+.checkPendingText {
+  color: #475467;
+}
+
+.quickActions {
+  display: grid;
+  gap: 10px;
+}
+
+.tipCard {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.tipIconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: #eaf2ff;
+  color: #175cd3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tipTitle {
+  display: block;
+  font-size: 1.4rem;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.tipText {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.55;
+  color: #667085;
+}
+
+@media (max-width: 1100px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .statsGrid,
+  .workspaceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .tipCard,
+  .statCard {
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .activityTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

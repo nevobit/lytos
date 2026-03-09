@@ -1,0 +1,80 @@
+.sectionCard {
+  background: #fff;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sectionDescription {
+  font-size: 14px;
+  color: #666;
+}
+
+.ticketTypesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.accordionItem {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.accordionSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.accordionLeft {
+  display: flex;
+  align-items: center;
+}
+
+.accordionIcon {
+  margin-right: 8px;
+}
+
+.accordionInputWrap {
+  flex: 1;
+}
+
+.subTypeList {
+  padding: 8px;
+}
+
+.subTypeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subTypeHeader {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.subTypeInput {
+  flex: 1;
+}
+
+.subTypeActions {
+  display: flex;
+  justify-content: flex-end;
+}

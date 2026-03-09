@@ -35,6 +35,7 @@ export interface Ticket extends Base {
 
     priorityId?: string;
     categoryId?: string;
+    typeId?: string;
     departmentId?: string;
     assigneeMembershipId?: string;
     customerId: string;
