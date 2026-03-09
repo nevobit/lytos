@@ -11,6 +11,9 @@ import {
     Wallet,
 } from "lucide-react";
 import styles from "./Billing.module.css";
+import { useUsers } from "@/modules/auth/hooks";
+import { useTickets } from "@/modules/tickets/hooks/useTickets";
+import { useSession } from "@/shared";
 
 type BillingStat = {
     label: string;
@@ -48,27 +51,7 @@ type BillingProps = {
 };
 
 const defaultInvoices: Invoice[] = [
-    {
-        id: "1",
-        date: "01 Mar 2026",
-        number: "INV-2026-031",
-        status: "paid",
-        total: "$49 USD",
-    },
-    {
-        id: "2",
-        date: "01 Feb 2026",
-        number: "INV-2026-018",
-        status: "paid",
-        total: "$49 USD",
-    },
-    {
-        id: "3",
-        date: "01 Ene 2026",
-        number: "INV-2026-004",
-        status: "paid",
-        total: "$49 USD",
-    },
+
 ];
 
 const formatNumber = (value: number) => new Intl.NumberFormat("es-CO").format(value);
@@ -96,19 +79,16 @@ const Billing = ({
     planPrice = "$49 USD / mes",
     subscriptionStatus = "Activa",
     nextChargeDate = "01 Abr 2026",
-    billableAgents = 12,
     estimatedMonthTotal = "$49 USD",
     includedAgents = 15,
-    usedAgents = 12,
     includedTickets = 2500,
-    usedTickets = 1284,
     activeRules = 2,
-    paymentMethodLabel = "Visa terminada en 4242",
-    billingContactName = "Néstor Mosquera",
-    billingContactEmail = "billing@nevobit.com",
-    companyName = "Nevobit LLC",
+    paymentMethodLabel = "",
     invoices = defaultInvoices,
 }: BillingProps) => {
+    const { user, workspace } = useSession();
+    const { users } = useUsers();
+    const { tickets } = useTickets();
     const stats: BillingStat[] = [
         {
             label: "Plan actual",
@@ -122,7 +102,7 @@ const Billing = ({
         },
         {
             label: "Agentes facturables",
-            value: formatNumber(billableAgents),
+            value: formatNumber(users?.length),
             hint: "Usuarios incluidos en cobro",
         },
         {
@@ -132,8 +112,8 @@ const Billing = ({
         },
     ];
 
-    const agentsUsage = getUsagePercentage(usedAgents, includedAgents);
-    const ticketsUsage = getUsagePercentage(usedTickets, includedTickets);
+    const agentsUsage = getUsagePercentage(users?.length, includedAgents);
+    const ticketsUsage = getUsagePercentage(tickets?.items?.length, includedTickets);
 
     return (
         <section className={styles.screen}>
@@ -273,7 +253,7 @@ const Billing = ({
                                         <span>Agentes</span>
                                     </div>
                                     <strong>
-                                        {usedAgents} / {includedAgents}
+                                        {users?.length} / {includedAgents}
                                     </strong>
                                 </div>
                                 <div className={styles.progressBar}>
@@ -291,7 +271,7 @@ const Billing = ({
                                         <span>Tickets</span>
                                     </div>
                                     <strong>
-                                        {formatNumber(usedTickets)} / {formatNumber(includedTickets)}
+                                        {formatNumber(tickets?.items.length)} / {formatNumber(includedTickets)}
                                     </strong>
                                 </div>
                                 <div className={styles.progressBar}>
@@ -364,7 +344,7 @@ const Billing = ({
                                 <div>
                                     <span className={styles.infoLabel}>Responsable</span>
                                     <strong className={styles.infoValue}>
-                                        {billingContactName}
+                                        {user?.name}
                                     </strong>
                                 </div>
                             </div>
@@ -376,7 +356,7 @@ const Billing = ({
                                 <div>
                                     <span className={styles.infoLabel}>Correo de facturación</span>
                                     <strong className={styles.infoValue}>
-                                        {billingContactEmail}
+                                        {user?.email}
                                     </strong>
                                 </div>
                             </div>
@@ -387,7 +367,7 @@ const Billing = ({
                                 </div>
                                 <div>
                                     <span className={styles.infoLabel}>Empresa</span>
-                                    <strong className={styles.infoValue}>{companyName}</strong>
+                                    <strong className={styles.infoValue}>{workspace?.name}</strong>
                                 </div>
                             </div>
                         </div>
