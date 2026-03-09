@@ -48,7 +48,7 @@ export const createWorkspace = async (input: CreateWorkspaceDto) => {
     return data;
 }
 
-export const inviteUser = async (payload: { email: string; roleId?: string }) => {
+export const inviteUser = async (payload: { email: string; roleId?: string; departmentsIds?: string[] }) => {
     const { data } = await api.post(`/invitations`, payload);
     return data;
 };

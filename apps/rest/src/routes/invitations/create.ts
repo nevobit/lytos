@@ -11,9 +11,8 @@ export const createInvitationRoute = makeFastifyRoute(
     async (req, reply) => {
         const workspaceId = req.auth?.workspaceId;
         const roleId = req.auth?.roleId;
-        const membershipId = req.auth?.membershipId as string | undefined;
 
-        if (!workspaceId || !roleId || !membershipId) {
+        if (!workspaceId || !roleId) {
             return reply.code(409).send({ message: "Workspace context required" });
         }
 
@@ -38,7 +37,7 @@ export const createInvitationRoute = makeFastifyRoute(
                 email: dto.email.trim(),
                 roleId: dto.roleId,
                 departmentsIds: dto.departmentsIds,
-                invitedByMembershipId: membershipId,
+                invitedByMembershipId: '',
             });
 
             return reply.code(201).send(created);
