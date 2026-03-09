@@ -21,7 +21,7 @@ const NewAccount = () => {
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        create({ ...workspace, url: generateTenantUrl(workspace.name || '') });
+        create({ ...workspace, });
     }
 
     return (
@@ -56,8 +56,8 @@ const NewAccount = () => {
                             </Select>
                         </div>
 
-                        <Input name="url" label="URL" value={generateTenantUrl(workspace.name || '')}
-                            placeholder={generateTenantUrl(workspace.name || '')} onChange={handleChange} />
+                        <Input name="url" label="URL" suffix=".lytos.app" value={workspace.url}
+                            placeholder={workspace.url} onChange={handleChange} />
                         <Select name='country' label="País" onChange={handleChange} >
                             <option value="chile">Chile</option>
                             <option value="colombia">Colombia</option>
@@ -80,15 +80,15 @@ const NewAccount = () => {
 
 export default NewAccount
 
-const generateTenantUrl = (companyName: string) => {
-    return (
-        companyName
-            .toLowerCase()
-            .replace(/spa|sas|scc|scs|ltda|s\.a\.?/gi, '')
-            .trim()
-            .replace(/\s+/g, '-')
-            .replace(/[^a-z0-9-]/g, '')
-            .replace(/-+/g, '-')
-            .replace(/-$/, '') + '.lytos.app'
-    );
-};
+// const generateTenantUrl = (companyName: string) => {
+//     return (
+//         companyName
+//             .toLowerCase()
+//             .replace(/spa|sas|scc|scs|ltda|s\.a\.?/gi, '')
+//             .trim()
+//             .replace(/\s+/g, '-')
+//             .replace(/[^a-z0-9-]/g, '')
+//             .replace(/-+/g, '-')
+//             .replace(/-$/, '') + '.lytos.app'
+//     );
+// };
