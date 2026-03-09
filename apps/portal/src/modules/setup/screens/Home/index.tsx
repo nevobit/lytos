@@ -2,6 +2,7 @@ import { useSession } from '@/shared';
 import styles from './Home.module.css';
 import { useDepartments } from '@/modules/departments/hooks/useDepartments';
 import { Card } from '../../components';
+import { PrivateRoutes } from '@/app/router/routes';
 
 
 const HomeSetup = () => {
@@ -60,7 +61,7 @@ const HomeSetup = () => {
                         icon='Building'
                     />
                     <Card
-                        url="/settings/users"
+                        url={PrivateRoutes.USERS}
                         title="Invita a tu equipo"
                         copy="Invita y configura los permisos e información de los diferentes usuariso pertenecientes a la organizacion."
                         icon='UserPlus'

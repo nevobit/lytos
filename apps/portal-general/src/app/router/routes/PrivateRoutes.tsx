@@ -13,6 +13,7 @@ import Cases from "@/modules/setup/screens/Cases";
 import Customers from "@/modules/customers/screens/List";
 import Priorities from "@/modules/setup/screens/Priorities"; import Categories from "@/modules/setup/screens/Categories"; import Types from "@/modules/setup/screens/Types"; import Overview from "@/modules/setup/screens/Overview";
 import Billing from "@/modules/setup/screens/Billing";
+import Users from "@/modules/setup/screens/Users";
 
 const AppShell = lazy(() => import("@/app/components/Layout/AppShell"));
 
@@ -37,6 +38,7 @@ export const privateRoutes: RouteObject[] = [
                     { path: 'categories', element: withSuspense(<Categories />) },
                     { path: 'types', element: withSuspense(<Types />) },
                     { path: 'cases', element: withSuspense(<Cases />) },
+                    { path: 'users', element: withSuspense(<Users />) },
                     { path: 'billing', element: withSuspense(<Billing />) },
                 ]
             },

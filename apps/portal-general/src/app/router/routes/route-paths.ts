@@ -15,7 +15,7 @@ export const PrivateRoutes = {
     TICKETS: "/tickets",
     CUSTOMERS: "/customers",
     SETTINGS: "/settings",
-
+    USERS: "/settings/users",
 
 
 } as const;

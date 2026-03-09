@@ -40,12 +40,12 @@ const Types = () => {
         setLocal(updated);
     };
 
-    const saveType = async (t: TicketType, idx: number) => {
+    const saveType = async (t: Partial<TicketType>, idx: number) => {
         try {
             if (t.id) {
                 await update(t);
             } else {
-                const payload: CreateTicketTypeDto = {
+                const payload: Partial<CreateTicketTypeDto> = {
                     workspaceId: t.workspaceId,
                     name: t.name,
                     description: t.description,

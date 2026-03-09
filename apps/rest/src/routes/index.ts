@@ -12,6 +12,7 @@ import { ticketCategoryRoutes } from './ticket-categories';
 import { ticketTypeRoutes } from './ticket-types';
 import { ticketRoutes } from './tickets';
 import { userRoutes } from './users';
+import { invitationRoutes } from './invitations';
 
 const routes: RouteOptions[] = [
     healthCheckRoute,
@@ -25,7 +26,8 @@ const routes: RouteOptions[] = [
     ...ticketCategoryRoutes,
     ...ticketTypeRoutes,
     ...withPrefix('/tickets', ticketRoutes),
-    ...userRoutes
+    ...userRoutes,
+    ...withPrefix('/invitations', invitationRoutes)
 
 ];
 
