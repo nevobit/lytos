@@ -47,6 +47,7 @@ const NewAccount = () => {
                             <Input name="name" label="Razón social" placeholder="tu@empresa.com" onChange={handleChange} />
 
                             <Select name='employees' onChange={handleChange} label="Número de empleados">
+                                <option value="">Seleccionar</option>
                                 <option value="1">1</option>
                                 <option value="2-5">2-5</option>
                                 <option value="6-10">6-10</option>

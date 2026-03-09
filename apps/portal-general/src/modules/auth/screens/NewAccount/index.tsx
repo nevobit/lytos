@@ -7,7 +7,7 @@ import { useCreateWorkspace } from '../../hooks';
 
 const NewAccount = () => {
     const { user } = useSession();
-    const { isLoading, create } = useCreateWorkspace();
+    const { isLoading, create, error } = useCreateWorkspace();
     const { formState: workspace, handleChange } = useForm<CreateWorkspaceDto>({
         name: '',
         employees: '',
@@ -47,6 +47,7 @@ const NewAccount = () => {
                             <Input name="name" label="Razón social" placeholder="tu@empresa.com" onChange={handleChange} />
 
                             <Select name='employees' onChange={handleChange} label="Número de empleados">
+                                <option value="">Seleccionar</option>
                                 <option value="1">1</option>
                                 <option value="2-5">2-5</option>
                                 <option value="6-10">6-10</option>
@@ -64,7 +65,7 @@ const NewAccount = () => {
                             <option value="argentina">Argentina</option>
                             <option value="peru">Peru</option>
                         </Select>
-                        <Input name="legalForm" label="Forma jurídica" onChange={handleChange} />
+                        <Input error={error?.toString()} name="legalForm" label="Forma jurídica" onChange={handleChange} />
 
                         <Button loading={isLoading} fullWidth type="submit" >Entrar</Button>
                     </form>
