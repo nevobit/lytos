@@ -35,6 +35,7 @@ export enum Collection {
     TICKET_PRIORITIES = "ticketPriorities",
     TICKET_CATEGORIES = "ticketCategories",
     TICKET_TYPES = "ticketTypes",
+    TICKET_STATUSES = "ticketStatuses",
 
     ROUTING_RULES = "routingRules",
     SLA_POLICIES = "slaPolicies",

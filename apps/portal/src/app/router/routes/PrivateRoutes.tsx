@@ -12,7 +12,7 @@ import HomeSetup from "@/modules/setup/screens/Home";
 import Settings from "@/modules/setup/screens/Settings";
 import Cases from "@/modules/setup/screens/Cases";
 import Customers from "@/modules/customers/screens/List";
-import Priorities from "@/modules/setup/screens/Priorities"; import Categories from "@/modules/setup/screens/Categories"; import Types from "@/modules/setup/screens/Types"; import Overview from "@/modules/setup/screens/Overview";
+import Priorities from "@/modules/setup/screens/Priorities"; import Categories from "@/modules/setup/screens/Categories"; import Types from "@/modules/setup/screens/Types"; import Overview from "@/modules/setup/screens/Overview"; import Statuses from "@/modules/setup/screens/Statuses";
 import Billing from "@/modules/setup/screens/Billing";
 import Users from "@/modules/setup/screens/Users";
 
@@ -38,6 +38,7 @@ export const privateRoutes: RouteObject[] = [
                     { path: 'overview', element: withSuspense(<Overview />) },
                     { path: 'priorities', element: withSuspense(<Priorities />) },
                     { path: 'categories', element: withSuspense(<Categories />) },
+                    { path: 'statuses', element: withSuspense(<Statuses />) },
                     { path: 'types', element: withSuspense(<Types />) },
                     { path: 'cases', element: withSuspense(<Cases />) },
                     { path: 'users', element: withSuspense(<Users />) },

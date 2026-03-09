@@ -45,3 +45,4 @@ export * from './tenant';
 export * from './ticket-priorities'
 export * from './ticket-categories'
 export * from './ticket-types'
+export * from './ticket-statuses'

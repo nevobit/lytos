@@ -23,6 +23,11 @@ export const settingsTabs = [
         to: "categories",
     },
     {
+        key: "statuses",
+        label: "Estados",
+        to: "statuses",
+    },
+    {
         key: "cases",
         label: "Reglas de escalamiento",
         to: "cases",
@@ -34,7 +39,7 @@ export const settingsTabs = [
     },
     {
         key: "users",
-        label: "Usuarios",
+        label: "Agentes",
         to: "users",
     },
 ];

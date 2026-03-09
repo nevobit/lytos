@@ -12,3 +12,4 @@ export * from "./ticket-categories";
 export * from "./ticket-types";
 export * from "./scalation-rules";
 export * from "./invitations";
+export * from "./ticket-statuses";
