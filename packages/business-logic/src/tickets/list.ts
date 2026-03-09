@@ -1,5 +1,5 @@
 import { Collection, getModel } from "@lytos/constant-definitions";
-import { LifecycleStatus, TicketSchemaMongo } from "@lytos/contracts";
+import { TicketSchemaMongo } from "@lytos/contracts";
 import type { Params, Result, Ticket } from "@lytos/contracts";
 
 export const listTickets = async ({
@@ -13,7 +13,6 @@ export const listTickets = async ({
 
     const query: Record<string, unknown> = {
         workspaceId,
-        lifecycleStatus: { $ne: LifecycleStatus.DELETED },
     };
 
     if (search.trim()) {
@@ -24,6 +23,7 @@ export const listTickets = async ({
         ];
     }
 
+    console.log({ query })
     const tickets = await model
         .find(query)
         .skip(skip)

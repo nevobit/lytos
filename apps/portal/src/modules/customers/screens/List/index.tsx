@@ -1,7 +1,11 @@
 import { useMemo, useState } from "react";
-import { Button, Table, type DataTableColumn } from "@lytos/design-system";
+import { Button, Table, useModal, type DataTableColumn } from "@lytos/design-system";
 import styles from "./List.module.css";
 import { Filter, Search, Calendar, Columns3, Building2, Users } from "lucide-react";
+import { useCreateCustomer } from "../../hooks/useCreateCustomer";
+import { useUsers } from "@/modules/auth/hooks";
+import CustomerFormModal from "../../components/CustomerFormModal";
+import { useSession } from "@/shared";
 
 export type CustomerRow = {
     id?: string;
@@ -157,6 +161,20 @@ export default function Customers() {
             }
         ];
 
+    const { openModal } = useModal();
+    const { isLoading, create } = useCreateCustomer();
+    const { users } = useUsers();
+    const { workspace } = useSession();
+
+    const handleOpenCreate = () => {
+        openModal(
+            <CustomerFormModal
+                mode="create"
+                onSubmit={create}
+                isLoading={isLoading} workspaceId={workspace?.id || ''} users={users} />
+        );
+    }; 
+
     return (
         <div className={styles.page}>
             <div className={styles.header}>
@@ -167,7 +185,7 @@ export default function Customers() {
 
                 <div className={styles.headerActions}>
                     <div className={styles.splitBtn}>
-                        <Button type="button">
+                        <Button type="button" onClick={handleOpenCreate} >
                             Agregar cliente
                         </Button>
 
