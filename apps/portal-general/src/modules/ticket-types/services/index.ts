@@ -14,7 +14,7 @@ export const createTicketType = async (
 };
 
 export const updateTicketType = async (
-    cat: TicketType,
+    cat: Partial<TicketType>,
 ): Promise<TicketType> => {
     const { data } = await api.patch(`/ticket-types/${cat.id}`, cat);
     return data;

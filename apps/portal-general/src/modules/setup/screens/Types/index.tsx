@@ -30,10 +30,10 @@ const Types = () => {
         ]);
     };
 
-    const changeField = (
+    const changeField = <K extends keyof CreateTicketTypeDto>(
         idx: number,
-        field: keyof CreateTicketTypeDto,
-        value: undefined,
+        field: K,
+        value: CreateTicketTypeDto[K],
     ) => {
         const updated = [...local];
         (updated[idx])[field] = value;

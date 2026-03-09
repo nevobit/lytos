@@ -40,12 +40,12 @@ const Categories = () => {
         setLocal(updated);
     };
 
-    const saveCategory = async (cat: TicketCategory, idx: number) => {
+    const saveCategory = async (cat: Partial<TicketCategory>, idx: number) => {
         try {
             if (cat.id) {
                 await update(cat);
             } else {
-                const payload: CreateTicketCategoryDto = {
+                const payload: Partial<CreateTicketCategoryDto> = {
                     workspaceId: cat.workspaceId,
                     name: cat.name,
                     description: cat.description,
