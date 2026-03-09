@@ -17,6 +17,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
+  "dependencies": {
+    "resend": "^6.9.3"
+  },
   "devDependencies": {
     "@lytos/constant-definitions": "workspace:*",
     "@lytos/contracts": "workspace:*",

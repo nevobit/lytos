@@ -12,4 +12,5 @@ export * from "./ticket-categories";
 export * from "./ticket-types";
 export * from "./scalation-rules";
 export * from "./invitations";
+export * from "./invitations/send-invitation-email";
 export * from "./ticket-statuses";
