@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "tap test/**/*.test.ts",
-    "dev": "DOTENV_CONFIG_PATH=./.env tsx watch --tsconfig ./tsconfig.dev.json src/server/index.ts",
-    "build": "NODE_ENV=production node scripts/build.mjs",
-    "start": "DOTENV_CONFIG_PATH=./.env node dist/server/index.cjs"
+    "dev": "cross-env DOTENV_CONFIG_PATH=./.env tsx watch --tsconfig ./tsconfig.dev.json src/server/index.ts",
+    "build": "cross-env NODE_ENV=production node scripts/build.mjs",
+    "start": "cross-env DOTENV_CONFIG_PATH=./.env node dist/server/index.cjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.5.0",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "@lytos/typescript-config": "workspace:*",
     "@swc/register": "^0.1.10",
     "@types/js-yaml": "^4.0.9",
