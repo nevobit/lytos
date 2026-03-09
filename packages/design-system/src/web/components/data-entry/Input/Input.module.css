@@ -20,7 +20,6 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
     background: var(--ds-input-bg);
     border: var(--ds-border-width-1) var(--ds-border-style) var(--ds-input-border);
     border-radius: var(--ds-radius-6);
@@ -31,6 +30,22 @@
     min-height: 3.6rem;
   }
 
+  .fieldOnly {
+    grid-template-columns: 1fr;
+  }
+
+  .fieldLeading {
+    grid-template-columns: auto 1fr;
+  }
+
+  .fieldTrailing {
+    grid-template-columns: 1fr auto;
+  }
+
+  .fieldLeadingTrailing {
+    grid-template-columns: auto 1fr auto;
+  }
+
   .affix {
     display: inline-flex;
     align-items: center;
@@ -38,7 +53,6 @@
     padding-inline: var(--ds-space-2);
     color: var(--ds-color-fg-muted);
     gap: var(--ds-space-1);
-    margin-left: auto;
   }
 
   .action {

@@ -83,6 +83,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             onClear?.();
         };
 
+
         // if (process.env.NODE_ENV !== "production") {
         //     if (!label && !ariaLabel) {
         //         // eslint-disable-next-line no-console
@@ -106,6 +107,16 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         const showClear =
             clearable && !disabled && !readOnly && !!(rest.value ?? rest.defaultValue);
 
+        const hasLeading = !!(prefix || icon);
+        const hasTrailing = !!(suffix || showClear || (isPassword && togglePassword));
+
+        const fieldClass = cx(
+            styles.field,
+            hasLeading && hasTrailing && styles.fieldLeadingTrailing,
+            hasLeading && !hasTrailing && styles.fieldLeading,
+            !hasLeading && hasTrailing && styles.fieldTrailing,
+            !hasLeading && !hasTrailing && styles.fieldOnly
+        );
         return (
             <div className={rootClass} data-status={derivedStatus} data-size={size}>
                 {label && (
@@ -120,7 +131,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     )
                 )}
 
-                <div className={styles.field}>
+                <div className={fieldClass}>
                     {(prefix || icon) && (
                         <div className={styles.affix} aria-hidden="true">
                             {icon ?? prefix}

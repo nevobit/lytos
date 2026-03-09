@@ -7,7 +7,7 @@ import { useCreateWorkspace } from '../../hooks';
 
 const NewAccount = () => {
     const { user } = useSession();
-    const { isLoading, create } = useCreateWorkspace();
+    const { isLoading, create, error } = useCreateWorkspace();
     const { formState: workspace, handleChange } = useForm<CreateWorkspaceDto>({
         name: '',
         employees: '',
@@ -65,8 +65,33 @@ const NewAccount = () => {
                             <option value="argentina">Argentina</option>
                             <option value="peru">Peru</option>
                         </Select>
-                        <Input name="legalForm" label="Forma jurídica" onChange={handleChange} />
-
+                        <Select error={error?.message || ''} name="legalForm" label="Forma jurídica" onChange={handleChange} >
+                            <option value="empresario_individual">Seleccionar</option>
+                            <option value="empresario_individual">Empresario Individual</option>
+                            <option value="eirl">
+                                Empresa Individual de Responsabilidad Limitada (EIRL)
+                            </option>
+                            <option value="srl">
+                                Sociedad de Responsabilidad Limitada (SRL o Ltda.)
+                            </option>
+                            <option value="sociedad_colectiva">
+                                Sociedad Colectiva Comercial
+                            </option>
+                            <option value="comandita_simple">
+                                Sociedad en Comandita Simple
+                            </option>
+                            <option value="spa">Sociedad por Acciones (SpA)</option>
+                            <option value="sa">Sociedad Anónima (S.A.)</option>
+                            <option value="cooperativa">Cooperativa</option>
+                            <option value="comandita_acciones">
+                                Sociedad en Comandita por Acciones
+                            </option>
+                            <option value="filial_sucursal">
+                                Filial o Sucursal de Empresa Extranjera
+                            </option>
+                            <option value="sin_animo_lucro">Entidad sin ánimo de lucro</option>
+                        </Select>
+                        <span className={styles.divider} />
                         <Button loading={isLoading} fullWidth type="submit" >Entrar</Button>
                     </form>
 
