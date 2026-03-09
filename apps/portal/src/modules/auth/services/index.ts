@@ -1,5 +1,5 @@
+import { api } from "@/shared/api";
 import type { CreateWorkspaceDto } from "@lytos/contracts";
-import { api } from "../../../shared/api";
 
 interface LoginPayload {
     email: string;
