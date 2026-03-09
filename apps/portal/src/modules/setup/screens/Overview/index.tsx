@@ -13,6 +13,11 @@ import {
     Zap,
 } from "lucide-react";
 import styles from "./Overview.module.css";
+import { useSession } from "@/shared";
+import { useDepartments } from "@/modules/departments/hooks/useDepartments";
+import { useTickets } from "@/modules/tickets/hooks/useTickets";
+import { useScalationRules } from "@/modules/scalation-rules/hooks/useScalationRules";
+import { useUsers } from "@/modules/auth/hooks";
 
 type OverviewStat = {
     label: string;
@@ -101,20 +106,19 @@ const getSlaTone = (slaHealth: number): "neutral" | "success" | "warning" => {
 };
 
 const Overview = ({
-    workspaceName = "Nevobit LLC",
-    workspaceSlug = "nevobit",
     planName = "Growth",
-    activeAgents = 12,
-    monthlyTickets = 1284,
     slaHealth = 96,
-    departmentsCount = 4,
-    escalationRulesCount = 2,
     connectedChannelsCount = 1,
     checklist = defaultChecklist,
     recentActivity = defaultRecentActivity,
     quickActions = defaultQuickActions,
 }: OverviewProps) => {
+    const { workspace } = useSession();
+    const { departments } = useDepartments();
+    const { tickets } = useTickets();
+    const { scalationRules } = useScalationRules();
 
+    const { users } = useUsers();
     const stats: OverviewStat[] = [
         {
             label: "Plan actual",
@@ -124,13 +128,13 @@ const Overview = ({
         },
         {
             label: "Agentes activos",
-            value: formatNumber(activeAgents),
+            value: formatNumber(users?.length),
             hint: "Usuarios operando actualmente",
             tone: "neutral",
         },
         {
             label: "Tickets este mes",
-            value: formatNumber(monthlyTickets),
+            value: formatNumber(tickets?.items.length),
             hint: "Volumen del periodo actual",
             tone: "neutral",
         },
@@ -195,7 +199,7 @@ const Overview = ({
                                 </div>
                                 <div>
                                     <span className={styles.infoLabel}>Workspace</span>
-                                    <strong className={styles.infoValue}>{workspaceName}</strong>
+                                    <strong className={styles.infoValue}>{workspace?.name}</strong>
                                 </div>
                             </div>
 
@@ -206,7 +210,7 @@ const Overview = ({
                                 <div>
                                     <span className={styles.infoLabel}>Subdominio</span>
                                     <strong className={styles.infoValue}>
-                                        {workspaceSlug}.lytos.app
+                                        {workspace?.url}
                                     </strong>
                                 </div>
                             </div>
@@ -218,7 +222,7 @@ const Overview = ({
                                 <div>
                                     <span className={styles.infoLabel}>Departamentos</span>
                                     <strong className={styles.infoValue}>
-                                        {formatNumber(departmentsCount)}
+                                        {formatNumber(departments?.items?.length)}
                                     </strong>
                                 </div>
                             </div>
@@ -232,7 +236,7 @@ const Overview = ({
                                         Reglas de escalamiento
                                     </span>
                                     <strong className={styles.infoValue}>
-                                        {formatNumber(escalationRulesCount)}
+                                        {formatNumber(scalationRules?.items?.length)}
                                     </strong>
                                 </div>
                             </div>
