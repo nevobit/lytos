@@ -28,7 +28,7 @@ const routes: RouteOptions[] = [
     ...ticketTypeRoutes,
     ...withPrefix('/tickets', ticketRoutes),
     ...userRoutes,
-    ...withPrefix('/ticket-statuses', ticketStatusRoutes),
+    ...ticketStatusRoutes,
     ...withPrefix('/invitations', invitationRoutes)
 
 ];
