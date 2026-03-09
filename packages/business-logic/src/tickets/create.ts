@@ -30,7 +30,7 @@ export const createTicket = async (data: CreateTicketDto): Promise<Ticket | null
     const tickets = await ticketModel.countDocuments();
 
 
-    const ticketNumber = workspace?.settings?.ticketNumberPrefix || "LY" + "-" + (tickets + 100).toLocaleString();
+    const ticketNumber = (workspace?.settings?.ticketNumberPrefix || "LY") + "-" + (tickets + 100).toLocaleString();
     const created = await ticketModel.create(
         [{ ...data, ticketNumber, lifecycleStatus: LifecycleStatus.ACTIVE }],
     );
