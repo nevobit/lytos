@@ -95,6 +95,9 @@
     color: color-mix(in srgb, var(--ds-input-fg) 60%, transparent);
   }
 
+  .control[type='color'] {
+    padding-block: 0;
+  }
   .control:focus {
     outline: none;
   }
