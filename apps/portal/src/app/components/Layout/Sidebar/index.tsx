@@ -7,9 +7,9 @@ import {
     ChevronDown,
     Boxes,
     User,
-    Footprints,
     LogOut,
     Repeat,
+    Cog,
 } from "lucide-react";
 import { useSession } from "@/shared";
 import { Avatar, Menus } from "@lytos/design-system";
@@ -23,7 +23,7 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
-    { label: "Primeros pasos", href: "/setup", icon: Footprints },
+    { label: "Centro de Configuración", href: "/settings/overview", icon: Cog },
     { label: "Dashboard", href: "/", icon: LayoutDashboard },
     { label: "Departamentos", href: PrivateRoutes.DEPARTMENTS, icon: Boxes },
     { label: "Tickets", href: PrivateRoutes.TICKETS, icon: Ticket },

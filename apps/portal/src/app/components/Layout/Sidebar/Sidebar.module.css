@@ -15,7 +15,7 @@
 
 .workspace {
   display: grid;
-  grid-template-columns: 40px 1fr 28px;
+  grid-template-columns: 40px 14rem 28px;
   align-items: center;
   gap: 10px;
   padding: 0 6px;
@@ -55,15 +55,19 @@
   display: grid;
   gap: 2px;
   min-width: 0;
+  overflow: hidden;
 }
 
 .workspaceNameRow {
   display: flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
 }
 
 .workspaceName {
+  min-width: 0;
+  width: 100%;
   font-size: var(--ds-font-size-14);
   font-weight: var(--ds-font-weight-semibold);
   white-space: nowrap;

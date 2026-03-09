@@ -7,3 +7,4 @@ export * from './useUsers';
 export * from './useInviteUser';
 export * from './useInvitations';
 export * from './useRevokeInvitation';
+export * from './useDeleteWorkspace';

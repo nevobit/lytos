@@ -62,3 +62,10 @@ export const revokeInvitation = async (id: string) => {
     const { data } = await api.delete(`/invitations/${id}`);
     return data;
 };
+
+
+export const deleteWorkspace = async (id: string) => {
+    const { data } = await api.delete(`/workspaces/${id}`,);
+    return data;
+}
+
