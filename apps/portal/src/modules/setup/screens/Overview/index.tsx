@@ -18,6 +18,7 @@ import { useDepartments } from "@/modules/departments/hooks/useDepartments";
 import { useTickets } from "@/modules/tickets/hooks/useTickets";
 import { useScalationRules } from "@/modules/scalation-rules/hooks/useScalationRules";
 import { useUsers } from "@/modules/auth/hooks";
+import { useCustomers } from "@/modules/customers/hooks/useCustomers";
 
 type OverviewStat = {
     label: string;
@@ -119,6 +120,10 @@ const Overview = ({
     const { scalationRules } = useScalationRules();
 
     const { users } = useUsers();
+    const { customers } = useCustomers();
+
+    const actives = users?.length + customers?.items.length;
+
     const stats: OverviewStat[] = [
         {
             label: "Plan actual",
@@ -127,8 +132,8 @@ const Overview = ({
             tone: "neutral",
         },
         {
-            label: "Agentes activos",
-            value: formatNumber(users?.length),
+            label: "Agentes/clientes activos",
+            value: formatNumber(actives),
             hint: "Usuarios operando actualmente",
             tone: "neutral",
         },

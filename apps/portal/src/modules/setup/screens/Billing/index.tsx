@@ -14,6 +14,8 @@ import styles from "./Billing.module.css";
 import { useUsers } from "@/modules/auth/hooks";
 import { useTickets } from "@/modules/tickets/hooks/useTickets";
 import { useSession } from "@/shared";
+import { useCustomers } from "@/modules/customers/hooks/useCustomers";
+import { Link } from "react-router-dom";
 
 type BillingStat = {
     label: string;
@@ -89,6 +91,10 @@ const Billing = ({
     const { user, workspace } = useSession();
     const { users } = useUsers();
     const { tickets } = useTickets();
+    const { customers } = useCustomers();
+
+
+
     const stats: BillingStat[] = [
         {
             label: "Plan actual",
@@ -113,6 +119,8 @@ const Billing = ({
     ];
 
     const agentsUsage = getUsagePercentage(users?.length, includedAgents);
+    const clientsUsage = getUsagePercentage(customers?.items.length, includedAgents);
+
     const ticketsUsage = getUsagePercentage(tickets?.items?.length, includedTickets);
 
     return (
@@ -246,7 +254,7 @@ const Billing = ({
                         </div>
 
                         <div className={styles.usageList}>
-                            <div className={styles.usageItem}>
+                            <Link to="/settings/users" className={styles.usageItem}>
                                 <div className={styles.usageTop}>
                                     <div className={styles.usageLabelWrap}>
                                         <Users size={16} />
@@ -262,7 +270,24 @@ const Billing = ({
                                         style={{ width: `${agentsUsage}%` }}
                                     />
                                 </div>
-                            </div>
+                            </Link>
+                            <Link to='/customers' className={styles.usageItem}>
+                                <div className={styles.usageTop}>
+                                    <div className={styles.usageLabelWrap}>
+                                        <Users size={16} />
+                                        <span>Clientes</span>
+                                    </div>
+                                    <strong>
+                                        {customers?.items.length} / {includedAgents}
+                                    </strong>
+                                </div>
+                                <div className={styles.progressBar}>
+                                    <div
+                                        className={styles.progressFill}
+                                        style={{ width: `${clientsUsage}%` }}
+                                    />
+                                </div>
+                            </Link>
 
                             <div className={styles.usageItem}>
                                 <div className={styles.usageTop}>

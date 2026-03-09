@@ -123,7 +123,7 @@ const Overview = ({
             tone: "neutral",
         },
         {
-            label: "Agentes activos",
+            label: "Agentes/clientes activos",
             value: formatNumber(activeAgents),
             hint: "Usuarios operando actualmente",
             tone: "neutral",
