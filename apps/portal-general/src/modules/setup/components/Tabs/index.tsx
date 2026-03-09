@@ -28,6 +28,11 @@ export const settingsTabs = [
         to: "statuses",
     },
     {
+        key: "roles",
+        label: "Roles",
+        to: "roles",
+    },
+    {
         key: "cases",
         label: "Reglas de escalamiento",
         to: "cases",

@@ -1,20 +1,45 @@
-import { useState } from 'react';
-import { Button, Input, Spinner } from "@lytos/design-system";
+import { Button, Input, Spinner, useForm } from "@lytos/design-system";
 import styles from './Users.module.css';
 import { useInviteUser, useInvitations, useRevokeInvitation } from '@/modules/auth/hooks';
-import type { Invitation } from '@lytos/contracts';
+import { useRoles } from '@/modules/roles/hooks/useRoles';
+import type { Department, Invitation } from '@lytos/contracts';
+import { useDepartments } from '@/modules/departments/hooks/useDepartments';
+
+export const translateRole = (role: string): string => {
+    const translations: Record<string, string> = {
+        Admin: "Administrador",
+        Agent: "Agente",
+        Owner: "Dueño",
+        Viewer: "Visualizador",
+        admin: 'Administrador',
+        supervisor: 'Supervisor',
+        'department-supervisor': 'Supervisor de Departamento',
+        agent: 'Agente',
+        customer: 'Cliente',
+    };
+
+    return translations[role] || role;
+};
 
 const Users = () => {
-    const [email, setEmail] = useState('');
     const { invite, isLoading: isInviting } = useInviteUser();
     const { invitations, isLoading: isLoadingList } = useInvitations();
     const { revoke, isLoading: isRevoking } = useRevokeInvitation();
 
+    const { formState, handleChange } = useForm({
+        email: '',
+        role: '',
+        department: ''
+    });
+    const { departments } = useDepartments();
+    const { roles } = useRoles();
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!email) return;
-        await invite({ email });
-        setEmail('');
+        if (!formState.email) return;
+        const payload: { email: string; roleId?: string; departmentsIds?: string[] } = { email: formState.email };
+        if (formState.role) payload.roleId = formState.role;
+        if (formState.department) payload.departmentsIds = [formState.department];
+        await invite(payload);
     };
 
     const handleRevoke = async (id: string) => {
@@ -23,20 +48,31 @@ const Users = () => {
 
     return (
         <div className={styles.container}>
-            <h2>Invitar miembros</h2>
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <h2 className={styles.title}>Invitar miembros</h2>
+            <div className={styles.container}>
                 <Input
-                    name="email"
-                    type="email"
-                    label="Correo electrónico"
-                    placeholder="usuario@empresa.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    label='Correo'
+                    type="text"
+                    name='email'
+                    placeholder="Correo"
+                    onChange={handleChange}
                 />
-                <Button type="submit" disabled={!email || isInviting}>
-                    {isInviting ? 'Enviando...' : 'Enviar invitación'}
+                <select value={formState.department} name="department" id="department" onChange={handleChange}>
+                    <option value="">Seleccionar un departamento</option>
+                    {departments?.items?.map((department: Department) => (
+                        <option value={department.id}>{department.name}</option>
+                    ))}
+                </select>
+                <select onChange={handleChange} name="role" id="role">
+                    <option value="">Seleccionar un rol</option>
+                    {roles?.items?.map((role) => (
+                        <option key={role.id} value={role.id}>{translateRole(role.name)}</option>
+                    ))}
+                </select>
+                <Button loading={isInviting} onClick={handleSubmit} variant="primary">
+                    Enviar invitacion
                 </Button>
-            </form>
+            </div>
 
             {isLoadingList ? (
                 <Spinner />

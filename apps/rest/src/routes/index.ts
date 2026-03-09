@@ -13,6 +13,7 @@ import { ticketTypeRoutes } from './ticket-types';
 import { ticketRoutes } from './tickets';
 import { userRoutes } from './users';
 import { invitationRoutes } from './invitations';
+import { roleRoutes } from './roles';
 import { ticketStatusRoutes } from './ticket-statuses';
 
 const routes: RouteOptions[] = [
@@ -28,6 +29,7 @@ const routes: RouteOptions[] = [
     ...ticketTypeRoutes,
     ...withPrefix('/tickets', ticketRoutes),
     ...userRoutes,
+    ...roleRoutes,
     ...ticketStatusRoutes,
     ...withPrefix('/invitations', invitationRoutes)
 

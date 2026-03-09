@@ -1,6 +1,6 @@
 import { makeFastifyRoute, RouteMethod } from "@lytos/constant-definitions";
 import { verifyJwt } from "@lytos/security";
-import { authorizePermission } from "@lytos/business-logic";
+import { authorizePermission, sendInvitationEmail } from "@lytos/business-logic";
 import { createInvitation } from "@lytos/business-logic";
 
 export const createInvitationRoute = makeFastifyRoute(
@@ -11,9 +11,8 @@ export const createInvitationRoute = makeFastifyRoute(
     async (req, reply) => {
         const workspaceId = req.auth?.workspaceId;
         const roleId = req.auth?.roleId;
-        const membershipId = req.auth?.membershipId as string | undefined;
 
-        if (!workspaceId || !roleId || !membershipId) {
+        if (!workspaceId || !roleId) {
             return reply.code(409).send({ message: "Workspace context required" });
         }
 
@@ -38,8 +37,18 @@ export const createInvitationRoute = makeFastifyRoute(
                 email: dto.email.trim(),
                 roleId: dto.roleId,
                 departmentsIds: dto.departmentsIds,
-                invitedByMembershipId: membershipId,
+                invitedByMembershipId: '',
             });
+
+            // fire off welcome email using Resend.  We don't wait for it so route
+            // returns quickly, but any error is logged.
+            (async () => {
+                const recipient = dto.email.trim();
+                const tenantSlug = req.tenant?.slug;
+                if (tenantSlug && recipient) {
+                    await sendInvitationEmail(workspaceId, recipient);
+                }
+            })().catch((e) => console.error("failed to send invitation email", e));
 
             return reply.code(201).send(created);
         } catch (e) {
