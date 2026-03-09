@@ -12,7 +12,7 @@ const Login = () => {
     const { login, isLogging, error } = useLogin();
     const { loginWithGoogle } = useGoogleLogin();
 
-    const [token, setToken] = useState('');
+    const [tokenr, setTokenr] = useState('');
     const { formState: userData, handleChange } = useForm({
         email: "",
         password: "",
@@ -84,12 +84,12 @@ const Login = () => {
                         <Link className={styles.forgot} to="/">
                             ¿Olvidaste tu contraseña?
                         </Link>
-                        <GoogleReCaptchaCheckbox onChange={(token) => setToken(token)} />
+                        <GoogleReCaptchaCheckbox onChange={(token) => setTokenr(token)} />
                         <Button
                             loading={isLogging}
                             fullWidth
                             type="submit"
-                            disabled={token.length <= 100 || isLogging}
+                            disabled={tokenr.length <= 100 || isLogging}
                         >
                             Entrar
                         </Button>
