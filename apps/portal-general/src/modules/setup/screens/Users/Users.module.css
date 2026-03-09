@@ -1,0 +1,28 @@
+.container {
+  padding: 1.5rem;
+}
+
+.form {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.listWrapper {
+  margin-top: 2rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--ds-border-gray);
+}

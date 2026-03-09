@@ -32,6 +32,11 @@ export const settingsTabs = [
         label: "Facturación",
         to: "billing",
     },
+    {
+        key: "users",
+        label: "Usuarios",
+        to: "users",
+    },
 ];
 
 const Tabs = () => {

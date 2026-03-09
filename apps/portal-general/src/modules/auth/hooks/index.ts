@@ -4,3 +4,6 @@ export * from './useWorkspaces';
 export * from './useSwitchWorkspace';
 export * from './useCreateWorkspace';
 export * from './useUsers';
+export * from './useInviteUser';
+export * from './useInvitations';
+export * from './useRevokeInvitation';

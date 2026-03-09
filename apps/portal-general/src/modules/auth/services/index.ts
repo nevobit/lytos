@@ -47,3 +47,18 @@ export const createWorkspace = async (input: CreateWorkspaceDto) => {
     const { data } = await api.post(`/workspaces`, input);
     return data;
 }
+
+export const inviteUser = async (payload: { email: string; roleId?: string }) => {
+    const { data } = await api.post(`/invitations`, payload);
+    return data;
+};
+
+export const fetchInvitations = async () => {
+    const { data } = await api.get(`/invitations`);
+    return data;
+};
+
+export const revokeInvitation = async (id: string) => {
+    const { data } = await api.delete(`/invitations/${id}`);
+    return data;
+};
