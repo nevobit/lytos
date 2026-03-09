@@ -122,8 +122,6 @@ const Overview = ({
     const { users } = useUsers();
     const { customers } = useCustomers();
 
-    const actives = users?.length + customers?.items.length;
-
     const stats: OverviewStat[] = [
         {
             label: "Plan actual",
@@ -132,9 +130,15 @@ const Overview = ({
             tone: "neutral",
         },
         {
-            label: "Agentes/clientes activos",
-            value: formatNumber(actives),
+            label: "Agentes activos",
+            value: formatNumber(users?.length),
             hint: "Usuarios operando actualmente",
+            tone: "neutral",
+        },
+        {
+            label: "Clientes activos",
+            value: formatNumber(customers?.items.length),
+            hint: "Clientes operando actualmente",
             tone: "neutral",
         },
         {
