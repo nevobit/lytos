@@ -4,9 +4,15 @@ import { Button, Input, useForm } from "@lytos/design-system";
 import type { FormEvent } from "react";
 import { PublicRoutes } from "@/app/router/routes";
 import { useSignup } from "../../hooks";
+import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "../../hooks/useGoogleLogin";
 
 const Signup = () => {
     const { signup, isLogging, error } = useSignup();
+    const {
+        loginWithGoogle,
+    } = useGoogleLogin();
+
     const { formState: userData, handleChange } = useForm({
         name: '',
         email: '',
@@ -42,8 +48,22 @@ const Signup = () => {
                 <div>
                     <h2 className={styles.title} >Bienvenido a Lytos</h2>
                     <p className={styles.copy}>Plataforma operativa para equipos y agentes</p>
-                    <Button image={{ src: '/glogo.png', alt: 'Google Logo' }} fullWidth variant='monochromePlain' disabled  >Continuar con Google</Button>
-                    <div className={styles.divider}>
+                    <div className={styles.googleWrapper}>
+                        <GoogleLogin
+                            onSuccess={(credentialResponse) => {
+                                if (!credentialResponse.credential) return;
+                                loginWithGoogle(credentialResponse.credential);
+                            }}
+                            onError={() => {
+                                console.error("Google Login Failed");
+                            }}
+                            text="continue_with"
+                            theme="outline"
+                            size="large"
+                            shape="rectangular"
+
+                        />
+                    </div>                    <div className={styles.divider}>
                         <div className={styles.line} />
                         <p className={styles.or}>O</p>
                         <div className={styles.line} />
