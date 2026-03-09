@@ -22,7 +22,7 @@ const AppShell = buildAppShell(
     [PersistedQueryProvider, {}],
     [GoogleOAuthProvider, { clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID }],
     [GoogleReCaptchaProvider, {
-      type: 'v3',
+      type: 'v2-checkbox',
       siteKey: "6LcKGYQsAAAAAHqX7Me6MCcnHxkuythlYm_MLuiv",
     }]
   ],

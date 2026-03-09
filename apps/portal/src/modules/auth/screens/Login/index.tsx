@@ -2,32 +2,24 @@ import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import { Button, Input, useForm } from "@lytos/design-system";
 import { useLogin } from "../../hooks/useLogin";
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { PublicRoutes } from "@/app/router/routes";
 import { GoogleLogin } from "@react-oauth/google";
 import { useGoogleLogin } from "../../hooks/useGoogleLogin";
-import { useGoogleReCaptcha } from '@google-recaptcha/react';
+import { GoogleReCaptchaCheckbox } from '@google-recaptcha/react';
 
 const Login = () => {
     const { login, isLogging, error } = useLogin();
     const { loginWithGoogle } = useGoogleLogin();
-    const googleReCaptcha = useGoogleReCaptcha();
 
+    const [token, setToken] = useState('');
     const { formState: userData, handleChange } = useForm({
         email: "",
         password: "",
     });
 
-
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        if (!googleReCaptcha.executeV3) {
-            console.error("reCAPTCHA aún no está listo");
-            return;
-        }
-
-        await googleReCaptcha.executeV3("login");
 
         await login({
             email: userData.email,
@@ -92,12 +84,12 @@ const Login = () => {
                         <Link className={styles.forgot} to="/">
                             ¿Olvidaste tu contraseña?
                         </Link>
-
+                        <GoogleReCaptchaCheckbox onChange={(token) => setToken(token)} />
                         <Button
                             loading={isLogging}
                             fullWidth
                             type="submit"
-                            disabled={isLogging}
+                            disabled={token.length <= 100 || isLogging}
                         >
                             Entrar
                         </Button>
