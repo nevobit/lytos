@@ -10,7 +10,7 @@ export async function sendInvitationEmail(
 ) {
     try {
         const ws = await findWorkspaceById(workspaceId);
-        const slug = ws?.slug ?? "";
+        const slug = ws?.url ?? "";
         const baseDomain = process.env.BASE_DOMAIN ?? "lytos.app";
         const host = slug ? `${slug}.${baseDomain}` : baseDomain;
         const url = `https://${host}`;

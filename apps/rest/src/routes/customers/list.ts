@@ -10,7 +10,7 @@ export const getAllCustomersRoute = makeFastifyRoute(
     { tenant: "required", auth: "required" },
     async (request, reply) => {
         const { params } = request as { params: Params };
-        const customers = await getAllCustomers({ ...params, workspaceId: request.tenant!.slug! });
+        const customers = await getAllCustomers({ ...params, workspaceId: request.tenant!.workspaceId });
         return reply.status(200).send(customers);
     }
 )

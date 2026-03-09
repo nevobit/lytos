@@ -11,7 +11,7 @@ export const createCustomerRoute = makeFastifyRoute(
     async (request, reply) => {
         const body = request.body as CreateCustomerDto;
         const { userId } = (request as { auth: { userId: string } }).auth;
-        const customer = await createCustomer({ ...body, workspaceId: request.tenant!.slug!, userId });
+        const customer = await createCustomer({ ...body, workspaceId: request.tenant!.workspaceId, userId });
         return reply.status(201).send(customer);
     }
 )
