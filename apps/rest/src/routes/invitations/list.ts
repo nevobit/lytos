@@ -1,28 +1,21 @@
 import { makeFastifyRoute, RouteMethod } from "@lytos/constant-definitions";
 import { verifyJwt } from "@lytos/security";
-import { authorizePermission, getWorkspaceInvitations } from "@lytos/business-logic";
+import { getWorkspaceInvitations } from "@lytos/business-logic";
 
 export const listInvitationsRoute = makeFastifyRoute(
     RouteMethod.GET,
     "/",
     verifyJwt,
-    { tenant: "required", auth: "required" },
-    async (req, reply) => {
-        const workspaceId = req.auth?.workspaceId;
-        const roleId = req.auth?.roleId;
-
-        if (!workspaceId || !roleId) {
-            return reply.code(409).send({ message: "Workspace context required" });
+    { tenant: "none", auth: "required" },
+    async (request, reply) => {
+        if (!request.auth) {
+            return reply.status(401).send({ message: "Unauthorized" });
         }
 
-        await authorizePermission({
-            workspaceId,
-            roleId,
-            permission: "invitations.manage",
-        });
+        const { userId } = request.auth;
 
         try {
-            const invitations = await getWorkspaceInvitations(workspaceId);
+            const invitations = await getWorkspaceInvitations(userId);
             return reply.send(invitations);
         } catch {
             return reply.code(500).send({ message: "Server error" });

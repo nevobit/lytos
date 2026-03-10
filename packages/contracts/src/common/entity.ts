@@ -8,7 +8,7 @@ export const baseFields = {
 } as const;
 
 export const tenantFields = {
-    workspaceId: { type: String, required: true, index: true },
+    workspaceId: { type: String, required: true, index: true, ref: "workspaces" },
 } as const;
 
 export const externalFields = {

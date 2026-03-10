@@ -13,6 +13,7 @@ export const PrivateRoutes = {
     SETUP: "/setup",
     DEPARTMENTS: "/departments",
     TICKETS: "/tickets",
+    TICKETS_DETAILS: "/tickets/:id",
     CUSTOMERS: "/customers",
     SETTINGS: "/settings",
     USERS: "/settings/users",

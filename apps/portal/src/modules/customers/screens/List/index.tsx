@@ -12,6 +12,7 @@ export type CustomerRow = {
     id?: string;
     name?: string;
     email?: string;
+    displayName?: string;
     phone?: string;
     dateCreated?: string | Date | null;
     organizationName?: string;
@@ -109,7 +110,7 @@ export default function Customers() {
                 render: (value) => <span className={styles.date}>{formatCLDate(value as string)}</span>,
             },
             {
-                key: "organizationName",
+                key: "displayName",
                 header: "Organización",
                 sortable: true,
                 render: (value) => {

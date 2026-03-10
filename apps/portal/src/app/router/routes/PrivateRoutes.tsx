@@ -15,6 +15,7 @@ import Customers from "@/modules/customers/screens/List";
 import Priorities from "@/modules/setup/screens/Priorities"; import Categories from "@/modules/setup/screens/Categories"; import Types from "@/modules/setup/screens/Types"; import Overview from "@/modules/setup/screens/Overview"; import Statuses from "@/modules/setup/screens/Statuses"; import Roles from "@/modules/setup/screens/Roles";
 import Billing from "@/modules/setup/screens/Billing";
 import Users from "@/modules/setup/screens/Users";
+import TicketDetailScreen from "@/modules/tickets/screens/Details";
 
 const AppShell = lazy(() => import("@/app/components/Layout/AppShell"));
 const Accounts = lazy(() => import("@/modules/auth/screens/Accounts"));
@@ -30,6 +31,7 @@ export const privateRoutes: RouteObject[] = [
             { path: PrivateRoutes.SETUP, element: withSuspense(<HomeSetup />) },
             { path: PrivateRoutes.DEPARTMENTS, element: withSuspense(<Departments />) },
             { path: PrivateRoutes.TICKETS, element: withSuspense(<Tickets />) },
+            { path: PrivateRoutes.TICKETS_DETAILS, element: withSuspense(<TicketDetailScreen />) },
             { path: PrivateRoutes.CUSTOMERS, element: withSuspense(<Customers />) },
             {
                 path: PrivateRoutes.SETTINGS,

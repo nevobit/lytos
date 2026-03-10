@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 import { InvitationCard } from '../../components';
 import AccountCard from '../../components/AccountCard';
 import { PrivateRoutes } from '@/app/router/routes';
-import { useWorkspaces } from '../../hooks';
-import type { Invitation } from '@lytos/contracts';
+import { useInvitations, useWorkspaces } from '../../hooks';
+import type { Invitation, Workspace } from '@lytos/contracts';
 
 
 const Accounts = () => {
     const { user } = useSession();
     const { isLoading, workspaces } = useWorkspaces();
-
+    const { invitations } = useInvitations();
+    console.log(invitations)
     if (isLoading) return <Spinner />
     return (
         <div className={styles.container} >
@@ -32,15 +33,15 @@ const Accounts = () => {
                 <h2>Bienvenido, {user?.name.split(' ')[0]}</h2>
                 <p className={styles.copy}>Elije una cuenta o <Link to={PrivateRoutes.NEW_ACCOUNT} >crear una nueva</Link></p>
 
-                {workspaces?.invitations && workspaces.invitations.length > 0 && (
+                {invitations && invitations.length > 0 && (
                     <div className={styles.invitations} >
-                        <h3 className={styles.title}>Invitaciones pendientes ({workspaces.invitations.length})</h3>
+                        <h3 className={styles.title}>Invitaciones pendientes ({invitations.length})</h3>
                         <div className={styles.invitationList} >
-                            {workspaces.invitations.map((inv: Invitation) => (
+                            {invitations.map((inv: Invitation) => (
                                 <InvitationCard
                                     key={inv.id}
                                     id={inv.id}
-                                    name={inv.workspaceId}
+                                    name={(inv.workspaceId as unknown as Workspace).name}
                                     label="Invitación pendiente"
                                 />
                             ))}
