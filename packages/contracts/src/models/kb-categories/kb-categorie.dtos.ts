@@ -1,4 +1,7 @@
-import type { KbCategorie } from './schemas';
+import type { KbCategory } from './schemas';
 
-export type CreateKbCategorieDto = Omit<KbCategorie, 'id' | 'createdAt' | 'updatedAt'>;
-export type UpdateKbCategorieDto = Partial<CreateKbCategorieDto> 
+export type CreateKbCategoryDto = Omit<KbCategory, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
+export type UpdateKbCategoryDto = Partial<CreateKbCategoryDto>;
+
+export type CreateKbCategorieDto = CreateKbCategoryDto;
+export type UpdateKbCategorieDto = UpdateKbCategoryDto;
